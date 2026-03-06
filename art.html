@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Art — Jason Steltman</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--bg:#fafaf8;--ink:#111;--muted:#666;--link:#0000EE;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:Times New Roman,Times,serif;font-size:16px;cursor:url("data:image/x-win-bitmap;base64,") 12 8,auto;}
+    a{color:var(--link);text-decoration:underline;}
+    a:visited{color:#551A8B;}
+    a:hover{color:#EE0000;}
+    header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;border-bottom:1px solid #ccc;}
+    .logo{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.15em;color:var(--muted);text-decoration:none;}
+    .logo:hover{color:var(--ink);text-decoration:none;}
+    nav{display:flex;gap:1.5rem;font-size:0.9rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;}
+    main{padding:3rem 2rem 5rem;}
+    .page-title{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:900;font-size:clamp(2.5rem,7vw,6rem);letter-spacing:-0.04em;text-transform:uppercase;color:var(--ink);margin-bottom:0.5rem;line-height:1;}
+    .page-sub{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.8rem;color:var(--muted);margin-bottom:3rem;}
+    .page-sub a{font-size:inherit;}
+
+    /* CARDS */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.8rem;}
+    .project-card{background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;border:none;box-shadow:0 2px 8px rgba(0,0,0,0.07),0 8px 24px rgba(0,0,0,0.06);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s ease;}
+    .project-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 8px 24px rgba(0,0,0,0.11),0 24px 48px rgba(0,0,0,0.09);}
+    .project-thumb{width:100%;aspect-ratio:4/3;overflow:hidden;}
+    .project-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);}
+    .project-card:hover .project-thumb img{transform:scale(1.06);}
+    .project-info{padding:1rem 1.2rem 1.2rem;flex:1;display:flex;flex-direction:column;gap:0.3rem;}
+    .project-info h3{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink);}
+    .project-info .meta{font-size:0.72rem;color:var(--muted);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;}
+
+    /* MODAL */
+    .modal-overlay{position:fixed;inset:0;background:rgba(15,15,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity 0.28s ease;padding:2rem;}
+    .modal-overlay.open{opacity:1;pointer-events:all;}
+    .modal{background:#fff;border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,0.28),0 8px 24px rgba(0,0,0,0.14);width:min(820px,92vw);max-height:90vh;overflow-y:auto;transform:translateY(20px) scale(0.97);transition:transform 0.32s cubic-bezier(0.16,1,0.3,1);position:relative;scrollbar-width:none;}
+    .modal::-webkit-scrollbar{display:none;}
+    .modal-overlay.open .modal{transform:translateY(0) scale(1);}
+    .modal-close{position:absolute;top:1rem;right:1.1rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#999;background:rgba(0,0,0,0.06);border:none;cursor:pointer;padding:0.35rem 0.7rem;border-radius:20px;transition:background 0.2s,color 0.2s;z-index:10;}
+    .modal-close:hover{background:rgba(0,0,0,0.12);color:#EE0000;}
+    .modal-hero{width:100%;overflow:hidden;border-radius:20px 20px 0 0;}
+    .modal-hero img{width:100%;display:block;object-fit:cover;cursor:zoom-in;}
+    .modal-body{padding:1.8rem 2rem 2.2rem;}
+    .modal-title{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-0.02em;text-transform:uppercase;color:var(--ink);margin-bottom:0.7rem;}
+    .modal-desc{font-size:0.95rem;line-height:1.75;color:#444;margin-bottom:1.3rem;}
+    .modal-behance{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+
+    /* LIGHTBOX */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;pointer-events:none;transition:opacity 0.2s ease;padding:2rem;}
+    .lightbox.open{opacity:1;pointer-events:all;}
+    .lightbox-bubble{background:#fff;border-radius:16px;padding:0.6rem;box-shadow:0 40px 100px rgba(0,0,0,0.5);max-width:min(94vw,1200px);max-height:92vh;transform:scale(0.95);transition:transform 0.22s cubic-bezier(0.16,1,0.3,1);position:relative;}
+    .lightbox.open .lightbox-bubble{transform:scale(1);}
+    .lightbox-bubble img{display:block;max-width:100%;max-height:calc(92vh - 2rem);object-fit:contain;border-radius:12px;}
+    .lightbox-close{position:absolute;top:-2rem;right:0;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);cursor:pointer;background:none;border:none;padding:0;}
+    .lightbox-close:hover{color:#fff;}
+
+    footer{border-top:1px solid #ccc;padding:1.5rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.8rem;}
+    .footer-nav,.footer-socials{display:flex;gap:1.2rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.78rem;}
+    .footer-copy{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="index.html">JS</a>
+  <nav><a href="art.html">Art</a><a href="web.html">Web</a><a href="blog.html">Blog</a><a href="cv.html">CV</a><a href="index.html#contact">Contact</a></nav>
+</header>
+<main>
+  <h1 class="page-title">Art</h1>
+  <p class="page-sub">All works &mdash; <a href="https://www.behance.net/jasonsteltman" target="_blank">behance.net/jasonsteltman</a></p>
+  <div class="projects-grid" id="art-grid"></div>
+</main>
+
+<div id="modal-container"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-bubble">
+    <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+  </div>
+</div>
+
+<script>
+// ============================================================
+//  ADD YOUR BEHANCE PROJECTS HERE
+//  Copy and paste a new { ... } block to add a project.
+//
+//  Fields:
+//    title       — project name
+//    cover       — Behance cover image URL
+//                  Tip: find it by right-clicking the cover on
+//                  behance.net and choosing "Copy image address"
+//                  Then change "/404/" to "/max_808/" for higher quality
+//    url         — full Behance project URL
+//    medium      — e.g. "Photography", "Design", "Mixed Media"
+//    description — shown inside the modal bubble
+// ============================================================
+const PROJECTS = [
+  {
+    title: "Gestures",
+    cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/64e10b244740319.Y3JvcCwzNDgwLDI3MjEsMCwxNw.jpeg",
+    url: "https://www.behance.net/gallery/244740319/Gestures",
+    medium: "Photography",
+    description: "A photography series exploring the quiet language of the body — small movements, incidental poses, and the unspoken communication found in everyday gesture."
+  },
+  {
+    title: "Maynooth Ontario",
+    cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/6713a5244539193.Y3JvcCwxMDk1LDg1NywzNDI4LDA.jpg",
+    url: "https://www.behance.net/gallery/244539193/Maynooth-Ontario",
+    medium: "Photography",
+    description: "Documentary photography from Maynooth, Ontario — a small community in Hastings Highlands. Images of landscape, light, and rural life in the Canadian Shield."
+  },
+  {
+    title: "Lush",
+    cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/2922ed139604369.Y3JvcCwxMTkyLDkzMywxMDMsMA.jpg",
+    url: "https://www.behance.net/gallery/139604369/Lush",
+    medium: "Photography",
+    description: "A study in density and colour — photography that leans into abundance, saturation, and the overwhelming richness of natural and constructed environments."
+  },
+  {
+    title: "Mirror, Me, Window (Loop)",
+    cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/228ad2139607129.Y3JvcCwxNTIzLDExOTIsMTI0LDA.jpeg",
+    url: "https://www.behance.net/gallery/139607129/Mirror-Me-Window-(Loop)",
+    medium: "Photography",
+    description: "A looping photographic work exploring reflection, self-observation, and the recursive nature of looking — at a window, a mirror, and the self simultaneously."
+  },
+  {
+    title: "Untitled (Cadillac) — 2014",
+    cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/a9ec2c139599997.Y3JvcCwyOTMyLDIyOTQsMjYxLDA.png",
+    url: "https://www.behance.net/gallery/139599997/Untitled-(Cadillac)-2014",
+    medium: "Photography",
+    description: "An untitled work from 2014 centred on a Cadillac — American iconography, automotive form, and the weight of an object as cultural symbol."
+  },
+  {
+    title: "clip —",
+    cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/af98b6139599385.Y3JvcCwzOTk5LDMxMjgsMCwxNDM1.jpg",
+    url: "https://www.behance.net/gallery/139599385/clip-",
+    medium: "Photography",
+    description: "A fragmented photographic work — clipped, cropped, truncated. An investigation into what is left when an image is cut short, and what meaning survives the edit."
+  },
+  {
+    title: "Little Surfer",
+    cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/8214d6138101349.Y3JvcCw3OTEsNjE5LDc0NCw0NjY.jpg",
+    url: "https://www.behance.net/gallery/138101349/Little-Surfer",
+    medium: "Photography",
+    description: "A portrait of youth and movement — photography that follows a young surfer, capturing the relationship between a body, a board, and the pull of water."
+  },
+  {
+    title: "Would You Still Love Me",
+    cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/447036138100965.Y3JvcCwyNjg0LDIxMDAsMTU5LDA.jpg",
+    url: "https://www.behance.net/gallery/138100965/Would-You-Still-Love-Me",
+    medium: "Photography",
+    description: "A tender and searching series — photography that asks questions about intimacy, loyalty, and the conditions we place on love."
+  },
+  {
+    title: "A Mix of Sun and Clouds",
+    cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/a39c90138100387.Y3JvcCw5ODIsNzY4LDI0MCwyNzk.jpg",
+    url: "https://www.behance.net/gallery/138100387/A-Mix-of-Sun-and-Clouds",
+    medium: "Photography",
+    description: "Sky photography as emotional register — the shifting quality of light between sun and overcast, and how weather becomes a kind of mood board for the day."
+  },
+  {
+    title: "Umbrella",
+    cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/3b5f7e138096545.Y3JvcCw3MTMsNTU3LDc4NSwxODE.jpg",
+    url: "https://www.behance.net/gallery/138096545/Umbrella",
+    medium: "Photography",
+    description: "A photographic study of shelter and solitude — the umbrella as object, as shield, as a small private world carried through a public one."
+  }
+];
+
+// ── Render ──────────────────────────────────────────────────
+function renderArt() {
+  const grid = document.getElementById('art-grid');
+  const container = document.getElementById('modal-container');
+  grid.innerHTML = '';
+  container.innerHTML = '';
+
+  PROJECTS.forEach((p, i) => {
+    const id = 'modal-art-' + i;
+
+    // Card
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.onclick = () => openModal(id);
+    card.innerHTML = `
+      <div class="project-thumb"><img src="${p.cover}" alt="${p.title}" loading="lazy"/></div>
+      <div class="project-info">
+        <h3>${p.title}</h3>
+        <p class="meta">${p.medium}</p>
+      </div>`;
+    grid.appendChild(card);
+
+    // Modal
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.id = id;
+    overlay.onclick = (e) => { if (e.target === overlay) closeModal(id); };
+    overlay.innerHTML = `
+      <div class="modal">
+        <button class="modal-close" onclick="closeModal('${id}')">Close ✕</button>
+        <div class="modal-hero"><img src="${p.cover}" alt="${p.title}" onclick="openLightbox(this);event.stopPropagation()"/></div>
+        <div class="modal-body">
+          <h2 class="modal-title">${p.title}</h2>
+          <p class="modal-desc">${p.description}</p>
+          <a class="modal-behance" href="${p.url}" target="_blank" onclick="event.stopPropagation()">View on Behance &rarr;</a>
+        </div>
+      </div>`;
+    container.appendChild(overlay);
+  });
+}
+
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+function openLightbox(img){document.getElementById('lightbox-img').src=img.src;document.getElementById('lightbox-img').alt=img.alt;document.getElementById('lightbox').classList.add('open');}
+function closeLightbox(e){if(e&&e.target!==document.getElementById('lightbox')&&!e.target.classList.contains('lightbox-close'))return;document.getElementById('lightbox').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}});
+
+renderArt();
+</script>
+
+<footer>
+  <nav class="footer-nav"><a href="index.html">Home</a><a href="art.html">Art</a><a href="web.html">Web</a><a href="blog.html">Blog</a><a href="cv.html">CV</a><a href="index.html#contact">Contact</a></nav>
+  <div class="footer-socials"><a href="https://www.behance.net/jasonsteltman" target="_blank">Behance</a><a href="https://www.instagram.com/jasonsteltman/" target="_blank">Instagram</a></div>
+  <p class="footer-copy">&copy; 2026 Jason Steltman. All rights reserved.</p>
+</footer>
+</body>
+</html>

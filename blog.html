@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Blog &mdash; Jason Steltman</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--bg:#fafaf8;--ink:#111;--muted:#666;--link:#0000EE;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:Times New Roman,Times,serif;font-size:16px;cursor:url("data:image/x-win-bitmap;base64,AAACAAEAICAAAAwACACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAMAAAADAAAAAwAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAwAAAAMAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAcAAAARAAAAGgAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAGAAAAA0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAGgAAADQAAABGAAAATAAAAE0AAABNAAAATQAAAE0AAABNAAAATQAAAE0AAABNAAAATQAAAEwAAABCAAAAKQAAAA0AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAACMAAAClAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAI4AAABCAAAAGAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEhISmnR0dP/Jycn/2tra/9ra2v/a2tr/2tra/9ra2v/a2tr/2tra/9ra2v/a2tr/2tra/9ra2v+Tk5P/AAAA/wAAAEwAAAAdAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAD/7Ozs/////////////////////////////////////////////////+zs7P/s7Oz/2tra/9ra2v8AAAD/AAAATQAAAB0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAP///////////////////////////////////////////////////////////+zs7P/s7Oz/2tra/wAAAP8AAABNAAAAHQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA/////////////////////////////////////////////////////////////////+zs7P/a2tr/AAAA/wAAAE0AAAAdAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAD////////////AwMD//////8nJyf/a2tr//////8nJyf/s7Oz//////8nJyf/s7Oz/7Ozs/9ra2v8AAAD/AAAATQAAAB0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAP/j4+P//////4GBgf///////////8nJyf///////////8nJyf///////////8nJyf//////2tra/wAAAP8AAABMAAAAHQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAP/c3Nz/AAAA///////////////////////////////////////////////////////a2tr/AAAA/wAAAEIAAAAYAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAP8TExP///////////92dnb///////////9ERET///////////9YWFj//////9ra2v8AAAD/AAAAKAAAAA0AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAP///////////zExMf/Jycn//////wAAAP///////////wAAAP8AAAD/AAAA/wAAAFYAAAANAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA////////////AAAA/wAAAP8AAAD/AAAAVgAAAP8AAAD/AAAAVQAAAA4AAAAGAAAAAwAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAD///////////8AAAD/AAAATAAAAB8AAAAHAAAAAwAAAAMAAAADAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAP///////////wAAAP8AAAA/AAAAFgAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA////////////AAAA/wAAACIAAAAKAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABPAAAA/wAAAP8AAAAVAAAACgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAwAAAAMAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////////////////////////////////8AAf/8AAD//AAAf/gAAH/4AAB/+AAAf/gAAH/4AAB/+AAAf/gAAH/8AAB//gAAf/8AAP//AAH//wAP//8A////AP///4H////D///////////////////////////////////////8=") 12 8,auto;}
+    a{color:var(--link);text-decoration:underline;}a:visited{color:#551A8B;}a:hover{color:#EE0000;}
+    header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;border-bottom:1px solid #ccc;}
+    .logo{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.15em;color:var(--muted);text-decoration:none;}
+    .logo:hover{color:var(--ink);text-decoration:none;}
+    nav{display:flex;gap:1.5rem;font-size:0.9rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;}
+    main{padding:3rem 2rem 5rem;}
+    .page-title{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:900;font-size:clamp(2.5rem,7vw,6rem);letter-spacing:-0.04em;text-transform:uppercase;color:var(--ink);margin-bottom:0.5rem;line-height:1;}
+    .page-sub{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.8rem;color:var(--muted);margin-bottom:2rem;}
+    .tag-filter{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem;align-items:center;}
+    .tag-filter-label{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-right:0.3rem;}
+    .filter-btn{background:#f0ece6;border:1px solid transparent;padding:0.3rem 0.75rem;font-size:0.65rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:#555;border-radius:20px;cursor:pointer;transition:all 0.15s;}
+    .filter-btn:hover{background:#e0dbd3;color:var(--ink);}
+    .filter-btn.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.8rem;}
+    .post-card{background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;border:none;box-shadow:0 2px 8px rgba(0,0,0,0.07),0 8px 24px rgba(0,0,0,0.06);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s ease;}
+    .post-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 8px 24px rgba(0,0,0,0.11),0 24px 48px rgba(0,0,0,0.09);}
+    .post-card-body{padding:1.4rem 1.4rem 1.5rem;flex:1;display:flex;flex-direction:column;gap:0.6rem;}
+    .post-date{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
+    .post-card-title{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:1rem;font-weight:800;letter-spacing:-0.01em;color:var(--ink);line-height:1.25;}
+    .post-excerpt{font-size:0.88rem;line-height:1.65;color:#555;flex:1;}
+    .post-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.3rem;}
+    .post-tag{background:#f0ece6;padding:0.2rem 0.5rem;font-size:0.6rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:#555;border-radius:4px;}
+    .modal-overlay{position:fixed;inset:0;background:rgba(15,15,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity 0.28s ease;padding:2rem;}
+    .modal-overlay.open{opacity:1;pointer-events:all;}
+    .modal{background:#fff;border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,0.28),0 8px 24px rgba(0,0,0,0.14);width:min(680px,92vw);max-height:90vh;overflow-y:auto;transform:translateY(20px) scale(0.97);transition:transform 0.32s cubic-bezier(0.16,1,0.3,1);position:relative;scrollbar-width:none;}
+    .modal::-webkit-scrollbar{display:none;}
+    .modal-overlay.open .modal{transform:translateY(0) scale(1);}
+    .modal-close{position:absolute;top:1rem;right:1.1rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#999;background:rgba(0,0,0,0.06);border:none;cursor:pointer;padding:0.35rem 0.7rem;border-radius:20px;transition:background 0.2s,color 0.2s;z-index:10;}
+    .modal-close:hover{background:rgba(0,0,0,0.12);color:#EE0000;}
+    .modal-body{padding:2.2rem 2.2rem 2.5rem;}
+    .modal-date{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:block;}
+    .modal-title{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:900;font-size:1.7rem;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.2rem;line-height:1.15;}
+    .modal-content{font-size:1rem;line-height:1.8;color:#333;}
+    .modal-content p{margin-bottom:1.1rem;}
+    .modal-content p:last-child{margin-bottom:0;}
+    .modal-footer-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid #eee;}
+    .no-posts{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.82rem;color:var(--muted);padding:2rem 0;}
+    footer{border-top:1px solid #ccc;padding:1.5rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.8rem;}
+    .footer-nav,.footer-socials{display:flex;gap:1.2rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.78rem;}
+    .footer-copy{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="index.html">JS</a>
+  <nav>
+    <a href="art.html">Art</a><a href="web.html">Web</a><a href="blog.html">Blog</a><a href="cv.html">CV</a><a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+<main>
+  <h1 class="page-title">Blog</h1>
+  <p class="page-sub">Writing on art, code, and everything in between.</p>
+  <div class="tag-filter" id="tag-filter"></div>
+  <div class="blog-grid" id="blog-grid"></div>
+  <p class="no-posts" id="no-posts" style="display:none;">No posts with that tag.</p>
+</main>
+<div id="modal-container"></div>
+<script>
+/*
+  ============================================================
+  ADD YOUR BLOG POSTS HERE
+  Copy and paste a new object into the POSTS array.
+
+  Fields:
+    title   : post title string
+    date    : display date string e.g. "March 2026"
+    excerpt : 1-2 sentence card preview string
+    tags    : array of tag strings e.g. ["Photography", "Process"]
+    content : array of paragraph strings - one string per paragraph
+  ============================================================
+*/
+var POSTS = [
+  {
+    title: "Why I Still Shoot on Film",
+    date: "February 2026",
+    excerpt: "Digital is faster, cheaper, and endlessly forgiving. So why do I keep reaching for the Pentax?",
+    tags: ["Photography", "Process"],
+    content: [
+      "There is something about the cost of film that changes how you look at things. When each frame has a price, you stop and actually look before you press the shutter. You consider the light, the moment, whether it is worth it. That hesitation is not a limitation — it is the whole point.",
+      "I shoot digital too. I shoot digital constantly for work and for quick documentation. But when I want to actually see something — really see it — I load a roll of 400H and slow down.",
+      "The grain is not nostalgia for me. It is a texture that feels honest. Digital smoothness can sometimes feel like it is lying, like it is resolving more certainty than the world actually contains. Film looks like memory. That matters when the subject is personal.",
+      "The other thing nobody talks about enough: the gap. The week between shooting and getting scans back is generative. You forget what you shot, so when the images arrive you are seeing them almost for the first time. That surprise is a form of editing — the best frames announce themselves immediately."
+    ]
+  },
+  {
+    title: "Building CivicConnect: What I Learned",
+    date: "January 2026",
+    excerpt: "A civic tech project that started as a weekend experiment and turned into something I actually use.",
+    tags: ["Web", "Civic Tech", "Reflection"],
+    content: [
+      "CivicConnect started because I wanted to write to my city councillor and had no idea who that was. That felt like a failure of design — not mine, but the systems around me. Finding your representatives should not require knowing which ward you live in, which level of government handles which issue, or how to navigate three different websites.",
+      "So I built a tool that takes an address and returns everyone who represents that location: municipal, provincial, federal. It cross-references the Represent API with postal code data and gives you a list with direct contact links and an AI-assisted email drafting tool.",
+      "The hardest part was not the code. It was deciding what to include. There is a version of this tool that does much more — tracks voting records, pulls Hansard transcripts, ranks responsiveness. But that version would never ship. The useful version does one thing extremely well: it tells you who to contact and makes contacting them as easy as possible.",
+      "Zero data collection was non-negotiable from the start. Addresses you search are never stored, logged, or shared. Everything runs in your browser and disappears when you leave. That constraint shaped the architecture more than any technical decision."
+    ]
+  },
+  {
+    title: "Notes on the Canadian Shield",
+    date: "December 2025",
+    excerpt: "A week in Maynooth, a camera, and a lot of thinking about what documentary photography actually means.",
+    tags: ["Photography", "Travel", "Ontario"],
+    content: [
+      "I drove to Maynooth in late October, just before the snow. The drive itself is the point — four hours north of Toronto and you start to feel the rock underneath everything. The Canadian Shield pushes up through the soil, through the roads, through whatever softness civilization has tried to lay over it.",
+      "I did not go with a project in mind, which was the right decision. Projects have a way of making you see what you expect to see. I wanted to photograph what was actually there, which meant spending the first two days not photographing much at all. Just driving the back roads, talking to people at the gas station, eating breakfast at the same diner twice.",
+      "The light in October is horizontal and unforgiving. It exposes everything. I found myself more interested in the man-made things than the landscape — the faded signage, the equipment that had been left in fields, the houses with two or three generations of renovation visible at once.",
+      "Documentary photography is not about recording what exists. It is about deciding what to look at, which is always an argument about value. These photographs say: this place and these things matter. Whether that argument lands depends entirely on the photograph."
+    ]
+  },
+  {
+    title: "On Side Projects",
+    date: "November 2025",
+    excerpt: "The projects I build for no one in particular are the ones that have taught me the most.",
+    tags: ["Web", "Process", "Reflection"],
+    content: [
+      "Every useful skill I have came from a side project. Not from tutorials, not from courses, not from work assignments — from building something I wanted to exist and figuring out the rest along the way.",
+      "The Ontario Markets project started because I kept missing the farmers market in my neighbourhood. I wanted a calendar that showed me which markets were open on which days, across the whole province, with enough detail to be useful. Nothing like that existed. So I built it.",
+      "That project taught me more about data structure, API design, and UI decision-making than any resource I could have read. The constraints were real because my needs were real. When something did not work, I noticed immediately because I was the user.",
+      "I think the mistake people make with side projects is treating them as portfolio pieces first. A portfolio piece is built to impress someone else. A side project is built to solve something. The best portfolio pieces are just well-documented side projects — the work shows because the motivation was genuine. Build things you actually want. The quality follows."
+    ]
+  }
+];
+
+var activeTag = "All";
+
+function getAllTags() {
+  var tags = ["All"], seen = {};
+  for (var i = 0; i < POSTS.length; i++) {
+    for (var j = 0; j < POSTS[i].tags.length; j++) {
+      var t = POSTS[i].tags[j];
+      if (!seen[t]) { seen[t] = true; tags.push(t); }
+    }
+  }
+  return tags;
+}
+
+function renderFilter() {
+  var el = document.getElementById("tag-filter");
+  el.innerHTML = "";
+  var label = document.createElement("span");
+  label.className = "tag-filter-label";
+  label.textContent = "Filter:";
+  el.appendChild(label);
+  var allTags = getAllTags();
+  for (var i = 0; i < allTags.length; i++) {
+    (function(tag) {
+      var btn = document.createElement("button");
+      btn.className = "filter-btn" + (tag === activeTag ? " active" : "");
+      btn.textContent = tag;
+      btn.onclick = function() { activeTag = tag; renderFilter(); renderPosts(); };
+      el.appendChild(btn);
+    })(allTags[i]);
+  }
+}
+
+function makeCloseHandler(id) {
+  return function() { closeModal(id); };
+}
+function makeOverlayHandler(overlay, id) {
+  return function(e) { if (e.target === overlay) closeModal(id); };
+}
+function makeCardHandler(id) {
+  return function() { openModal(id); };
+}
+
+function renderPosts() {
+  var grid = document.getElementById("blog-grid");
+  var container = document.getElementById("modal-container");
+  var noPosts = document.getElementById("no-posts");
+  grid.innerHTML = "";
+  container.innerHTML = "";
+
+  var filtered = [];
+  for (var i = 0; i < POSTS.length; i++) {
+    if (activeTag === "All" || POSTS[i].tags.indexOf(activeTag) !== -1) {
+      filtered.push(i);
+    }
+  }
+  noPosts.style.display = filtered.length === 0 ? "block" : "none";
+
+  for (var fi = 0; fi < filtered.length; fi++) {
+    var idx = filtered[fi];
+    var p = POSTS[idx];
+    var id = "modal-post-" + idx;
+
+    var card = document.createElement("div");
+    card.className = "post-card";
+    card.onclick = makeCardHandler(id);
+
+    var cbody = document.createElement("div");
+    cbody.className = "post-card-body";
+
+    var dEl = document.createElement("p"); dEl.className = "post-date"; dEl.textContent = p.date;
+    var tEl = document.createElement("h2"); tEl.className = "post-card-title"; tEl.textContent = p.title;
+    var eEl = document.createElement("p"); eEl.className = "post-excerpt"; eEl.textContent = p.excerpt;
+    var tagsEl = document.createElement("div"); tagsEl.className = "post-tags";
+    for (var t = 0; t < p.tags.length; t++) {
+      var sp = document.createElement("span"); sp.className = "post-tag"; sp.textContent = p.tags[t];
+      tagsEl.appendChild(sp);
+    }
+    cbody.appendChild(dEl); cbody.appendChild(tEl); cbody.appendChild(eEl); cbody.appendChild(tagsEl);
+    card.appendChild(cbody);
+    grid.appendChild(card);
+
+    var overlay = document.createElement("div");
+    overlay.className = "modal-overlay";
+    overlay.id = id;
+    overlay.onclick = makeOverlayHandler(overlay, id);
+
+    var modal = document.createElement("div");
+    modal.className = "modal";
+
+    var closeBtn = document.createElement("button");
+    closeBtn.className = "modal-close";
+    closeBtn.textContent = "Close ×";
+    closeBtn.onclick = makeCloseHandler(id);
+
+    var mbody = document.createElement("div");
+    mbody.className = "modal-body";
+
+    var mdDate = document.createElement("span"); mdDate.className = "modal-date"; mdDate.textContent = p.date;
+    var mdTitle = document.createElement("h2"); mdTitle.className = "modal-title"; mdTitle.textContent = p.title;
+    var mdContent = document.createElement("div"); mdContent.className = "modal-content";
+    for (var c = 0; c < p.content.length; c++) {
+      var para = document.createElement("p"); para.textContent = p.content[c];
+      mdContent.appendChild(para);
+    }
+    var mdTags = document.createElement("div"); mdTags.className = "modal-footer-tags";
+    for (var mt = 0; mt < p.tags.length; mt++) {
+      var msp = document.createElement("span"); msp.className = "post-tag"; msp.textContent = p.tags[mt];
+      mdTags.appendChild(msp);
+    }
+    mbody.appendChild(mdDate); mbody.appendChild(mdTitle); mbody.appendChild(mdContent); mbody.appendChild(mdTags);
+    modal.appendChild(closeBtn); modal.appendChild(mbody);
+    overlay.appendChild(modal);
+    container.appendChild(overlay);
+  }
+}
+
+function openModal(id) { document.getElementById(id).classList.add("open"); document.body.style.overflow = "hidden"; }
+function closeModal(id) { document.getElementById(id).classList.remove("open"); document.body.style.overflow = ""; }
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    document.querySelectorAll(".modal-overlay.open").forEach(function(m) { m.classList.remove("open"); });
+    document.body.style.overflow = "";
+  }
+});
+
+renderFilter();
+renderPosts();
+</script>
+<footer>
+  <nav class="footer-nav">
+    <a href="index.html">Home</a><a href="art.html">Art</a><a href="web.html">Web</a><a href="blog.html">Blog</a><a href="cv.html">CV</a><a href="index.html#contact">Contact</a>
+  </nav>
+  <div class="footer-socials">
+    <a href="https://www.behance.net/jasonsteltman" target="_blank">Behance</a>
+    <a href="https://www.instagram.com/jasonsteltman/" target="_blank">Instagram</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Jason Steltman. All rights reserved.</p>
+</footer>
+</body>
+</html>

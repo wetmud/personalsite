@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Web — Jason Steltman</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--bg:#fafaf8;--ink:#111;--muted:#666;--link:#0000EE;}
+    body{background:var(--bg);color:var(--ink);font-family:Times New Roman,Times,serif;font-size:16px;cursor:url("data:image/x-win-bitmap;base64,AAACAAEAICAAAAwACACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAMAAAADAAAAAwAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAwAAAAMAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAcAAAARAAAAGgAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAGAAAAA0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAGgAAADQAAABGAAAATAAAAE0AAABNAAAATQAAAE0AAABNAAAATQAAAE0AAABNAAAATQAAAEwAAABCAAAAKQAAAA0AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAACMAAAClAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAI4AAABCAAAAGAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEhISmnR0dP/Jycn/2tra/9ra2v/a2tr/2tra/9ra2v/a2tr/2tra/9ra2v/a2tr/2tra/9ra2v+Tk5P/AAAA/wAAAEwAAAAdAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAD/7Ozs/////////////////////////////////////////////////+zs7P/s7Oz/2tra/9ra2v8AAAD/AAAATQAAAB0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAP///////////////////////////////////////////////////////////+zs7P/s7Oz/2tra/wAAAP8AAABNAAAAHQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA/////////////////////////////////////////////////////////////////+zs7P/a2tr/AAAA/wAAAE0AAAAdAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAD////////////AwMD//////8nJyf/a2tr//////8nJyf/s7Oz//////8nJyf/s7Oz/7Ozs/9ra2v8AAAD/AAAATQAAAB0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAP/j4+P//////4GBgf///////////8nJyf///////////8nJyf///////////8nJyf//////2tra/wAAAP8AAABMAAAAHQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAP/c3Nz/AAAA///////////////////////////////////////////////////////a2tr/AAAA/wAAAEIAAAAYAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAP8TExP///////////92dnb///////////9ERET///////////9YWFj//////9ra2v8AAAD/AAAAKAAAAA0AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAP///////////zExMf/Jycn//////wAAAP///////////wAAAP8AAAD/AAAA/wAAAFYAAAANAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA////////////AAAA/wAAAP8AAAD/AAAAVgAAAP8AAAD/AAAAVQAAAA4AAAAGAAAAAwAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAD///////////8AAAD/AAAATAAAAB8AAAAHAAAAAwAAAAMAAAADAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAP///////////wAAAP8AAAA/AAAAFgAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA////////////AAAA/wAAACIAAAAKAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABPAAAA/wAAAP8AAAAVAAAACgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAwAAAAMAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////////////////////////////////8AAf/8AAD//AAAf/gAAH/4AAB/+AAAf/gAAH/4AAB/+AAAf/gAAH/8AAB//gAAf/8AAP//AAH//wAP//8A////AP///4H////D///////////////////////////////////////8=") 12 8,auto;}
+    a{color:var(--link);text-decoration:underline;}
+    a:visited{color:#551A8B;}
+    a:hover{color:#EE0000;}
+
+    header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;border-bottom:1px solid #ccc;}
+    .logo{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.15em;color:var(--muted);text-decoration:none;}
+    .logo:hover{color:var(--ink);text-decoration:none;}
+    nav{display:flex;gap:1.5rem;font-size:0.9rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;}
+
+    main{padding:3rem 2rem 5rem;}
+
+    .page-title{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:900;font-size:clamp(2.5rem,7vw,6rem);letter-spacing:-0.04em;text-transform:uppercase;color:var(--ink);margin-bottom:0.5rem;line-height:1;}
+    .page-sub{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.8rem;color:var(--muted);margin-bottom:3.5rem;}
+    .page-sub a{font-size:inherit;}
+
+    /* Project layout */
+    .project{border-top:1px solid #ccc;padding:2.5rem 0;display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start;}
+    .project:last-child{border-bottom:1px solid #ccc;}
+
+    .project-number{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:0.6rem;}
+    .project-title{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:-0.02em;text-transform:uppercase;color:var(--ink);margin-bottom:0.9rem;}
+    .project-desc{font-size:0.95rem;line-height:1.7;color:#333;margin-bottom:1.2rem;}
+    .project-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+    .tag{background:#e8e4de;padding:0.2rem 0.5rem;font-size:0.62rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);}
+    .project-link{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+
+    /* Screenshots */
+    .project-right{display:flex;flex-direction:column;gap:0.7rem;}
+    .screenshot-main{width:100%;aspect-ratio:16/10;overflow:hidden;border:1px solid #ccc;}
+    .screenshot-main img{width:100%;height:100%;object-fit:cover;display:block;}
+    .screenshot-row{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
+    .screenshot-sm{width:100%;aspect-ratio:16/10;overflow:hidden;border:1px solid #ccc;}
+    .screenshot-sm img{width:100%;height:100%;object-fit:cover;display:block;}
+
+    @media(max-width:700px){.project{grid-template-columns:1fr;}}
+
+    /* ── LIGHTBOX ── */
+    .screenshot-main img,.screenshot-sm img{cursor:pointer;transition:opacity 0.15s;}
+    .screenshot-main img:hover,.screenshot-sm img:hover{opacity:0.82;}
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity 0.25s ease;padding:2rem;}
+    .lightbox.open{opacity:1;pointer-events:all;}
+    .lightbox-bubble{background:#fff;border:1px solid #ccc;padding:0.6rem;max-width:min(90vw,1100px);max-height:90vh;transform:scale(0.95);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);position:relative;}
+    .lightbox.open .lightbox-bubble{transform:scale(1);}
+    .lightbox-bubble img{display:block;max-width:100%;max-height:calc(90vh - 3rem);object-fit:contain;}
+    .lightbox-close{position:absolute;top:-1.8rem;right:0;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#fff;cursor:pointer;background:none;border:none;padding:0;}
+    .lightbox-close:hover{color:#EE0000;text-decoration:underline;}
+
+    footer{border-top:1px solid #ccc;padding:1.5rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.8rem;}
+    .footer-nav,.footer-socials{display:flex;gap:1.2rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.78rem;}
+    .footer-copy{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;}
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">JS</a>
+  <nav>
+    <a href="art.html">Art</a>
+    <a href="web.html">Web</a>
+    <a href="cv.html">CV</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <h1 class="page-title">Web</h1>
+  <p class="page-sub">Selected projects &mdash; <a href="https://github.com/wetmud" target="_blank">github.com/wetmud</a></p>
+
+  <!-- ── PROJECT 1: CivicConnect ── -->
+  <div class="project">
+    <div class="project-left">
+      <p class="project-number">01</p>
+      <h2 class="project-title">CivicConnect</h2>
+      <p class="project-desc">Enter your address and find every elected official who represents you — municipal, provincial, and federal — all in one place. CivicConnect lets you contact them directly, with AI-assisted email drafting built in. Zero data collected, no tracking, everything runs in your browser.</p>
+      <div class="project-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">Civic Tech</span>
+        <span class="tag">AI</span>
+      </div>
+      <a class="project-link" href="https://github.com/wetmud/CivicConnect" target="_blank">View on GitHub &rarr;</a>
+    </div>
+    <div class="project-right">
+      <div class="screenshot-main">
+        <img src="Civicconnect3.png" alt="CivicConnect homepage"/>
+      </div>
+      <div class="screenshot-row">
+        <div class="screenshot-sm">
+          <img src="CivicConnect2.png" alt="CivicConnect representatives view"/>
+        </div>
+        <div class="screenshot-sm">
+          <img src="Civicconnect1.png" alt="CivicConnect email composer"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROJECT 2: EventLineup ── -->
+  <div class="project">
+    <div class="project-left">
+      <p class="project-number">02</p>
+      <h2 class="project-title">EventLineup</h2>
+      <p class="project-desc">A live event calendar for the GTA pulling from Ticketmaster, Eventbrite, Bandsintown, Songkick, and StubHub. Browse concerts, theatre, comedy, festivals, and sports across 28 venues in an 80km radius. Includes a discover mode, hot-date heatmap, and real-time sync.</p>
+      <div class="project-tags">
+        <span class="tag">JavaScript</span>
+        <span class="tag">Events</span>
+        <span class="tag">GTA</span>
+        <span class="tag">API</span>
+      </div>
+      <a class="project-link" href="https://github.com/wetmud/eventlineup" target="_blank">View on GitHub &rarr;</a>
+    </div>
+    <div class="project-right">
+      <div class="screenshot-main">
+        <img src="EventSC1.png" alt="EventLineup calendar view"/>
+      </div>
+      <div class="screenshot-row">
+        <div class="screenshot-sm">
+          <img src="EventSC2.png" alt="EventLineup discover view"/>
+        </div>
+        <div class="screenshot-sm" style="background:#e8e4de;display:flex;align-items:center;justify-content:center;font-family:Helvetica Neue,sans-serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#999;">
+          More soon
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROJECT 3: GitHub Trending Repos ── -->
+  <div class="project">
+    <div class="project-left">
+      <p class="project-number">03</p>
+      <h2 class="project-title">GitHub Trending Repos</h2>
+      <p class="project-desc">A clean dashboard that scrapes and displays daily, weekly, and monthly trending GitHub repositories. Browse in grid view or raw JSON, filter by language, and drill into individual repos for star counts, forks, contributor stats, and trending velocity — all in one place.</p>
+      <div class="project-tags">
+        <span class="tag">JavaScript</span>
+        <span class="tag">Scraper</span>
+        <span class="tag">Dashboard</span>
+      </div>
+      <a class="project-link" href="https://git-hub-trend-scraper--jasonsteltman.replit.app" target="_blank">View live site &rarr;</a>
+    </div>
+    <div class="project-right">
+      <div class="screenshot-main">
+        <img src="GithubRepo.png" alt="GitHub Trending Repos dashboard"/>
+      </div>
+      <div class="screenshot-row">
+        <div class="screenshot-sm">
+          <img src="Githubrepo2.png" alt="GitHub Trending Repos detail view"/>
+        </div>
+        <div class="screenshot-sm" style="background:#e8e4de;display:flex;align-items:center;justify-content:center;font-family:Helvetica Neue,sans-serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#999;">
+          More soon
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROJECT 4: Ontario Markets ── -->
+  <div class="project">
+    <div class="project-left">
+      <p class="project-number">04</p>
+      <h2 class="project-title">Ontario Markets</h2>
+      <p class="project-desc">Discover farmers' markets across Ontario — fresh produce, local artisans, and community spirit. Browse 35 markets across 6 regions, filtered by date on an interactive calendar. Each listing shows hours, tags, indoor/outdoor status, and links directly to the market's website.</p>
+      <div class="project-tags">
+        <span class="tag">JavaScript</span>
+        <span class="tag">Local</span>
+        <span class="tag">Ontario</span>
+        <span class="tag">Calendar</span>
+      </div>
+      <a class="project-link" href="https://ontario-fresh-finds.lovable.app/" target="_blank">View live site &rarr;</a>
+    </div>
+    <div class="project-right">
+      <div class="screenshot-main">
+        <img src="OFF1.png" alt="Ontario Markets homepage"/>
+      </div>
+      <div class="screenshot-row">
+        <div class="screenshot-sm">
+          <img src="OFF2.png" alt="Ontario Markets Saturday listings"/>
+        </div>
+        <div class="screenshot-sm" style="background:#e8e4de;display:flex;align-items:center;justify-content:center;font-family:Helvetica Neue,sans-serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#999;">
+          More soon
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROJECT 5: Real Estate Scraper ── -->
+  <div class="project">
+    <div class="project-left">
+      <p class="project-number">05</p>
+      <h2 class="project-title">Real Estate Scraper</h2>
+      <p class="project-desc">RE:PULSE is a Canadian real estate market intelligence dashboard for the GTA. Scrapes live listings and surfaces avg list price, $/sqft, days on market, and inventory — broken down by property type (house, condo, townhouse) with scatter plots, donut charts, and a full sortable listings table.</p>
+      <div class="project-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">Data</span>
+        <span class="tag">GTA</span>
+        <span class="tag">Dashboard</span>
+      </div>
+      <a class="project-link" href="https://github.com/wetmud/real-estate-scraper-" target="_blank">View on GitHub &rarr;</a>
+    </div>
+    <div class="project-right">
+      <div class="screenshot-main">
+        <img src="RealEstateScraper.png" alt="RE:PULSE market analytics dashboard"/>
+      </div>
+      <div class="screenshot-row">
+        <div class="screenshot-sm">
+          <img src="RealEstateScraper2.png" alt="Price vs square footage analysis"/>
+        </div>
+        <div class="screenshot-sm">
+          <img src="Realestatescraper3.png" alt="All listings table view"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <nav class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="art.html">Art</a>
+    <a href="web.html">Web</a>
+    <a href="cv.html">CV</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <div class="footer-socials">
+    <a href="https://www.behance.net/jasonsteltman" target="_blank">Behance</a>
+    <a href="https://www.instagram.com/jasonsteltman/" target="_blank">Instagram</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Jason Steltman. All rights reserved.</p>
+</footer>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-bubble">
+    <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+  </div>
+</div>
+
+<script>
+  function openLightbox(src, alt) {
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    img.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e) {
+    if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }});
+  document.querySelectorAll('.screenshot-main img, .screenshot-sm img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+</script>
+
+</body>
+</html>
