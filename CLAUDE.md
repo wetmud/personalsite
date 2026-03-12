@@ -40,6 +40,26 @@ copies/             — Backup HTML files
 
 ---
 
+## Current Status (as of 2026-03-11)
+
+**Phase 1–3 redesign is planned and ready to implement.**
+
+- Brainstorm complete — decisions locked in spec: `docs/superpowers/specs/2026-03-11-phase1-3-redesign.md`
+- Implementation plan being written: `docs/superpowers/plans/2026-03-11-phase1-3.md`
+- Hosting: migrating from Netlify → GitHub Pages (Pages already configured in repo settings)
+- Next action: execute the implementation plan
+
+**Design decisions locked in:**
+- Full-screen snap sections (`scroll-snap-type: y mandatory`)
+- Side dot nav (right edge, 5 dots)
+- Hero: split layout — name (Caprasimo) left, section index right
+- Tagline: "Creative systems. Deep UX. Built with code." (Outfit font)
+- Section order: Hero → Work → Art → Blog → CV/Contact
+- Web projects: horizontal scroll card row
+- Background image removed, dark theme `#0a0a0a` on index
+
+---
+
 ## Feature Roadmap (ordered easiest → hardest)
 
 ### Phase 1 — Quick Wins (High Impact, Easy)
