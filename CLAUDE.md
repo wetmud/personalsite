@@ -7,7 +7,7 @@ Static personal portfolio site for landing a **developer/programmer/coder job**.
 - Vanilla HTML5, CSS3, JavaScript (ES5)
 - No frameworks, no package.json, no build process
 - CSS Variables for theming, Grid/Flexbox for layout, scroll-snap for sections
-- Google Fonts: Caprasimo (display), Outfit (UI) — loaded via `<link>`
+- Google Fonts: Bebas Neue (display/headings), Caprasimo (unused, kept), Outfit (UI/body) — loaded via `<link>`
 - System fonts fallback: Helvetica Neue, Times New Roman
 - Custom base64 cursor on all pages
 
@@ -43,21 +43,27 @@ copies/             — Backup HTML files
 
 ## Current Status (as of 2026-03-12)
 
-**Phase 1–3 redesign is COMPLETE and live on GitHub Pages.**
+**Phase 1–4 redesign is COMPLETE and live on GitHub Pages.**
 
 ### ✅ Completed
-- **Chunk 1 (Phase 1):** Background image removed from all 6 pages. `snapshot2.png`, `body::before` overlay, and `body>* z-index` rules cleaned up.
-- **Chunk 2 (Phase 2–3):** `index.html` fully rewritten as single-page snap layout:
-  - 5 full-screen `scroll-snap-type: y mandatory` sections (Hero, Work, Art, Blog, CV)
-  - Dark hero with Caprasimo name + Outfit tagline: "Creative systems. Deep UX. Built with code."
-  - Horizontal scroll work cards (5 projects with modals + lightbox)
-  - Art grid (12 Behance photography cards with lightbox)
-  - Blog section with tag filter (4 posts with modal full text)
-  - CV with skills, links, contact form
-  - Dot nav (right edge, 5 dots, dark/light theme flip)
-  - Sticky header with IntersectionObserver (slides in after hero)
-  - Shared JS: scrollToSection, openModal/closeModal, openLightbox, Escape handler
-- `Githubrepo2 .png` renamed to `Githubrepo2_.png` (space in filename fix)
+- **Chunk 1 (Phase 1):** Background image removed from all 6 pages.
+- **Chunk 2 (Phase 2–3):** `index.html` fully rewritten as single-page snap layout (5 sections, modals, lightbox, dot nav, sticky header).
+- **Chunk 3 (Phase 4 — Design Language):** eszterbial.com-inspired editorial aesthetic:
+  - **Bebas Neue** added as condensed display font (hero name, section headings, MENU button)
+  - **6-column vertical grid lines** overlay via `repeating-linear-gradient` (editorial feel)
+  - **95vh sections** with `display:flex flex-direction:column` — 5vh bleed shows next section below
+  - **Section intros** replaced tiny labels: large Bebas Neue title + right-aligned metadata + rule line
+  - **MENU button** (top-left, fixed) replaces header + dot nav:
+    - Full-screen dark overlay with staggered Bebas Neue nav links (Home/Work/Art/Blog/Contact)
+    - Menu button adapts light/dark via `IntersectionObserver` section theme tracking
+    - Keyboard: Escape closes menu
+  - **Scroll reveal system**: `.reveal` + `.visible` classes with staggered `setTimeout` delays
+  - **Art section**: changed from CSS grid → horizontal scroll row (matches Work layout)
+  - **Unified card size**: Work + Art cards both `340×440px`, same radius and shadow
+  - **CV section**: `align-content:end` pins content to bottom of section
+  - **Copyright** line at very bottom of CV spanning both columns
+  - **Warm beige** bg-light: `#f5f0e8`
+  - Grid lines z-index fix: `::before` at `z-index:0`, sections at `z-index:1`
 
 ### Tech additions
 - Google Fonts: Caprasimo (name/h1), Outfit (tagline/nav/labels)
