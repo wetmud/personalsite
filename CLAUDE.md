@@ -45,9 +45,10 @@ copies/             — Backup HTML files
 **Phase 1–3 redesign is planned and ready to implement.**
 
 - Brainstorm complete — decisions locked in spec: `docs/superpowers/specs/2026-03-11-phase1-3-redesign.md`
-- Implementation plan being written: `docs/superpowers/plans/2026-03-11-phase1-3.md`
-- Hosting: migrating from Netlify → GitHub Pages (Pages already configured in repo settings)
-- Next action: execute the implementation plan
+- Implementation plan COMPLETE and ready to execute: `docs/superpowers/plans/2026-03-11-phase1-3.md`
+- Hosting: GitHub Pages (already configured in repo settings — Pages > main branch > root)
+- **Next action: EXECUTE the plan. Do NOT re-plan or re-brainstorm. Start at Chunk 1, Task 1.**
+- Use skill: `superpowers:executing-plans` (or `superpowers:subagent-driven-development` if subagents available)
 
 **Design decisions locked in:**
 - Full-screen snap sections (`scroll-snap-type: y mandatory`)
