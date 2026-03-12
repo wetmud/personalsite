@@ -4,163 +4,469 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Jason Steltman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{--bg:#fafaf8;--ink:#111;--muted:#666;--link:#0000EE;}
-    body{background:var(--bg);color:var(--ink);font-family:Times New Roman,Times,serif;font-size:16px;cursor:url("data:image/x-win-bitmap;base64,AAACAAEAICAAAAwACACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAMAAAADAAAAAwAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAwAAAAMAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAcAAAARAAAAGgAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAGAAAAA0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAGgAAADQAAABGAAAATAAAAE0AAABNAAAATQAAAE0AAABNAAAATQAAAE0AAABNAAAATQAAAEwAAABCAAAAKQAAAA0AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAACMAAAClAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAI4AAABCAAAAGAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEhISmnR0dP/Jycn/2tra/9ra2v/a2tr/2tra/9ra2v/a2tr/2tra/9ra2v/a2tr/2tra/9ra2v+Tk5P/AAAA/wAAAEwAAAAdAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAD/7Ozs/////////////////////////////////////////////////+zs7P/s7Oz/2tra/9ra2v8AAAD/AAAATQAAAB0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAP///////////////////////////////////////////////////////////+zs7P/s7Oz/2tra/wAAAP8AAABNAAAAHQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA/////////////////////////////////////////////////////////////////+zs7P/a2tr/AAAA/wAAAE0AAAAdAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAD////////////AwMD//////8nJyf/a2tr//////8nJyf/s7Oz//////8nJyf/s7Oz/7Ozs/9ra2v8AAAD/AAAATQAAAB0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAP/j4+P//////4GBgf///////////8nJyf///////////8nJyf///////////8nJyf//////2tra/wAAAP8AAABMAAAAHQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAP/c3Nz/AAAA///////////////////////////////////////////////////////a2tr/AAAA/wAAAEIAAAAYAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAP8TExP///////////92dnb///////////9ERET///////////9YWFj//////9ra2v8AAAD/AAAAKAAAAA0AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAP///////////zExMf/Jycn//////wAAAP///////////wAAAP8AAAD/AAAA/wAAAFYAAAANAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA////////////AAAA/wAAAP8AAAD/AAAAVgAAAP8AAAD/AAAAVQAAAA4AAAAGAAAAAwAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAD///////////8AAAD/AAAATAAAAB8AAAAHAAAAAwAAAAMAAAADAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAP///////////wAAAP8AAAA/AAAAFgAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA////////////AAAA/wAAACIAAAAKAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABPAAAA/wAAAP8AAAAVAAAACgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAwAAAAMAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////////////////////////////////8AAf/8AAD//AAAf/gAAH/4AAB/+AAAf/gAAH/4AAB/+AAAf/gAAH/8AAB//gAAf/8AAP//AAH//wAP//8A////AP///4H////D///////////////////////////////////////8=") 12 8,auto;}
-    a{color:var(--link);text-decoration:underline;}
-    a:visited{color:#551A8B;}
-    a:hover{color:#EE0000;}
-    header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;border-bottom:1px solid #ccc;}
-    .logo{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.15em;color:var(--muted);text-decoration:none;}
-    .logo:hover{color:var(--ink);text-decoration:none;}
-    nav{display:flex;gap:1.5rem;font-size:0.9rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;}
-    nav a.contact-link{cursor:pointer;}
-
-    .section-hero{min-height:100vh;display:flex;flex-direction:column;}
-    .hero-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:2rem 2rem 3rem;}
-    h1{
-      font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
-      font-weight:900;
-      line-height:0.88;
-      letter-spacing:-0.04em;
-      text-transform:uppercase;
-      color:var(--ink);
-      opacity:0;
-      animation:slideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards 0.2s;
-    }
-    h1 .first{display:block;font-size:clamp(3.5rem,10vw,10rem);}
-    h1 .last{
-      display:block;
-      font-size:clamp(4rem, calc((100vw - 4rem) * 0.185), 20rem);
-      white-space:nowrap;
-    }
-    .tagline{
-      margin-top:1.2rem;
-      font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
-      font-size:clamp(0.95rem,2vw,1.3rem);
-      font-weight:700;
-      letter-spacing:0.02em;
-      color:var(--ink);
-      opacity:0;
-      animation:fadeIn 0.6s ease forwards 0.45s;
-    }
-    .subtitle{
-      margin-top:0.5rem;
-      font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
-      font-size:0.95rem;
-      font-weight:400;
-      letter-spacing:0.04em;
-      color:var(--muted);
-      opacity:0;
-      animation:fadeIn 0.6s ease forwards 0.55s;
-    }
-    .scroll-cue{
-      margin-top:2.5rem;
-      font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
-      font-size:0.8rem;
-      letter-spacing:0.1em;
-      opacity:0;
-      animation:fadeIn 0.6s ease forwards 0.8s;
-    }
-    .scroll-cue a{cursor:pointer;}
-
-    /* Contact bubble modal */
+    :root{--bg-dark:#0a0a0a;--bg-light:#fafaf8;--ink:#111111;--ink-light:#ffffff;--muted:#666666;--rule:rgba(255,255,255,0.1);}
+    body{cursor:url("data:image/x-win-bitmap;base64,AAACAAEAICAAAAwACACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAMAAAADAAAAAwAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAwAAAAMAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAcAAAARAAAAGgAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAHQAAAB0AAAAdAAAAGAAAAA0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAGgAAADQAAABGAAAATAAAAE0AAABNAAAATQAAAE0AAABNAAAATQAAAE0AAABNAAAATQAAAEwAAABCAAAAKQAAAA0AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAACMAAAClAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAI4AAABCAAAAGAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEhISmnR0dP/Jycn/2tra/9ra2v/a2tr/2tra/9ra2v/a2tr/2tra/9ra2v/a2tr/2tra/9ra2v+Tk5P/AAAA/wAAAEwAAAAdAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAD/7Ozs/////////////////////////////////////////////////+zs7P/s7Oz/2tra/9ra2v8AAAD/AAAATQAAAB0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAP///////////////////////////////////////////////////////////+zs7P/s7Oz/2tra/wAAAP8AAABNAAAAHQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA/////////////////////////////////////////////////////////////////+zs7P/a2tr/AAAA/wAAAE0AAAAdAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAD////////////AwMD//////8nJyf/a2tr//////8nJyf/s7Oz//////8nJyf/s7Oz/7Ozs/9ra2v8AAAD/AAAATQAAAB0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAP/j4+P//////4GBgf///////////8nJyf///////////8nJyf///////////8nJyf//////2tra/wAAAP8AAABMAAAAHQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAP/c3Nz/AAAA///////////////////////////////////////////////////////a2tr/AAAA/wAAAEIAAAAYAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAP8TExP///////////92dnb///////////9ERET///////////9YWFj//////9ra2v8AAAD/AAAAKAAAAA0AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAP///////////zExMf/Jycn//////wAAAP///////////wAAAP8AAAD/AAAA/wAAAFYAAAANAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA////////////AAAA/wAAAP8AAAD/AAAAVgAAAP8AAAD/AAAAVQAAAA4AAAAGAAAAAwAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAD///////////8AAAD/AAAATAAAAB8AAAAHAAAAAwAAAAMAAAADAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAP///////////wAAAP8AAAA/AAAAFgAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA////////////AAAA/wAAACIAAAAKAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABPAAAA/wAAAP8AAAAVAAAACgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAwAAAAMAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////////////////////////////////8AAf/8AAD//AAAf/gAAH/4AAB/+AAAf/gAAH/4AAB/+AAAf/gAAH/8AAB//gAAf/8AAP//AAH//wAP//8A////AP///4H////D///////////////////////////////////////8=") 12 8,auto;}
+    html,body{height:100%;overflow:hidden;}
+    main.snap-container{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;}
+    section.snap-section{height:100vh;scroll-snap-align:start;overflow:hidden;position:relative;}
+    .section-label{position:absolute;top:24px;left:32px;font-family:Outfit,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);z-index:10;}
+    .section-label.light{color:rgba(0,0,0,0.35);}
+    #hero{background:var(--bg-dark);display:grid;grid-template-columns:1fr 1fr;}
+    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 60px;border-right:1px solid var(--rule);}
+    h1.hero-name{font-family:Caprasimo,serif;font-size:clamp(56px,8vw,120px);font-weight:400;line-height:0.95;color:var(--ink-light);opacity:0;animation:slideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards 0.2s;}
+    .hero-name span{display:block;}
+    .hero-tagline{margin-top:24px;font-family:Outfit,sans-serif;font-size:clamp(13px,1.5vw,18px);font-weight:300;letter-spacing:0.05em;color:#888;opacity:0;animation:fadeIn 0.6s ease forwards 0.5s;}
+    .hero-right{display:flex;flex-direction:column;justify-content:flex-end;padding:80px 60px;gap:16px;opacity:0;animation:fadeIn 0.6s ease forwards 0.8s;}
+    .hero-index-link{font-family:Outfit,sans-serif;font-size:14px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:#555;text-decoration:none;transition:color 0.2s;cursor:pointer;}
+    .hero-index-link:hover{color:#ffffff;}
+    .hero-index-link::before{content:'-> ';margin-right:4px;}
+    #work{background:var(--bg-dark);}
+    .work-scroll-wrapper{position:relative;height:100vh;}
+    .work-scroll-wrapper::before,.work-scroll-wrapper::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:5;pointer-events:none;}
+    .work-scroll-wrapper::before{left:0;background:linear-gradient(to right,var(--bg-dark),transparent);}
+    .work-scroll-wrapper::after{right:0;background:linear-gradient(to left,var(--bg-dark),transparent);}
+    .work-scroll-row{display:flex;align-items:center;gap:24px;overflow-x:auto;height:calc(100vh - 64px);padding:0 80px;margin-top:64px;scrollbar-width:none;}
+    .work-scroll-row::-webkit-scrollbar{display:none;}
+    .work-card{flex-shrink:0;width:340px;height:420px;background:#1a1a1a;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.4);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s ease;}
+    .work-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 12px 40px rgba(0,0,0,0.6);}
+    .work-card-thumb{width:100%;height:220px;overflow:hidden;}
+    .work-card-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);}
+    .work-card:hover .work-card-thumb img{transform:scale(1.06);}
+    .work-card-info{padding:16px 20px 20px;flex:1;display:flex;flex-direction:column;gap:6px;}
+    .work-card-info h3{font-family:Outfit,sans-serif;font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#fff;}
+    .work-card-info .excerpt{font-family:Outfit,sans-serif;font-size:12px;line-height:1.55;color:#888;}
+    .work-card-info .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+    .work-tag{background:#2a2a2a;padding:3px 8px;font-size:10px;font-family:Outfit,sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:#666;border-radius:4px;}
+    #art{background:var(--bg-light);}
+    .art-inner{height:calc(100vh - 64px);overflow-y:auto;padding:0 60px 40px;margin-top:64px;scrollbar-width:thin;}
+    .art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
+    .art-card{background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.07),0 8px 24px rgba(0,0,0,0.06);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s ease;}
+    .art-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 8px 24px rgba(0,0,0,0.11),0 24px 48px rgba(0,0,0,0.09);}
+    .art-thumb{width:100%;aspect-ratio:4/3;overflow:hidden;}
+    .art-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);}
+    .art-card:hover .art-thumb img{transform:scale(1.06);}
+    .art-card-info{padding:10px 14px 14px;flex:1;display:flex;flex-direction:column;gap:3px;}
+    .art-card-info h3{font-family:Outfit,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink);}
+    .art-card-info .meta{font-size:11px;color:var(--muted);font-family:Outfit,sans-serif;}
+    #blog{background:var(--bg-dark);}
+    .blog-tag-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:0 60px;height:64px;margin-top:64px;}
+    .blog-inner{height:calc(100vh - 192px);overflow-y:auto;padding:0 60px 40px;scrollbar-width:thin;}
+    .blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .filter-btn{background:#1a1a1a;border:1px solid transparent;padding:5px 14px;font-size:10px;font-family:Outfit,sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:#666;border-radius:20px;cursor:pointer;transition:all 0.15s;}
+    .filter-btn:hover{background:#2a2a2a;color:#fff;}
+    .filter-btn.active{background:#fff;color:#111;border-color:#fff;}
+    .post-card{background:#1a1a1a;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s ease;}
+    .post-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 8px 24px rgba(0,0,0,0.5);}
+    .post-card-body{padding:20px 20px 22px;flex:1;display:flex;flex-direction:column;gap:8px;}
+    .post-date{font-family:Outfit,sans-serif;font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#555;}
+    .post-card-title{font-family:Outfit,sans-serif;font-size:15px;font-weight:600;letter-spacing:-0.01em;color:#fff;line-height:1.25;}
+    .post-excerpt{font-size:13px;line-height:1.65;color:#666;flex:1;font-family:Outfit,sans-serif;}
+    .post-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+    .post-tag{background:#2a2a2a;padding:3px 8px;font-size:10px;font-family:Outfit,sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:#555;border-radius:4px;}
+    .no-posts{font-family:Outfit,sans-serif;font-size:13px;color:#555;padding:32px 0;}
+    #cv{background:var(--bg-light);}
+    .cv-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;height:calc(100vh - 64px);padding:0 60px 60px;margin-top:64px;align-items:start;}
+    .cv-left h2{font-family:Caprasimo,serif;font-size:clamp(28px,4vw,48px);color:var(--ink);margin-bottom:8px;}
+    .cv-title{font-family:Outfit,sans-serif;font-size:14px;color:var(--muted);letter-spacing:0.05em;margin-bottom:32px;}
+    .cv-section-heading{font-family:Outfit,sans-serif;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:24px;}
+    .cv-skills{display:flex;gap:8px;flex-wrap:wrap;}
+    .cv-skill{background:#f0ece6;padding:4px 12px;font-size:11px;font-family:Outfit,sans-serif;letter-spacing:0.06em;color:var(--ink);border-radius:20px;}
+    .cv-links{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+    .cv-links a{font-family:Outfit,sans-serif;font-size:13px;color:#0000EE;text-decoration:underline;}
+    .cv-links a:visited{color:#551A8B;}
+    .cv-links a:hover{color:#EE0000;}
+    .cv-download{display:inline-block;margin-top:24px;font-family:Outfit,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;}
+    .cv-right{display:flex;flex-direction:column;justify-content:center;}
+    .cv-right h3{font-family:Outfit,sans-serif;font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;}
+    .form-field{margin-bottom:22px;}
+    .form-field label{display:block;font-family:Outfit,sans-serif;font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .form-field input,.form-field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid #aaa;padding:6px 0;font-family:Outfit,sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color 0.2s;}
+    .form-field input:focus,.form-field textarea:focus{border-bottom-color:var(--ink);}
+    .form-field textarea{resize:none;height:80px;}
+    .btn-send{background:var(--ink);color:var(--bg-light);border:none;font-family:Outfit,sans-serif;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;padding:12px 28px;cursor:pointer;transition:opacity 0.2s;}
+    .btn-send:hover{opacity:0.7;}
     .modal-overlay{position:fixed;inset:0;background:rgba(15,15,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity 0.28s ease;padding:2rem;}
     .modal-overlay.open{opacity:1;pointer-events:all;}
-    .modal{background:#fff;border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,0.28),0 8px 24px rgba(0,0,0,0.14);width:min(500px,92vw);transform:translateY(20px) scale(0.97);transition:transform 0.32s cubic-bezier(0.16,1,0.3,1);position:relative;}
+    .modal{background:#fff;border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,0.28),0 8px 24px rgba(0,0,0,0.14);width:min(860px,92vw);max-height:90vh;overflow-y:auto;transform:translateY(20px) scale(0.97);transition:transform 0.32s cubic-bezier(0.16,1,0.3,1);position:relative;scrollbar-width:none;}
+    .modal::-webkit-scrollbar{display:none;}
     .modal-overlay.open .modal{transform:translateY(0) scale(1);}
-    .modal-close{position:absolute;top:1rem;right:1.1rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#999;background:rgba(0,0,0,0.06);border:none;cursor:pointer;padding:0.35rem 0.7rem;border-radius:20px;transition:background 0.2s,color 0.2s;z-index:10;}
+    .modal-close{position:absolute;top:1rem;right:1.1rem;font-family:Outfit,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#999;background:rgba(0,0,0,0.06);border:none;cursor:pointer;padding:0.35rem 0.7rem;border-radius:20px;transition:background 0.2s,color 0.2s;z-index:10;}
     .modal-close:hover{background:rgba(0,0,0,0.12);color:#EE0000;}
-    .modal-body{padding:2.2rem 2.2rem 2.5rem;}
-    .modal-body h2{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;margin-bottom:2rem;}
-    .form-field{margin-bottom:1.6rem;}
-    .form-field label{display:block;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;}
-    .form-field input,.form-field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid #aaa;padding:0.4rem 0;font-family:Times New Roman,Times,serif;font-size:1rem;color:var(--ink);outline:none;transition:border-color 0.2s;}
-    .form-field input:focus,.form-field textarea:focus{border-bottom-color:var(--ink);}
-    .form-field textarea{resize:none;height:90px;}
-    .btn-send{background:var(--ink);color:var(--bg);border:none;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:0.85rem 2rem;cursor:pointer;margin-top:0.5rem;transition:opacity 0.2s;}
-    .btn-send:hover{opacity:0.7;}
-
-    footer{border-top:1px solid #ccc;padding:1.5rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.8rem;}
-    .footer-nav,.footer-socials{display:flex;gap:1.2rem;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.78rem;}
-    .footer-copy{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;}
+    .modal-hero{width:100%;overflow:hidden;border-radius:20px 20px 0 0;}
+    .modal-hero img{width:100%;display:block;object-fit:cover;cursor:zoom-in;}
+    .modal-body{padding:1.8rem 2rem 2.2rem;}
+    .modal-number{font-family:Outfit,sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .modal-title{font-family:Outfit,sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:-0.02em;text-transform:uppercase;color:var(--ink);margin-bottom:10px;}
+    .modal-desc{font-size:0.95rem;line-height:1.75;color:#444;margin-bottom:20px;}
+    .modal-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+    .modal-tag{background:#f0ece6;padding:3px 8px;font-size:10px;font-family:Outfit,sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:#555;border-radius:4px;}
+    .modal-screenshots{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
+    .modal-screenshots img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:10px;border:1px solid #e8e4de;cursor:zoom-in;transition:opacity 0.15s,transform 0.2s;}
+    .modal-screenshots img:hover{opacity:0.88;transform:scale(1.02);}
+    .modal-link{font-family:Outfit,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0000EE;}
+    .modal-behance{font-family:Outfit,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0000EE;}
+    .modal.blog-modal{width:min(680px,92vw);}
+    .modal-date{font-family:Outfit,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block;}
+    .modal-content{font-size:1rem;line-height:1.8;color:#333;font-family:Times New Roman,Times,serif;}
+    .modal-content p{margin-bottom:1.1rem;}
+    .modal-content p:last-child{margin-bottom:0;}
+    .modal-footer-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid #eee;}
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;pointer-events:none;transition:opacity 0.2s ease;padding:2rem;}
+    .lightbox.open{opacity:1;pointer-events:all;}
+    .lightbox-bubble{background:#fff;border-radius:16px;padding:0.6rem;box-shadow:0 40px 100px rgba(0,0,0,0.5);max-width:min(94vw,1200px);max-height:92vh;transform:scale(0.95);transition:transform 0.22s cubic-bezier(0.16,1,0.3,1);position:relative;}
+    .lightbox.open .lightbox-bubble{transform:scale(1);}
+    .lightbox-bubble img{display:block;max-width:100%;max-height:calc(92vh - 2rem);object-fit:contain;border-radius:12px;}
+    .lightbox-close{position:absolute;top:-2rem;right:0;font-family:Outfit,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);cursor:pointer;background:none;border:none;padding:0;}
+    .lightbox-close:hover{color:#fff;}
+    #site-header{position:fixed;top:0;left:0;right:0;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:500;opacity:0;transform:translateY(-48px);transition:opacity 0.35s cubic-bezier(0.16,1,0.3,1),transform 0.35s cubic-bezier(0.16,1,0.3,1);}
+    #site-header.visible{opacity:1;transform:translateY(0);}
+    .header-name{font-family:Caprasimo,serif;font-size:16px;color:#fff;cursor:pointer;text-decoration:none;letter-spacing:0.02em;}
+    .header-nav{display:flex;gap:24px;}
+    .header-nav a{font-family:Outfit,sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#666;text-decoration:none;cursor:pointer;transition:color 0.2s;}
+    .header-nav a:hover{color:#fff;}
+    .dot-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:16px;z-index:500;}
+    .dot-item{position:relative;display:flex;align-items:center;cursor:pointer;}
+    .dot{width:8px;height:8px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.3);background:transparent;transition:background 0.2s,border-color 0.2s;flex-shrink:0;}
+    .dot-item.active .dot{background:#fff;border-color:#fff;}
+    .dot-nav.light-section .dot{border-color:rgba(0,0,0,0.25);}
+    .dot-nav.light-section .dot-item.active .dot{background:#111;border-color:#111;}
+    .dot-label{position:absolute;right:16px;font-family:Outfit,sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;opacity:0;transform:translateX(6px);transition:opacity 0.18s,transform 0.18s;pointer-events:none;}
+    .dot-nav:not(.light-section) .dot-label{color:#fff;}
+    .dot-nav.light-section .dot-label{color:#111;}
+    .dot-item:hover .dot-label{opacity:1;transform:translateX(0);}
     @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
     @keyframes slideUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+    @media(max-width:768px){
+      #hero{grid-template-columns:1fr;}
+      .hero-left{padding:60px 32px 32px;}
+      .hero-right{padding:0 32px 60px;flex-direction:row;flex-wrap:wrap;gap:12px;}
+      h1.hero-name{font-size:clamp(40px,12vw,72px);}
+      .dot-nav{display:none;}
+      .work-scroll-row{padding:0 32px;}
+      .art-inner{padding:0 24px 32px;}
+      .art-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+      .blog-inner{padding:0 24px 32px;}
+      .blog-grid{grid-template-columns:1fr;}
+      .blog-tag-row{padding:0 24px;}
+      .cv-inner{grid-template-columns:1fr;height:auto;overflow-y:auto;padding:0 32px 60px;}
+    }
   </style>
 </head>
 <body>
 
-<section class="section-hero" id="home">
-  <header>
-    <a class="logo" href="index.html">JS</a>
-    <nav>
-      <a href="art.html">Art</a>
-      <a href="web.html">Web</a>
-      <a href="blog.html">Blog</a>
-      <a href="cv.html">CV</a>
-      <a class="contact-link" onclick="openContact()">Connect</a>
+  <header id="site-header">
+    <span class="header-name" onclick="scrollToSection('hero')">JASON STELTMAN</span>
+    <nav class="header-nav">
+      <a onclick="scrollToSection('work')">Work</a>
+      <a onclick="scrollToSection('art')">Art</a>
+      <a onclick="scrollToSection('blog')">Blog</a>
+      <a onclick="scrollToSection('cv')">CV</a>
     </nav>
   </header>
 
-  <div class="hero-content">
-    <h1>
-      <span class="first">Jason</span>
-      <span class="last">Steltman</span>
-    </h1>
-    <p class="tagline">Problems require Creative Solutions</p>
-    <p class="subtitle">Artist &amp; Designer</p>
-    <div class="scroll-cue">
-      <a onclick="openContact()">Want to collaborate? &darr;</a>
+  <nav class="dot-nav" id="dot-nav">
+    <div class="dot-item active" data-target="hero" onclick="scrollToSection('hero')">
+      <span class="dot-label">Hero</span>
+      <div class="dot"></div>
     </div>
-  </div>
-</section>
-
-<!-- Contact form bubble -->
-<div class="modal-overlay" id="contact-modal" onclick="if(event.target===this)closeContact()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeContact()">Close &times;</button>
-    <div class="modal-body">
-      <h2>Let&rsquo;s work<br>together</h2>
-      <div class="form-field">
-        <label>Your name</label>
-        <input type="text" placeholder="First Last"/>
-      </div>
-      <div class="form-field">
-        <label>Email</label>
-        <input type="email" placeholder="you@example.com"/>
-      </div>
-      <div class="form-field">
-        <label>Message</label>
-        <textarea placeholder="Tell me about your project&hellip;"></textarea>
-      </div>
-      <button class="btn-send">Send Message</button>
+    <div class="dot-item" data-target="work" onclick="scrollToSection('work')">
+      <span class="dot-label">Work</span>
+      <div class="dot"></div>
     </div>
-  </div>
-</div>
-
-<footer>
-  <nav class="footer-nav">
-    <a href="index.html">Home</a>
-    <a href="art.html">Art</a>
-    <a href="web.html">Web</a>
-    <a href="blog.html">Blog</a>
-    <a href="cv.html">CV</a>
-    <a class="contact-link" onclick="openContact()">Connect</a>
+    <div class="dot-item" data-target="art" onclick="scrollToSection('art')">
+      <span class="dot-label">Art</span>
+      <div class="dot"></div>
+    </div>
+    <div class="dot-item" data-target="blog" onclick="scrollToSection('blog')">
+      <span class="dot-label">Blog</span>
+      <div class="dot"></div>
+    </div>
+    <div class="dot-item" data-target="cv" onclick="scrollToSection('cv')">
+      <span class="dot-label">CV</span>
+      <div class="dot"></div>
+    </div>
   </nav>
-  <div class="footer-socials">
-    <a href="https://www.behance.net/jasonsteltman" target="_blank">Behance</a>
-    <a href="https://www.instagram.com/jasonsteltman/" target="_blank">Instagram</a>
-  </div>
-  <p class="footer-copy">&copy; 2026 Jason Steltman. All rights reserved.</p>
-</footer>
 
-<script>
-function openContact(){document.getElementById('contact-modal').classList.add('open');document.body.style.overflow='hidden';}
-function closeContact(){document.getElementById('contact-modal').classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeContact();});
-if(window.location.hash==='#contact')openContact();
-</script>
+  <main class="snap-container" id="snap-container">
+
+    <section class="snap-section" id="hero" data-theme="dark">
+      <div class="hero-left">
+        <h1 class="hero-name"><span>Jason</span><span>Steltman</span></h1>
+        <p class="hero-tagline">Creative systems. Deep UX. Built with code.</p>
+      </div>
+      <div class="hero-right">
+        <span class="hero-index-link" onclick="scrollToSection('work')">Work</span>
+        <span class="hero-index-link" onclick="scrollToSection('art')">Art</span>
+        <span class="hero-index-link" onclick="scrollToSection('blog')">Blog</span>
+        <span class="hero-index-link" onclick="scrollToSection('cv')">CV</span>
+      </div>
+    </section>
+
+    <section class="snap-section" id="work" data-theme="dark">
+      <div class="section-label">Work</div>
+      <div class="work-scroll-wrapper">
+        <div class="work-scroll-row" id="work-row"></div>
+      </div>
+    </section>
+
+    <section class="snap-section" id="art" data-theme="light">
+      <div class="section-label light">Art</div>
+      <div class="art-inner"><div class="art-grid" id="art-grid"></div></div>
+    </section>
+
+    <section class="snap-section" id="blog" data-theme="dark">
+      <div class="section-label">Blog</div>
+      <div class="blog-tag-row" id="tag-filter"></div>
+      <div class="blog-inner">
+        <div class="blog-grid" id="blog-grid"></div>
+        <p class="no-posts" id="no-posts" style="display:none;">No posts with that tag.</p>
+      </div>
+    </section>
+
+    <section class="snap-section" id="cv" data-theme="light">
+      <div class="section-label light">CV</div>
+      <div class="cv-inner">
+        <div class="cv-left">
+          <h2>Jason Steltman</h2>
+          <p class="cv-title">Developer &mdash; Designer &mdash; Artist</p>
+          <p class="cv-section-heading">Skills</p>
+          <div class="cv-skills">
+            <span class="cv-skill">HTML / CSS</span>
+            <span class="cv-skill">JavaScript</span>
+            <span class="cv-skill">Python</span>
+            <span class="cv-skill">UI / UX</span>
+            <span class="cv-skill">Prompt Engineering</span>
+          </div>
+          <p class="cv-section-heading">Links</p>
+          <div class="cv-links">
+            <a href="https://github.com/wetmud" target="_blank">github.com/wetmud</a>
+            <a href="https://www.behance.net/jasonsteltman" target="_blank">behance.net/jasonsteltman</a>
+            <a href="https://www.instagram.com/jasonsteltman/" target="_blank">instagram.com/jasonsteltman</a>
+          </div>
+          <a class="cv-download" href="#">Download CV</a>
+        </div>
+        <div class="cv-right">
+          <h3>Get in touch</h3>
+          <div class="form-field">
+            <label>Your name</label>
+            <input type="text" placeholder="First Last"/>
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com"/>
+          </div>
+          <div class="form-field">
+            <label>Message</label>
+            <textarea placeholder="Tell me about your project"></textarea>
+          </div>
+          <button class="btn-send">Send Message</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="modal-container"></div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-bubble">
+      <button class="lightbox-close" onclick="closeLightbox()">Close X</button>
+      <img id="lightbox-img" src="" alt=""/>
+    </div>
+  </div>
+
+  <!-- WORK SECTION JS -->
+  <script>
+    var WORK_PROJECTS = [
+      { id:'modal-civic', thumb:'Civicconnect3.png', heroImg:'Civicconnect3.png', num:'01', title:'CivicConnect', excerpt:'Enter your address and find every elected official who represents you.', desc:'Enter your address and find every elected official who represents you — municipal, provincial, and federal — all in one place. CivicConnect lets you contact them directly, with AI-assisted email drafting built in. Zero data collected, no tracking, everything runs in your browser.', tags:['HTML','Civic Tech','AI'], screenshots:[{src:'CivicConnect2.png',alt:'CivicConnect representatives'},{src:'Civicconnect1.png',alt:'CivicConnect email composer'}], link:'https://wetmud.github.io/CivicConnect/' },
+      { id:'modal-event', thumb:'EventSC1.png', heroImg:'EventSC1.png', num:'02', title:'EventLineup', excerpt:'A live event calendar for the GTA pulling from six major ticketing platforms.', desc:'A live event calendar for the GTA pulling from Ticketmaster, Eventbrite, Bandsintown, Songkick, and StubHub. Browse concerts, theatre, comedy, festivals, and sports across 28 venues in an 80km radius. Includes a discover mode, hot-date heatmap, and real-time sync.', tags:['JavaScript','Events','GTA','API'], screenshots:[{src:'EventSC2.png',alt:'EventLineup discover'}], link:'https://wetmud.github.io/eventpulse/' },
+      { id:'modal-github', thumb:'GithubRepo.png', heroImg:'GithubRepo.png', num:'03', title:'GitHub Trending Repos', excerpt:'Daily, weekly, and monthly trending GitHub repositories in a clean dashboard.', desc:'A clean dashboard that scrapes and displays daily, weekly, and monthly trending GitHub repositories. Browse in grid view or raw JSON, filter by language, and drill into individual repos for star counts, forks, contributor stats, and trending velocity — all in one place.', tags:['JavaScript','Scraper','Dashboard'], screenshots:[{src:'Githubrepo2_.png',alt:'GitHub repo detail'}], link:'https://git-hub-trend-scraper--jasonsteltman.replit.app' },
+      { id:'modal-ontario', thumb:'OFF1.png', heroImg:'OFF1.png', num:'04', title:'Ontario Markets', excerpt:"Discover farmers' markets across Ontario — browse 35 markets across 6 regions by date.", desc:"Discover farmers' markets across Ontario — fresh produce, local artisans, and community spirit. Browse 35 markets across 6 regions, filtered by date on an interactive calendar. Each listing shows hours, tags, indoor/outdoor status, and links directly to the market's website.", tags:['JavaScript','Local','Ontario','Calendar'], screenshots:[{src:'OFF2.png',alt:'Ontario Markets listings'}], link:'https://ontario-fresh-finds.lovable.app/' },
+      { id:'modal-realestate', thumb:'RealEstateScraper.png', heroImg:'RealEstateScraper.png', num:'05', title:'RE:PULSE', excerpt:'Canadian real estate market intelligence dashboard for the GTA.', desc:'A Canadian real estate market intelligence dashboard for the GTA. Scrapes live listings and surfaces avg list price, $/sqft, days on market, and inventory — broken down by property type with scatter plots, donut charts, and a full sortable listings table.', tags:['HTML','Data','GTA','Dashboard'], screenshots:[{src:'RealEstateScraper2.png',alt:'RE:PULSE analytics'},{src:'Realestatescraper3.png',alt:'RE:PULSE listings table'}], link:'https://wetmud.github.io/realestate-scraper-1-/' }
+    ];
+    function renderWork() {
+      var row = document.getElementById('work-row');
+      var container = document.getElementById('modal-container');
+      WORK_PROJECTS.forEach(function(p) {
+        var card = document.createElement('div'); card.className = 'work-card';
+        (function(pid){card.onclick=function(){openModal(pid);};})(p.id);
+        var thumb=document.createElement('div'); thumb.className='work-card-thumb';
+        var tImg=document.createElement('img'); tImg.src=p.thumb; tImg.alt=p.title;
+        thumb.appendChild(tImg);
+        var info=document.createElement('div'); info.className='work-card-info';
+        var h3=document.createElement('h3'); h3.textContent=p.title;
+        var exc=document.createElement('p'); exc.className='excerpt'; exc.textContent=p.excerpt;
+        var meta=document.createElement('div'); meta.className='meta';
+        p.tags.forEach(function(t){var tag=document.createElement('span');tag.className='work-tag';tag.textContent=t;meta.appendChild(tag);});
+        info.appendChild(h3);info.appendChild(exc);info.appendChild(meta);
+        card.appendChild(thumb);card.appendChild(info);row.appendChild(card);
+        var overlay=document.createElement('div'); overlay.className='modal-overlay'; overlay.id=p.id;
+        (function(pid){overlay.onclick=function(e){if(e.target===overlay)closeModal(pid);};})(p.id);
+        var modal=document.createElement('div'); modal.className='modal';
+        var cb=document.createElement('button'); cb.className='modal-close'; cb.textContent='Close \u2715';
+        (function(pid){cb.onclick=function(e){e.stopPropagation();closeModal(pid);};})(p.id);
+        var hd=document.createElement('div'); hd.className='modal-hero';
+        var hi=document.createElement('img'); hi.src=p.heroImg; hi.alt=p.title; hd.appendChild(hi);
+        var body=document.createElement('div'); body.className='modal-body';
+        var ne=document.createElement('p'); ne.className='modal-number'; ne.textContent=p.num;
+        var te=document.createElement('h2'); te.className='modal-title'; te.textContent=p.title;
+        var de=document.createElement('p'); de.className='modal-desc'; de.textContent=p.desc;
+        var td=document.createElement('div'); td.className='modal-tags';
+        p.tags.forEach(function(t){var tag=document.createElement('span');tag.className='modal-tag';tag.textContent=t;td.appendChild(tag);});
+        var sd=document.createElement('div'); sd.className='modal-screenshots';
+        p.screenshots.forEach(function(s){var si=document.createElement('img');si.src=s.src;si.alt=s.alt;(function(img){img.onclick=function(e){e.stopPropagation();openLightbox(img);};})(si);sd.appendChild(si);});
+        var lk=document.createElement('a'); lk.className='modal-link'; lk.href=p.link; lk.target='_blank'; lk.textContent='View live site \u2192'; lk.onclick=function(e){e.stopPropagation();};
+        body.appendChild(ne);body.appendChild(te);body.appendChild(de);body.appendChild(td);body.appendChild(sd);body.appendChild(lk);
+        modal.appendChild(cb);modal.appendChild(hd);modal.appendChild(body);overlay.appendChild(modal);container.appendChild(overlay);
+      });
+    }
+    renderWork();
+  </script>
+
+  <!-- ART SECTION JS -->
+  <script>
+    var ART_PROJECTS=[
+      {title:'Mother, 2014',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/69e166244873415.Y3JvcCwxNTc1LDEyMzIsMTMyLDA.jpeg',url:'https://www.behance.net/gallery/244873415/Mother-2014',medium:'Photography',description:'A portrait from 2014 — intimate, still, and centred on the subject of motherhood.'},
+      {title:'Study Room',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/9a53ae244873539.Y3JvcCwxMDg1LDg0OSw5Niww.jpg',url:'https://www.behance.net/gallery/244873539/Study-Room',medium:'Photography',description:'A quiet interior — the study room as both physical space and state of mind.'},
+      {title:'Leaf',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/5f87be244873589.Y3JvcCwxMTE2LDg3Myw4Miww.jpg',url:'https://www.behance.net/gallery/244873589/Leaf',medium:'Photography',description:'A close study of a single leaf — texture, light, and the small details that hold attention.'},
+      {title:'Roof',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/f58d39244873623.Y3JvcCwxMTAwLDg2MSw4OSww.jpg',url:'https://www.behance.net/gallery/244873623/Roof',medium:'Photography',description:'Looking up — rooflines, sky, and the geometry of shelter.'},
+      {title:'Ghost of You',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/87ebd5244873667.Y3JvcCwxMDU4LDgyOCwxMTAsMA.jpg',url:'https://www.behance.net/gallery/244873667/Ghost-of-You',medium:'Photography',description:'Presence and absence — a photographic work about the traces people leave behind.'},
+      {title:"Mom's Pond",cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/e981af245213801.Y3JvcCwyMzI4LDE4MjAsMCw4MDY.png',url:'https://www.behance.net/gallery/245213801/Moms-Pond',medium:'Photography',description:'A familiar place — water, reflection, and the landscape of home.'},
+      {title:'Sit',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/137c9f245214043.Y3JvcCwzNjAwLDI4MTUsMCwzOTI.jpg',url:'https://www.behance.net/gallery/245214043/Sit',medium:'Photography',description:'Stillness as subject — a moment of rest, captured.'},
+      {title:'Concert with Friends',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/127741245214167.Y3JvcCwyOTIxLDIyODUsMjMxLDA.jpeg',url:'https://www.behance.net/gallery/245214167/Concert-with-Friends',medium:'Photography',description:'Live music, low light, and the energy of being somewhere together.'},
+      {title:'August 2015',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/683e12245214275.Y3JvcCwxMzA5LDEwMjQsMTE2LDA.jpg',url:'https://www.behance.net/gallery/245214275/August-2015',medium:'Photography',description:'Late summer, 2015 — light, heat, and the feeling of a month.'},
+      {title:'End of July 2015',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/496f7d245214413.Y3JvcCwxMzA5LDEwMjQsMTE2LDA.jpg',url:'https://www.behance.net/gallery/245214413/End-of-July-2015',medium:'Photography',description:'The last days of July — a photographic journal from the tail end of summer.'},
+      {title:'New Friend, 2014',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/f28626245214753.Y3JvcCwyMjIzLDE3MzksMjc1LDA.jpg',url:'https://www.behance.net/gallery/245214753/New-Friend-2014',medium:'Photography',description:'A portrait of connection — meeting someone new, 2014.'},
+      {title:'Costa Rica 2016',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/4644fc245215389.Y3JvcCw4NjEsNjc0LDc4LDA.jpg',url:'https://www.behance.net/gallery/245215389/Costa-Rica-2016',medium:'Photography',description:'Travel photography from Costa Rica — colour, warmth, and a different pace.'}
+    ];
+    function renderArt() {
+      var grid=document.getElementById('art-grid');
+      var container=document.getElementById('modal-container');
+      ART_PROJECTS.forEach(function(p,i){
+        var id='modal-art-'+i;
+        var card=document.createElement('div'); card.className='art-card';
+        (function(cid){card.onclick=function(){openModal(cid);};})(id);
+        var thumb=document.createElement('div'); thumb.className='art-thumb';
+        var tImg=document.createElement('img'); tImg.src=p.cover; tImg.alt=p.title;
+        thumb.appendChild(tImg);
+        var info=document.createElement('div'); info.className='art-card-info';
+        var h3=document.createElement('h3'); h3.textContent=p.title;
+        var meta=document.createElement('p'); meta.className='meta'; meta.textContent=p.medium;
+        info.appendChild(h3);info.appendChild(meta);card.appendChild(thumb);card.appendChild(info);grid.appendChild(card);
+        var overlay=document.createElement('div'); overlay.className='modal-overlay'; overlay.id=id;
+        (function(cid){overlay.onclick=function(e){if(e.target===overlay)closeModal(cid);};})(id);
+        var modal=document.createElement('div'); modal.className='modal';
+        var cb=document.createElement('button'); cb.className='modal-close'; cb.textContent='Close \u2715';
+        (function(cid){cb.onclick=function(e){e.stopPropagation();closeModal(cid);};})(id);
+        var hd=document.createElement('div'); hd.className='modal-hero';
+        var hi=document.createElement('img'); hi.src=p.cover; hi.alt=p.title; hi.style.cursor='zoom-in';
+        (function(img){img.onclick=function(e){e.stopPropagation();openLightbox(img);};})(hi);
+        hd.appendChild(hi);
+        var body=document.createElement('div'); body.className='modal-body';
+        var te=document.createElement('h2'); te.className='modal-title'; te.textContent=p.title;
+        var de=document.createElement('p'); de.className='modal-desc'; de.textContent=p.description;
+        var be=document.createElement('a'); be.className='modal-behance'; be.href=p.url; be.target='_blank'; be.textContent='View on Behance \u2192'; be.onclick=function(e){e.stopPropagation();};
+        body.appendChild(te);body.appendChild(de);body.appendChild(be);
+        modal.appendChild(cb);modal.appendChild(hd);modal.appendChild(body);overlay.appendChild(modal);container.appendChild(overlay);
+      });
+    }
+    renderArt();
+  </script>
+
+  <!-- BLOG SECTION JS -->
+  <script>
+    var POSTS=[
+      {title:'Why I Still Shoot on Film',date:'February 2026',excerpt:'Digital is faster, cheaper, and endlessly forgiving. So why do I keep reaching for the Pentax?',tags:['Photography','Process'],content:['There is something about the cost of film that changes how you look at things. When each frame has a price, you stop and actually look before you press the shutter. You consider the light, the moment, whether it is worth it. That hesitation is not a limitation — it is the whole point.','I shoot digital too. I shoot digital constantly for work and for quick documentation. But when I want to actually see something — really see it — I load a roll of 400H and slow down.','The grain is not nostalgia for me. It is a texture that feels honest. Digital smoothness can sometimes feel like it is lying, like it is resolving more certainty than the world actually contains. Film looks like memory. That matters when the subject is personal.','The other thing nobody talks about enough: the gap. The week between shooting and getting scans back is generative. You forget what you shot, so when the images arrive you are seeing them almost for the first time. That surprise is a form of editing — the best frames announce themselves immediately.']},
+      {title:'Building CivicConnect: What I Learned',date:'January 2026',excerpt:'A civic tech project that started as a weekend experiment and turned into something I actually use.',tags:['Web','Civic Tech','Reflection'],content:['CivicConnect started because I wanted to write to my city councillor and had no idea who that was. That felt like a failure of design — not mine, but the systems around me. Finding your representatives should not require knowing which ward you live in, which level of government handles which issue, or how to navigate three different websites.','So I built a tool that takes an address and returns everyone who represents that location: municipal, provincial, federal. It cross-references the Represent API with postal code data and gives you a list with direct contact links and an AI-assisted email drafting tool.','The hardest part was not the code. It was deciding what to include. There is a version of this tool that does much more — tracks voting records, pulls Hansard transcripts, ranks responsiveness. But that version would never ship. The useful version does one thing extremely well: it tells you who to contact and makes contacting them as easy as possible.','Zero data collection was non-negotiable from the start. Addresses you search are never stored, logged, or shared. Everything runs in your browser and disappears when you leave. That constraint shaped the architecture more than any technical decision.']},
+      {title:'Notes on the Canadian Shield',date:'December 2025',excerpt:'A week in Maynooth, a camera, and a lot of thinking about what documentary photography actually means.',tags:['Photography','Travel','Ontario'],content:['I drove to Maynooth in late October, just before the snow. The drive itself is the point — four hours north of Toronto and you start to feel the rock underneath everything. The Canadian Shield pushes up through the soil, through the roads, through whatever softness civilization has tried to lay over it.','I did not go with a project in mind, which was the right decision. Projects have a way of making you see what you expect to see. I wanted to photograph what was actually there, which meant spending the first two days not photographing much at all. Just driving the back roads, talking to people at the gas station, eating breakfast at the same diner twice.','The light in October is horizontal and unforgiving. It exposes everything. I found myself more interested in the man-made things than the landscape — the faded signage, the equipment that had been left in fields, the houses with two or three generations of renovation visible at once.','Documentary photography is not about recording what exists. It is about deciding what to look at, which is always an argument about value. These photographs say: this place and these things matter. Whether that argument lands depends entirely on the photograph.']},
+      {title:'On Side Projects',date:'November 2025',excerpt:'The projects I build for no one in particular are the ones that have taught me the most.',tags:['Web','Process','Reflection'],content:['Every useful skill I have came from a side project. Not from tutorials, not from courses, not from work assignments — from building something I wanted to exist and figuring out the rest along the way.','The Ontario Markets project started because I kept missing the farmers market in my neighbourhood. I wanted a calendar that showed me which markets were open on which days, across the whole province, with enough detail to be useful. Nothing like that existed. So I built it.','That project taught me more about data structure, API design, and UI decision-making than any resource I could have read. The constraints were real because my needs were real. When something did not work, I noticed immediately because I was the user.','I think the mistake people make with side projects is treating them as portfolio pieces first. A portfolio piece is built to impress someone else. A side project is built to solve something. The best portfolio pieces are just well-documented side projects — the work shows because the motivation was genuine. Build things you actually want. The quality follows.']}
+    ];
+    var activeTag='All';
+    function getAllTags(){var tags=['All'],seen={};for(var i=0;i<POSTS.length;i++){for(var j=0;j<POSTS[i].tags.length;j++){var t=POSTS[i].tags[j];if(!seen[t]){seen[t]=true;tags.push(t);}}}return tags;}
+    function renderBlogFilter(){
+      var row=document.getElementById('tag-filter'); row.innerHTML='';
+      getAllTags().forEach(function(t){
+        var btn=document.createElement('button'); btn.className='filter-btn'+(t===activeTag?' active':''); btn.textContent=t;
+        (function(tag){btn.onclick=function(){activeTag=tag;renderBlogFilter();renderBlogPosts();};})(t);
+        row.appendChild(btn);
+      });
+    }
+    function renderBlogPosts(){
+      var grid=document.getElementById('blog-grid');
+      var noMsg=document.getElementById('no-posts');
+      var container=document.getElementById('modal-container');
+      grid.innerHTML='';
+      container.querySelectorAll('[id^="modal-post-"]').forEach(function(el){el.remove();});
+      var filtered=activeTag==='All'?POSTS:POSTS.filter(function(p){return p.tags.indexOf(activeTag)!==-1;});
+      noMsg.style.display=filtered.length===0?'':'none';
+      filtered.forEach(function(p){
+        var idx=POSTS.indexOf(p); var id='modal-post-'+idx;
+        var card=document.createElement('div'); card.className='post-card';
+        (function(cid){card.onclick=function(){openModal(cid);};})(id);
+        var cb2=document.createElement('div'); cb2.className='post-card-body';
+        var de=document.createElement('p'); de.className='post-date'; de.textContent=p.date;
+        var te=document.createElement('h3'); te.className='post-card-title'; te.textContent=p.title;
+        var ee=document.createElement('p'); ee.className='post-excerpt'; ee.textContent=p.excerpt;
+        var td=document.createElement('div'); td.className='post-tags';
+        p.tags.forEach(function(t){var tag=document.createElement('span');tag.className='post-tag';tag.textContent=t;td.appendChild(tag);});
+        cb2.appendChild(de);cb2.appendChild(te);cb2.appendChild(ee);cb2.appendChild(td);card.appendChild(cb2);grid.appendChild(card);
+        var overlay=document.createElement('div'); overlay.className='modal-overlay'; overlay.id=id;
+        (function(cid){overlay.onclick=function(e){if(e.target===overlay)closeModal(cid);};})(id);
+        var modal=document.createElement('div'); modal.className='modal blog-modal';
+        var cbtn=document.createElement('button'); cbtn.className='modal-close'; cbtn.textContent='Close \u2715';
+        (function(cid){cbtn.onclick=function(e){e.stopPropagation();closeModal(cid);};})(id);
+        var mbody=document.createElement('div'); mbody.className='modal-body';
+        var mdate=document.createElement('span'); mdate.className='modal-date'; mdate.textContent=p.date;
+        var mtitle=document.createElement('h2'); mtitle.className='modal-title'; mtitle.textContent=p.title;
+        var mcontent=document.createElement('div'); mcontent.className='modal-content';
+        p.content.forEach(function(para){var pg=document.createElement('p');pg.textContent=para;mcontent.appendChild(pg);});
+        var mft=document.createElement('div'); mft.className='modal-footer-tags';
+        p.tags.forEach(function(t){var tag=document.createElement('span');tag.className='modal-tag';tag.textContent=t;mft.appendChild(tag);});
+        mbody.appendChild(mdate);mbody.appendChild(mtitle);mbody.appendChild(mcontent);mbody.appendChild(mft);
+        modal.appendChild(cbtn);modal.appendChild(mbody);overlay.appendChild(modal);container.appendChild(overlay);
+      });
+    }
+    renderBlogFilter();
+    renderBlogPosts();
+  </script>
+
+  <!-- SHARED INFRASTRUCTURE JS -->
+  <script>
+    function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}
+    function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+    function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+    function openLightbox(img){document.getElementById('lightbox-img').src=img.src;document.getElementById('lightbox-img').alt=img.alt;document.getElementById('lightbox').classList.add('open');}
+    function closeLightbox(e){if(e&&e.target!==document.getElementById('lightbox')&&!e.target.classList.contains('lightbox-close'))return;document.getElementById('lightbox').classList.remove('open');}
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){
+        document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open');});
+        document.getElementById('lightbox').classList.remove('open');
+        document.body.style.overflow='';
+      }
+    });
+    var sections=document.querySelectorAll('section.snap-section');
+    var dotItems=document.querySelectorAll('.dot-item');
+    var dotNav=document.getElementById('dot-nav');
+    var dotObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting)return;
+        var id=entry.target.id;
+        var theme=entry.target.getAttribute('data-theme');
+        dotItems.forEach(function(item){item.classList.toggle('active',item.getAttribute('data-target')===id);});
+        dotNav.classList.toggle('light-section',theme==='light');
+      });
+    },{threshold:0.5,root:document.getElementById('snap-container')});
+    sections.forEach(function(s){dotObserver.observe(s);});
+    var siteHeader=document.getElementById('site-header');
+    var heroObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){siteHeader.classList.toggle('visible',!entry.isIntersecting);});
+    },{threshold:0,root:document.getElementById('snap-container')});
+    heroObserver.observe(document.getElementById('hero'));
+  </script>
 
 </body>
 </html>
