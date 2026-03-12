@@ -6,8 +6,9 @@ Static personal portfolio site for landing a **developer/programmer/coder job**.
 ## Tech Stack
 - Vanilla HTML5, CSS3, JavaScript (ES5)
 - No frameworks, no package.json, no build process
-- CSS Variables for theming, Grid/Flexbox for layout
-- System fonts (Helvetica Neue, Times New Roman)
+- CSS Variables for theming, Grid/Flexbox for layout, scroll-snap for sections
+- Google Fonts: Caprasimo (display), Outfit (UI) — loaded via `<link>`
+- System fonts fallback: Helvetica Neue, Times New Roman
 - Custom base64 cursor on all pages
 
 ## File Structure
@@ -40,24 +41,34 @@ copies/             — Backup HTML files
 
 ---
 
-## Current Status (as of 2026-03-11)
+## Current Status (as of 2026-03-12)
 
-**Phase 1–3 redesign is planned and ready to implement.**
+**Phase 1–3 redesign is COMPLETE and live on GitHub Pages.**
 
-- Brainstorm complete — decisions locked in spec: `docs/superpowers/specs/2026-03-11-phase1-3-redesign.md`
-- Implementation plan COMPLETE and ready to execute: `docs/superpowers/plans/2026-03-11-phase1-3.md`
-- Hosting: GitHub Pages (already configured in repo settings — Pages > main branch > root)
-- **Next action: EXECUTE the plan. Do NOT re-plan or re-brainstorm. Start at Chunk 1, Task 1.**
-- Use skill: `superpowers:executing-plans` (or `superpowers:subagent-driven-development` if subagents available)
+### ✅ Completed
+- **Chunk 1 (Phase 1):** Background image removed from all 6 pages. `snapshot2.png`, `body::before` overlay, and `body>* z-index` rules cleaned up.
+- **Chunk 2 (Phase 2–3):** `index.html` fully rewritten as single-page snap layout:
+  - 5 full-screen `scroll-snap-type: y mandatory` sections (Hero, Work, Art, Blog, CV)
+  - Dark hero with Caprasimo name + Outfit tagline: "Creative systems. Deep UX. Built with code."
+  - Horizontal scroll work cards (5 projects with modals + lightbox)
+  - Art grid (12 Behance photography cards with lightbox)
+  - Blog section with tag filter (4 posts with modal full text)
+  - CV with skills, links, contact form
+  - Dot nav (right edge, 5 dots, dark/light theme flip)
+  - Sticky header with IntersectionObserver (slides in after hero)
+  - Shared JS: scrollToSection, openModal/closeModal, openLightbox, Escape handler
+- `Githubrepo2 .png` renamed to `Githubrepo2_.png` (space in filename fix)
 
-**Design decisions locked in:**
-- Full-screen snap sections (`scroll-snap-type: y mandatory`)
-- Side dot nav (right edge, 5 dots)
-- Hero: split layout — name (Caprasimo) left, section index right
-- Tagline: "Creative systems. Deep UX. Built with code." (Outfit font)
-- Section order: Hero → Work → Art → Blog → CV/Contact
-- Web projects: horizontal scroll card row
-- Background image removed, dark theme `#0a0a0a` on index
+### Tech additions
+- Google Fonts: Caprasimo (name/h1), Outfit (tagline/nav/labels)
+- `scroll-snap-type: y mandatory` on `main.snap-container`
+- `IntersectionObserver` for dot nav active state and sticky header
+- JS DOM rendering with IIFEs for closure-safe event handlers (no innerHTML for data)
+
+### Next steps (optional)
+- Phase 4: Letter spin on hover + idle animation on hero name
+- Phase 4: Scrolling welcome marquee banner
+- Phase 5: Cursor picker, turtle loader, mini game
 
 ---
 
