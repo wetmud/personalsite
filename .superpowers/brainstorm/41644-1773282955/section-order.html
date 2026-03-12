@@ -1,0 +1,99 @@
+<h2>What order should the sections flow?</h2>
+<p class="subtitle">You have 5 content areas to arrange as full-screen sections. Which order tells your story best for a dev job?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="dev-first" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0a0a;padding:16px;min-height:150px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#fff;flex-shrink:0"></div>
+        <span style="color:#fff;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">HERO</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #fff;flex-shrink:0"></div>
+        <span style="color:#aaa;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">WEB PROJECTS</span>
+        <span style="color:#444;font-size:9px">← dev work, front and center</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #555;flex-shrink:0"></div>
+        <span style="color:#666;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">ART</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #555;flex-shrink:0"></div>
+        <span style="color:#666;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">BLOG</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #333;flex-shrink:0"></div>
+        <span style="color:#444;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">CV / CONTACT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Dev-first</h3>
+      <p>Hero → Web Projects → Art → Blog → CV/Contact. Code work immediately after the hero. Recruiters scrolling your site see projects first.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="story" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0a0a;padding:16px;min-height:150px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#fff;flex-shrink:0"></div>
+        <span style="color:#fff;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">HERO</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #fff;flex-shrink:0"></div>
+        <span style="color:#aaa;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">WEB PROJECTS</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #555;flex-shrink:0"></div>
+        <span style="color:#666;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">BLOG</span>
+        <span style="color:#444;font-size:9px">← shows you can write/think</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #555;flex-shrink:0"></div>
+        <span style="color:#666;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">ART</span>
+        <span style="color:#444;font-size:9px">← shows you're a whole person</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #333;flex-shrink:0"></div>
+        <span style="color:#444;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">CV / CONTACT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Story arc</h3>
+      <p>Hero → Web → Blog → Art → CV. Projects first, then writing to show you think, then art to show personality. Ends with a hire-me call to action.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="impact" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0a0a;padding:16px;min-height:150px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#fff;flex-shrink:0"></div>
+        <span style="color:#fff;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">HERO</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #fff;flex-shrink:0"></div>
+        <span style="color:#aaa;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">FEATURED PROJECT</span>
+        <span style="color:#444;font-size:9px">← one big one, full screen</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #555;flex-shrink:0"></div>
+        <span style="color:#666;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">ALL PROJECTS (grid)</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #555;flex-shrink:0"></div>
+        <span style="color:#666;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">ART + BLOG (combined)</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #333;flex-shrink:0"></div>
+        <span style="color:#444;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">CV / CONTACT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Lead with impact</h3>
+      <p>Hero → one featured project full-screen → all projects grid → combined art/blog → CV. Bets big on your best work immediately. High risk, high reward.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:24px">Click your pick or tell me in the terminal.</p>

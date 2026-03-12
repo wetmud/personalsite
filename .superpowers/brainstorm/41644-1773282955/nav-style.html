@@ -1,0 +1,63 @@
+<h2>How should the navigation work?</h2>
+<p class="subtitle">You're on a full-screen snap layout. The nav needs to feel intentional — not just a header bar.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="pill" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#111;padding:20px;min-height:140px;position:relative;display:flex;align-items:flex-start;justify-content:center">
+      <div style="display:flex;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:40px;padding:8px 20px;backdrop-filter:blur(8px)">
+        <span style="color:#fff;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">WORK</span>
+        <span style="color:#555;font-size:11px">·</span>
+        <span style="color:#fff;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">ART</span>
+        <span style="color:#555;font-size:11px">·</span>
+        <span style="color:#fff;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">BLOG</span>
+        <span style="color:#555;font-size:11px">·</span>
+        <span style="color:#fff;font-size:11px;font-family:Helvetica,sans-serif;letter-spacing:1px">CV</span>
+      </div>
+      <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:#333;font-size:20px">·</div>
+    </div>
+    <div class="card-body">
+      <h3>A — Floating pill nav</h3>
+      <p>Centered pill that floats at the top of every section. Blurred glass effect. Minimal, modern. Sits above the content without being heavy.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="dots" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#111;padding:20px;min-height:140px;position:relative;display:flex;align-items:center;justify-content:flex-end">
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:center;padding:12px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#fff"></div>
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #555"></div>
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #555"></div>
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #555"></div>
+        <div style="width:8px;height:8px;border-radius:50%;border:1px solid #555"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Side dot nav</h3>
+      <p>Vertical dots on the right edge. One dot per section. Active section is filled. Hover shows section label. Very common on full-screen scroll sites.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="sticky-name" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fafaf8;padding:0;min-height:140px;display:flex;flex-direction:column">
+      <div style="background:#fafaf8;border-bottom:1px solid #ddd;padding:10px 20px;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-family:Helvetica,sans-serif;font-weight:bold;font-size:12px;letter-spacing:2px">JASON STELTMAN</span>
+        <div style="display:flex;gap:12px">
+          <span style="font-size:10px;color:#111;letter-spacing:1px">WORK</span>
+          <span style="font-size:10px;color:#111;letter-spacing:1px">ART</span>
+          <span style="font-size:10px;color:#111;letter-spacing:1px">BLOG</span>
+        </div>
+      </div>
+      <div style="flex:1;background:#111;display:flex;align-items:center;justify-content:center">
+        <span style="color:#333;font-size:11px;font-family:monospace">full-screen hero section</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Sticky top bar (name + links)</h3>
+      <p>Traditional header that sticks at the top. On the hero it's transparent/hidden, then appears as you scroll. Name on left, links on right. Your Phase 3 sticky header, built in from the start.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:24px">These can also be combined — e.g. sticky bar + side dots. Click your pick or tell me in the terminal.</p>
