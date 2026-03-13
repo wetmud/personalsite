@@ -6,20 +6,21 @@ Static personal portfolio site for landing a **developer/programmer/coder job**.
 ## Tech Stack
 - Vanilla HTML5, CSS3, JavaScript (ES5)
 - No frameworks, no package.json, no build process
-- CSS Variables for theming, Grid/Flexbox for layout, scroll-snap for sections
+- CSS Variables for theming, Grid/Flexbox for layout (scroll-snap being replaced with JS smooth scroll)
 - Google Fonts: Bebas Neue (display/headings), Caprasimo (unused, kept), Outfit (UI/body) — loaded via `<link>`
 - System fonts fallback: Helvetica Neue, Times New Roman
 - Custom base64 cursor on all pages
 
 ## File Structure
 ```
-index.html          — Home/landing page
+index.html          — Home/landing page (single-page app, all content)
 art.html            — Art portfolio (12 Behance projects, JS-rendered)
 web.html            — Web projects grid (5 projects with modals)
 web2.html           — Web projects list (alternative layout)
 blog.html           — Blog with tag filtering (4 posts)
 cv.html             — CV placeholder
 images/             — Screenshots, backgrounds
+photoroll/          — Photos for hero slideshow (add images here to update roll)
 writing/            — Legacy .docx files (not web-integrated)
 copies/             — Backup HTML files
 ```
@@ -41,7 +42,7 @@ copies/             — Backup HTML files
 
 ---
 
-## Current Status (as of 2026-03-12)
+## Current Status (as of 2026-03-13)
 
 **Phase 1–4 redesign is COMPLETE and live on GitHub Pages.**
 
@@ -71,36 +72,68 @@ copies/             — Backup HTML files
 - `IntersectionObserver` for dot nav active state and sticky header
 - JS DOM rendering with IIFEs for closure-safe event handlers (no innerHTML for data)
 
-### Next steps (optional)
-- Phase 4: Letter spin on hover + idle animation on hero name
-- Phase 4: Scrolling welcome marquee banner
-- Phase 5: Cursor picker, turtle loader, mini game
-
 ---
 
 ## Feature Roadmap (ordered easiest → hardest)
 
-### Phase 1 — Quick Wins (High Impact, Easy)
-1. **Remove background image** — Delete the repeating `snapshot2.png` background from all pages. Use clean solid/gradient bg instead.
+All completed phases are done. Below is the active + future work, easiest first.
 
-### Phase 2 — Core Restructure (Highest Impact)
-2. **Single-page consolidation** — Merge art, web, blog, and CV content into index.html as scroll sections. Add smooth scroll navigation. Add scroll-triggered animations (IntersectionObserver). Remove separate page files once consolidated.
-3. **Sticky "Jason Steltman" header on scroll** — When user scrolls past hero, shrink name into a sticky top bar. Clicking it scrolls back to top.
+### Chunk 4 — Navigation Redesign (Next Up)
+**Goal:** Replace the current top-left full-screen MENU overlay with a polished circle button (top-right) that opens a compact dropdown panel.
 
-### Phase 3 — Navigation & Polish
-4. **Menu bubble, dropdown, text animation** — Redesign nav as a floating bubble/pill. Add dropdown with smooth open/close animation. Animated text transitions on menu items.
-5. **Name letter spin on hover + idle animation** — Wrap each letter of "Jason Steltman" in a `<span>`. On mouseover, spin that letter. After 6s idle, all letters auto-rotate at different speeds via CSS animations with varied `animation-duration`.
+- **Circle menu button (top-right, fixed)**
+  - Circular button replaces current rectangular MENU button
+  - On click: circle rotates (CSS `transform: rotate`), dropdown slides down below it
+  - Button still adapts light/dark via `IntersectionObserver` (existing system)
+  - Keyboard: Escape closes
+- **Dropdown panel (not full-screen)**
+  - Compact floating panel below the circle, slides/fades in
+  - Nav links: Home / Work / Art / Blog / Contact — stacked, Bebas Neue
+  - Social links row at bottom: Behance, GitHub, Email
+  - Panel has subtle backdrop-blur + border, matches editorial aesthetic
+- **Remove** full-screen `#menu-overlay` entirely
 
-### Phase 4 — Personality & Flair
-6. **Scrolling welcome banner** — CSS marquee/keyframe banner: "Welcome! This is Jason's Website!" across the top.
-7. **Welcome/landing page with cursor picker** — Splash screen: "Hey, I'm Jason Steltman. Welcome to my Official Website. Pick a cursor and poke around!" User selects a cursor from a visual library, then proceeds to main site.
-8. **Cursor picker bubble** — Floating bubble UI for browsing/selecting custom cursors. Store selection in localStorage.
+### Chunk 5 — Hero Photo Roll
+**Goal:** Add a crossfading photo slideshow to the right column of the hero section.
 
-### Phase 5 — Fun Extras (Low Priority)
-9. **Terrapin turtle loading screen** — Spinning turtle SVG/animation as page loader. Sits in corner on top of everything after load.
-10. **Mini game page** — Small browser game (e.g., simple canvas game). Showcases JS skills but not critical for job hunting.
-11. **Lotus video on scroll** — Embed video that plays/scrubs on scroll. Requires video asset.
-12. **Plane guy banner animation** — Animated character flying a plane pulling the welcome banner. Requires sprite/SVG animation work.
+- Right column layout: `flex-direction:column` — photo roll fills `flex:1` (top), index links pinned at bottom
+- Slideshow pulls from `photoroll/` folder — images hardcoded as a JS array at top of `<script>` (update array when adding photos; starts empty/hidden until images are added)
+- Auto-advances every ~4s with a smooth CSS crossfade (opacity transition, absolute-positioned images stacked)
+- Centered within the column with tasteful padding, slight border-radius, no heavy borders
+- To add new photos: drop image into `photoroll/`, add filename to the JS array near top of `<script>`
+
+### Chunk 6 — Smooth JS Scroll
+**Goal:** Replace `scroll-snap` with JS-driven smooth section scrolling that feels like eszterbial.com.
+
+- Remove `scroll-snap-type: y mandatory` from `.snap-container` and `scroll-snap-align` from sections
+- JS handles scroll: click nav → `scrollTo` with custom easing (e.g., ease-in-out cubic)
+- Mousewheel/trackpad: debounced wheel listener, one section at a time, smooth animated scroll
+- Sections fade in slightly as they enter viewport (opacity 0.85 → 1 during scroll)
+- Keyboard arrow keys also trigger section scroll
+
+### Chunk 7 — Scrolling Welcome Marquee
+**Goal:** CSS marquee banner across a section or the top of hero.
+
+- Text: "Welcome to Jason Steltman's Website — Developer — Designer — Builder —" (repeating)
+- Pure CSS `@keyframes` animation, no JS
+- Positioned either just below hero name or as a thin strip between sections
+
+### Chunk 8 — Name Letter Spin
+**Goal:** Hero name letters each wrapped in `<span>`, interactive + idle animation.
+
+- Mouseover individual letter → it spins (CSS `rotateY` or `rotate`)
+- After 6s idle → all letters auto-rotate at different speeds (varied `animation-duration`)
+- Pure CSS animations triggered by JS class toggling
+
+### Chunk 9 — Cursor Picker Bubble (Low Priority)
+- Floating bubble UI for selecting a custom cursor from a visual library
+- Selection stored in `localStorage`, applied site-wide on load
+
+### Chunk 10 — Turtle Loader (Low Priority)
+- Spinning turtle SVG as page loader, fades out after content loads
+
+### Chunk 11 — Mini Game (Low Priority)
+- Small canvas-based browser game, separate page
 
 ---
 
