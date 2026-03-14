@@ -29,110 +29,96 @@ copies/             — Backup HTML files
 - Content (blog posts, art projects) is stored as JS objects/arrays inside each HTML file
 - Modals, lightbox, and tag filtering are vanilla JS with DOM manipulation
 - Each page has its own `<style>` block — no shared CSS file
-- Color scheme: off-white bg (#fafaf8), near-black text (#111), blue links
+- Color scheme: warm beige bg (`#f5f0e8`), near-black text (`#111`)
 - Responsive via `clamp()` fluid typography and CSS Grid auto-fill
+- Blog posts are added by editing the `POSTS` array in `index.html` — no folder system
 
-## Current Features
-- Hero animation (slideUp, fadeIn with cubic-bezier easing)
-- Card hover effects (translateY, scale, shadow)
-- Modal system (overlay blur, scale animation, Escape to close)
-- Lightbox for image zoom
-- Blog tag filtering
-- Contact form modal (index.html#contact)
+## Social Links
+- GitHub: [github.com/wetmud](https://github.com/wetmud)
+- Behance: [behance.net/jasonsteltman](https://behance.net/jasonsteltman)
+- Email: jason.steltman@gmail.com
 
 ---
 
 ## Current Status (as of 2026-03-13)
 
-**Phase 1–4 redesign is COMPLETE and live on GitHub Pages.**
+**Chunks 1–4 complete. Chunk 5 (circle menu) is next.**
 
 ### ✅ Completed
-- **Chunk 1 (Phase 1):** Background image removed from all 6 pages.
-- **Chunk 2 (Phase 2–3):** `index.html` fully rewritten as single-page snap layout (5 sections, modals, lightbox, dot nav, sticky header).
-- **Chunk 3 (Phase 4 — Design Language):** eszterbial.com-inspired editorial aesthetic:
-  - **Bebas Neue** added as condensed display font (hero name, section headings, MENU button)
-  - **6-column vertical grid lines** overlay via `repeating-linear-gradient` (editorial feel)
-  - **95vh sections** with `display:flex flex-direction:column` — 5vh bleed shows next section below
-  - **Section intros** replaced tiny labels: large Bebas Neue title + right-aligned metadata + rule line
-  - **MENU button** (top-left, fixed) replaces header + dot nav:
-    - Full-screen dark overlay with staggered Bebas Neue nav links (Home/Work/Art/Blog/Contact)
-    - Menu button adapts light/dark via `IntersectionObserver` section theme tracking
-    - Keyboard: Escape closes menu
-  - **Scroll reveal system**: `.reveal` + `.visible` classes with staggered `setTimeout` delays
-  - **Art section**: changed from CSS grid → horizontal scroll row (matches Work layout)
-  - **Unified card size**: Work + Art cards both `340×440px`, same radius and shadow
-  - **CV section**: `align-content:end` pins content to bottom of section
-  - **Copyright** line at very bottom of CV spanning both columns
-  - **Warm beige** bg-light: `#f5f0e8`
-  - Grid lines z-index fix: `::before` at `z-index:0`, sections at `z-index:1`
+- **Chunk 1:** Background image removed from all 6 pages.
+- **Chunk 2:** `index.html` fully rewritten as single-page snap layout (5 sections, modals, lightbox, dot nav, sticky header).
+- **Chunk 3 — Design Language:** eszterbial.com-inspired editorial aesthetic:
+  - **Bebas Neue** condensed display font (hero name, section headings, MENU button)
+  - **6-column vertical grid lines** overlay via `repeating-linear-gradient`
+  - **95vh sections** — 5vh bleed shows next section below
+  - **Section intros** — large Bebas Neue title + right-aligned metadata + rule line
+  - **MENU button** (top-left, fixed) — full-screen dark overlay, staggered nav links, IntersectionObserver light/dark, Escape to close
+  - **Scroll reveal**: `.reveal` + `.visible` classes, staggered `setTimeout` delays
+  - **Horizontal scroll rows** for Work + Art cards (`340×440px` unified size)
+  - **CV section** pinned to bottom with `align-content:end`
+- **Chunk 4 — Visual Polish:**
+  - **All sections beige** — `#hero`, `#work`, `#blog` switched to `var(--bg-light)` (`#f5f0e8`); all `data-theme="light"` now
+  - **Larger modals** — `width: min(1100px, 92vw)`, bottom-right offset shadow (`14px 18px 0px rgba(0,0,0,0.12)`)
+  - **Renamed** — "CV & Contact" → "Want to Collaborate?" / nav → "Collaborate" / hero index → "Collab"
+  - **ASCII breaks** — `<pre class="ascii-break">` after each `<hr class="section-rule">` (placeholder text; Jason will replace with custom art)
 
-### Tech additions
-- Google Fonts: Caprasimo (name/h1), Outfit (tagline/nav/labels)
-- `scroll-snap-type: y mandatory` on `main.snap-container`
-- `IntersectionObserver` for dot nav active state and sticky header
-- JS DOM rendering with IIFEs for closure-safe event handlers (no innerHTML for data)
+### Current Design State
+- All 5 sections use `data-theme="light"` — no dark sections remain
+- `.section-intro-title` default color is `var(--ink)` (dark); `.dark-text` class is now redundant
+- `.section-intro-count` default is `var(--muted)` dark; `.light` class is no longer needed
+- Grid overlay uses `var(--grid-line-light)` (dark lines on beige)
+- Work/art scroll wrapper fade gradients use `var(--bg-light)`
+- Blog filter buttons: dark pill on beige, active state inverted (dark bg, beige text)
 
 ---
 
 ## Feature Roadmap (ordered easiest → hardest)
 
-All completed phases are done. Below is the active + future work, easiest first.
+### Chunk 5 — Circle Menu Button (Next Up)
+**Goal:** Replace top-left rectangular MENU + full-screen overlay with a top-right circle button + compact dropdown.
 
-### Chunk 4 — Navigation Redesign (Next Up)
-**Goal:** Replace the current top-left full-screen MENU overlay with a polished circle button (top-right) that opens a compact dropdown panel.
+- **Circle button (top-right, fixed)** — on click: rotates via CSS `transform:rotate`, dropdown slides down below
+- **Dropdown panel** — compact floating panel, not full-screen; backdrop-blur + border
+  - Stacked Bebas Neue nav links: Home / Work / Art / Blog / Collaborate
+  - Social links row at bottom: GitHub, Behance, email
+- **Remove** `#menu-overlay`, `#menu-close`, existing `#menu-btn` entirely
+- IntersectionObserver light/dark adaptation carries over to new button
+- Keyboard: Escape closes
 
-- **Circle menu button (top-right, fixed)**
-  - Circular button replaces current rectangular MENU button
-  - On click: circle rotates (CSS `transform: rotate`), dropdown slides down below it
-  - Button still adapts light/dark via `IntersectionObserver` (existing system)
-  - Keyboard: Escape closes
-- **Dropdown panel (not full-screen)**
-  - Compact floating panel below the circle, slides/fades in
-  - Nav links: Home / Work / Art / Blog / Contact — stacked, Bebas Neue
-  - Social links row at bottom: Behance, GitHub, Email
-  - Panel has subtle backdrop-blur + border, matches editorial aesthetic
-- **Remove** full-screen `#menu-overlay` entirely
+### Chunk 6 — Hero Photo Roll
+**Goal:** Crossfading photo slideshow in the right column of the hero section.
 
-### Chunk 5 — Hero Photo Roll
-**Goal:** Add a crossfading photo slideshow to the right column of the hero section.
+- Photo roll sits centered in upper portion of right column; index links remain pinned below
+- Images hardcoded as JS array near top of `<script>` — filenames from `photoroll/` folder
+- Auto-advances every ~4s, CSS crossfade (opacity transition, absolute-positioned stacked images)
+- Hidden/empty until images are added to array; to add: drop into `photoroll/`, add filename to array
 
-- Right column layout: `flex-direction:column` — photo roll fills `flex:1` (top), index links pinned at bottom
-- Slideshow pulls from `photoroll/` folder — images hardcoded as a JS array at top of `<script>` (update array when adding photos; starts empty/hidden until images are added)
-- Auto-advances every ~4s with a smooth CSS crossfade (opacity transition, absolute-positioned images stacked)
-- Centered within the column with tasteful padding, slight border-radius, no heavy borders
-- To add new photos: drop image into `photoroll/`, add filename to the JS array near top of `<script>`
-
-### Chunk 6 — Smooth JS Scroll
-**Goal:** Replace `scroll-snap` with JS-driven smooth section scrolling that feels like eszterbial.com.
+### Chunk 7 — Smooth JS Scroll
+**Goal:** Replace `scroll-snap` with JS-driven smooth scroll (eszterbial.com feel).
 
 - Remove `scroll-snap-type: y mandatory` from `.snap-container` and `scroll-snap-align` from sections
-- JS handles scroll: click nav → `scrollTo` with custom easing (e.g., ease-in-out cubic)
-- Mousewheel/trackpad: debounced wheel listener, one section at a time, smooth animated scroll
-- Sections fade in slightly as they enter viewport (opacity 0.85 → 1 during scroll)
-- Keyboard arrow keys also trigger section scroll
+- Mousewheel/trackpad: debounced, one section at a time, custom ease-in-out cubic easing
+- Click nav → animated `scrollTo`, sections fade `0.85→1` as they enter viewport
+- Keyboard arrow keys trigger section scroll
 
-### Chunk 7 — Scrolling Welcome Marquee
-**Goal:** CSS marquee banner across a section or the top of hero.
+### Chunk 8 — Scrolling Welcome Marquee
+- Pure CSS `@keyframes` marquee: "Welcome to Jason Steltman's Website — Developer — Designer — Builder —"
+- Thin strip below hero name or between sections
 
-- Text: "Welcome to Jason Steltman's Website — Developer — Designer — Builder —" (repeating)
-- Pure CSS `@keyframes` animation, no JS
-- Positioned either just below hero name or as a thin strip between sections
+### Chunk 9 — Name Letter Spin
+- Each letter of hero name wrapped in `<span>`
+- Mouseover → individual letter spins (`rotateY`)
+- After 6s idle → all letters auto-rotate at varied speeds
+- CSS animations, JS class toggling
 
-### Chunk 8 — Name Letter Spin
-**Goal:** Hero name letters each wrapped in `<span>`, interactive + idle animation.
-
-- Mouseover individual letter → it spins (CSS `rotateY` or `rotate`)
-- After 6s idle → all letters auto-rotate at different speeds (varied `animation-duration`)
-- Pure CSS animations triggered by JS class toggling
-
-### Chunk 9 — Cursor Picker Bubble (Low Priority)
+### Chunk 10 — Cursor Picker Bubble (Low Priority)
 - Floating bubble UI for selecting a custom cursor from a visual library
 - Selection stored in `localStorage`, applied site-wide on load
 
-### Chunk 10 — Turtle Loader (Low Priority)
-- Spinning turtle SVG as page loader, fades out after content loads
+### Chunk 11 — Turtle Loader (Low Priority)
+- Spinning turtle SVG page loader, fades out after content loads
 
-### Chunk 11 — Mini Game (Low Priority)
+### Chunk 12 — Mini Game (Low Priority)
 - Small canvas-based browser game, separate page
 
 ---
@@ -142,4 +128,5 @@ All completed phases are done. Below is the active + future work, easiest first.
 - Inline `<style>` blocks per page (current pattern)
 - Prefer CSS animations over JS where possible
 - Mobile-first responsive design
-- Maintain the minimalist aesthetic — clean, typography-focused
+- Maintain the minimalist editorial aesthetic — clean, typography-focused
+- Just make the changes — no need to double-check obvious decisions mid-task
