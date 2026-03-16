@@ -1,0 +1,45 @@
+﻿[UpArrow]
+Path=alternate.cur
+
+[Hand]
+Path=link.ani
+
+[Arrow]
+Path=normal.cur
+
+[IBeam]
+Path=text.ani
+
+[SizeNWSE]
+Path=Diagonal Resize 1.cur
+
+[SizeNESW]
+Path=Diagonal Resize 2.cur
+
+[SizeAll]
+Path=Move.cur
+
+[NWPen]
+Path=Handwriting.cur
+
+[AppStarting]
+Path=working2.ani
+
+[Crosshair]
+Path=Precision Select.cur
+
+[No]
+Path=Unavailable2.cur
+
+[SizeNS]
+Path=Vertical Resize.cur
+
+[SizeWE]
+Path=Horizontal Resize.cur
+
+[Wait]
+Path=busy2.ani
+
+[Help]
+Path=help2.ani
+

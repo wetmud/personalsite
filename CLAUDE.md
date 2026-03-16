@@ -6,8 +6,8 @@ Static personal portfolio site for landing a **developer/programmer/coder job**.
 ## Tech Stack
 - Vanilla HTML5, CSS3, JavaScript (ES5)
 - No frameworks, no package.json, no build process
-- CSS Variables for theming, Grid/Flexbox for layout (scroll-snap being replaced with JS smooth scroll)
-- Google Fonts: Bebas Neue (display/headings), Caprasimo (unused, kept), Outfit (UI/body) — loaded via `<link>`
+- CSS Variables for theming, Grid/Flexbox for layout
+- Fonts: Cabinet Grotesk (hero name, CV name), Zodiak (section titles/headers), Outfit (UI/body) — loaded via `@font-face local()` only for now
 - System fonts fallback: Helvetica Neue, Times New Roman
 - Custom base64 cursor on all pages
 
@@ -32,6 +32,8 @@ copies/             — Backup HTML files
 - Color scheme: warm beige bg (`#f5f0e8`), near-black text (`#111`)
 - Responsive via `clamp()` fluid typography and CSS Grid auto-fill
 - Blog posts are added by editing the `POSTS` array in `index.html` — no folder system
+- Blog post `content` field is an array of strings — one string = one paragraph. Use `\'` to escape apostrophes, or wrap strings in double quotes.
+- PHOTO_ROLL array in index.html — add filename to register new photos. `.tif` files do NOT work in browsers — convert to `.jpg` first.
 
 ## Social Links
 - GitHub: [github.com/wetmud](https://github.com/wetmud)
@@ -40,88 +42,64 @@ copies/             — Backup HTML files
 
 ---
 
-## Current Status (as of 2026-03-13)
+## Current Status (as of 2026-03-15)
 
-**Chunks 1–4 complete. Chunk 5 (circle menu) is next.**
+**Chunks 1–11 complete. Site is in polish/refinement phase.**
 
 ### ✅ Completed
-- **Chunk 1:** Background image removed from all 6 pages.
-- **Chunk 2:** `index.html` fully rewritten as single-page snap layout (5 sections, modals, lightbox, dot nav, sticky header).
-- **Chunk 3 — Design Language:** eszterbial.com-inspired editorial aesthetic:
-  - **Bebas Neue** condensed display font (hero name, section headings, MENU button)
-  - **6-column vertical grid lines** overlay via `repeating-linear-gradient`
-  - **95vh sections** — 5vh bleed shows next section below
-  - **Section intros** — large Bebas Neue title + right-aligned metadata + rule line
-  - **MENU button** (top-left, fixed) — full-screen dark overlay, staggered nav links, IntersectionObserver light/dark, Escape to close
-  - **Scroll reveal**: `.reveal` + `.visible` classes, staggered `setTimeout` delays
-  - **Horizontal scroll rows** for Work + Art cards (`340×440px` unified size)
-  - **CV section** pinned to bottom with `align-content:end`
-- **Chunk 4 — Visual Polish:**
-  - **All sections beige** — `#hero`, `#work`, `#blog` switched to `var(--bg-light)` (`#f5f0e8`); all `data-theme="light"` now
-  - **Larger modals** — `width: min(1100px, 92vw)`, bottom-right offset shadow (`14px 18px 0px rgba(0,0,0,0.12)`)
-  - **Renamed** — "CV & Contact" → "Want to Collaborate?" / nav → "Collaborate" / hero index → "Collab"
-  - **ASCII breaks** — `<pre class="ascii-break">` after each `<hr class="section-rule">` (placeholder text; Jason will replace with custom art)
+- **Chunks 1–3:** Full redesign — beige bg, Bebas Neue, grid lines, scroll reveal, horizontal card rows
+- **Chunk 4:** All sections beige, larger modals w/ bottom-right shadow, ASCII breaks, CV renamed
+- **Chunk 5:** Circle menu — top-right fixed, 60px circle, 360° spin, compact dropdown, social links, Escape closes
+- **Chunk 6:** Hero photo roll — landscape 16/9, full right-column width, CSS crossfade every 4s, `photoroll/` folder
+- **Chunk 7:** Smooth natural scroll — removed snap, `overflow-y:auto`, no wheel hijacking
+- **Chunk 8:** Marquee — fixed 30px black bar at top of page, white text, CSS `@keyframes marquee`
+- **Chunk 9:** Letter spin — each letter `<span class="letter">`, continuous spin on hover (3s), idle after 6s (5–9s random)
+- **Chunk 10:** Cursor picker — bottom-right fixed, 8 packs from `cursor icons/`, `localStorage` persistence
+- **Chunk 11:** "Want to Collaborate?" — scrolling black marquee banner at top of CV section (28s speed)
+- **Session 2026-03-15:** Card centering fixed (min-height + justify-content:center + 90px top padding on #work/#art); photo roll expanded to 10 images; hero tagline updated; bio paragraph added to CV; French Press blog post added; CV banner slowed to 28s; scroll fixed (removed `scroll-behavior:smooth` from CSS — was causing freeze on native wheel scroll); fonts switched to Cabinet Grotesk + Zodiak
 
 ### Current Design State
-- All 5 sections use `data-theme="light"` — no dark sections remain
-- `.section-intro-title` default color is `var(--ink)` (dark); `.dark-text` class is now redundant
-- `.section-intro-count` default is `var(--muted)` dark; `.light` class is no longer needed
-- Grid overlay uses `var(--grid-line-light)` (dark lines on beige)
-- Work/art scroll wrapper fade gradients use `var(--bg-light)`
-- Blog filter buttons: dark pill on beige, active state inverted (dark bg, beige text)
+- Sections: natural height, `75px` `.section-gap` divs between them, `var(--bg-light)` background
+- Work/Art sections: `min-height:calc(100vh - 30px)`, `justify-content:center`, `padding-top:90px`, `padding-bottom:60px`; card rows use `padding:24px 80px 32px`; cards `420×520px`
+- All cards (work, art, blog) use `box-shadow:0 2px 8px rgba(0,0,0,0.3)` base + `10px 14px 0px` directional hover (NOTE: work cards still `0 2px 12px` — inconsistency pending fix)
+- ASCII breaks: single dot row `· · · ·` only, `font-size:14px`, `color:rgba(0,0,0,0.55)`
+- Modal overlay: `top:30px` to center below marquee bar
+- Sections renamed: "Selected Work" → "Web Projects", "Photography" → "Art"
+- Hero: photo roll landscape above nav links in right column; letter spin on name; tagline "Creative systems. Thoughtful UX. Actionable Data."
+- Top marquee: `position:fixed`, `height:30px`, `z-index:900`, black/white
+- Circle menu: `top:42px` (below marquee), right-aligned dropdown with nav + social links
+- Cursor picker: bottom-right, panel opens upward
+- Scroll: native wheel scroll only — NO `scroll-behavior:smooth` on container. Nav clicks use JS `scrollToIndex()` via `requestAnimationFrame`.
+- `.dark-text` and `.light` classes on section intros are now redundant (safe to leave)
 
 ---
 
-## Feature Roadmap (ordered easiest → hardest)
+## Feature Roadmap
 
-### Chunk 5 — Circle Menu Button (Next Up)
-**Goal:** Replace top-left rectangular MENU + full-screen overlay with a top-right circle button + compact dropdown.
+### Pending / Polish
+- **Wire contact form** → `mailto:jason.steltman@gmail.com` with name/email/message fields composed into URL
+- **Self-host fonts** — Cabinet Grotesk + Zodiak `.woff2` from fontshare.com/fonts/cabinet-grotesk and fontshare.com/fonts/zodiak (currently `local()` only — broken for all visitors who haven't installed them)
+- **Unify card shadows** — work cards still `0 2px 12px rgba(0,0,0,0.4)`, should match `0 2px 8px rgba(0,0,0,0.3)`; post card hover should use `10px 14px 0px` directional not vertical lift
+- **Mobile art scroll row** — missing `@media` padding override; fade gradients 80px wide on mobile (too wide for 375px viewport)
+- **Cursor picker submenus** — each of 8 categories needs 5+ cursors; currently only 1 per category
+- **Add downloadable CV/resume PDF** — wire up "Download CV" link (`href="#"` currently scrolls to top on click)
+- Replace placeholder ASCII dot breaks with custom ASCII art (Jason's art goes in `<pre class="ascii-break">`)
+- Fix duplicate `scrollToSection` declaration in JS (harmless but confusing)
+- Fix duplicate `cv-inner` CSS rule (~lines 33 and 109)
 
-- **Circle button (top-right, fixed)** — on click: rotates via CSS `transform:rotate`, dropdown slides down below
-- **Dropdown panel** — compact floating panel, not full-screen; backdrop-blur + border
-  - Stacked Bebas Neue nav links: Home / Work / Art / Blog / Collaborate
-  - Social links row at bottom: GitHub, Behance, email
-- **Remove** `#menu-overlay`, `#menu-close`, existing `#menu-btn` entirely
-- IntersectionObserver light/dark adaptation carries over to new button
-- Keyboard: Escape closes
-
-### Chunk 6 — Hero Photo Roll
-**Goal:** Crossfading photo slideshow in the right column of the hero section.
-
-- Photo roll sits centered in upper portion of right column; index links remain pinned below
-- Images hardcoded as JS array near top of `<script>` — filenames from `photoroll/` folder
-- Auto-advances every ~4s, CSS crossfade (opacity transition, absolute-positioned stacked images)
-- Hidden/empty until images are added to array; to add: drop into `photoroll/`, add filename to array
-
-### Chunk 7 — Smooth JS Scroll
-**Goal:** Replace `scroll-snap` with JS-driven smooth scroll (eszterbial.com feel).
-
-- Remove `scroll-snap-type: y mandatory` from `.snap-container` and `scroll-snap-align` from sections
-- Mousewheel/trackpad: debounced, one section at a time, custom ease-in-out cubic easing
-- Click nav → animated `scrollTo`, sections fade `0.85→1` as they enter viewport
-- Keyboard arrow keys trigger section scroll
-
-### Chunk 8 — Scrolling Welcome Marquee
-- Pure CSS `@keyframes` marquee: "Welcome to Jason Steltman's Website — Developer — Designer — Builder —"
-- Thin strip below hero name or between sections
-
-### Chunk 9 — Name Letter Spin
-- Each letter of hero name wrapped in `<span>`
-- Mouseover → individual letter spins (`rotateY`)
-- After 6s idle → all letters auto-rotate at varied speeds
-- CSS animations, JS class toggling
-
-### Chunk 10 — Cursor Picker Bubble (Low Priority)
-- Floating bubble UI for selecting a custom cursor from a visual library
-- Selection stored in `localStorage`, applied site-wide on load
-
-### Chunk 11 — Turtle Loader (Low Priority)
-- Spinning turtle SVG page loader, fades out after content loads
-
-### Chunk 12 — Mini Game (Low Priority)
-- Small canvas-based browser game, separate page
+### Low Priority
+- Chunk 12 — Mini Game: small canvas-based browser game, separate page
+- Turtle Loader: spinning turtle SVG page loader, fades out after content loads
 
 ---
+
+## Known Gotchas
+- `scroll-behavior:smooth` on `main.snap-container` causes native wheel scroll to feel frozen/sluggish — **do not re-add**
+- `.tif` images silently fail in browsers — always use `.jpg`/`.png`/`.webp` in photoroll
+- `local()` only `@font-face` works for Jason locally but fails for all other visitors — must self-host `.woff2`
+- `body.style.overflow` manipulation in modal open/close is a no-op — body already has `overflow:hidden` in CSS
+- Behance CDN image URLs have no fallback — if Behance rotates paths, all art cards break silently
+- Form labels in CV section have no `for`/`id` association — accessibility issue
 
 ## Style Conventions
 - Keep it vanilla — no frameworks unless explicitly discussed

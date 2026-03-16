@@ -1,0 +1,45 @@
+﻿[Arrow]
+Path=pelipo - normal.ani
+
+[Help]
+Path=pelipo - help.ani
+
+[AppStarting]
+Path=pelipo - working.ani
+
+[Wait]
+Path=Pelipo - busy.ani
+
+[Crosshair]
+Path=pelipo - precision.ani
+
+[IBeam]
+Path=pelipo - text.ani
+
+[No]
+Path=pelipo - unavailable.ani
+
+[SizeNS]
+Path=pelipo - vertical.ani
+
+[SizeWE]
+Path=pelipo - horizontal.ani
+
+[UpArrow]
+Path=pelipo - alternate.ani
+
+[Hand]
+Path=pelipo - link.ani
+
+[SizeNWSE]
+Path=pelipo - diag1.ani
+
+[SizeNESW]
+Path=pelipo - diag2.ani
+
+[SizeAll]
+Path=pelipo - move.ani
+
+[NWPen]
+Path=pelipo - handwriting.ani
+

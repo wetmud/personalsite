@@ -1,0 +1,39 @@
+﻿[Arrow]
+Path=Swimming Turtle.ani
+
+[Help]
+Path=Help Turtle.ani
+
+[Wait]
+Path=Busy Turtle.ani
+
+[Hand]
+Path=Link Turtle.cur
+
+[AppStarting]
+Path=Working in Background Turtle.ani
+
+[No]
+Path=Unavailable Turtle.cur
+
+[SizeNS]
+Path=Verticle Resize Turtle.ani
+
+[SizeWE]
+Path=Horizontal Resize Turtle.ani
+
+[SizeNWSE]
+Path=Diagonal Resize1 Turtle.ani
+
+[SizeNESW]
+Path=Diagonal Resize2 Turtle.ani
+
+[SizeAll]
+Path=Moving Turtle.cur
+
+[IBeam]
+Path=Text Turtle (left).ani
+
+[UpArrow]
+Path=Alternate Select Turtle.ani
+
