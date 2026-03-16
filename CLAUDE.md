@@ -61,7 +61,7 @@ copies/             — Backup HTML files
 ### Current Design State
 - Sections: natural height, `75px` `.section-gap` divs between them, `var(--bg-light)` background
 - Work/Art sections: `min-height:calc(100vh - 30px)`, `justify-content:center`, `padding-top:90px`, `padding-bottom:60px`; card rows use `padding:24px 80px 32px`; cards `420×520px`
-- All cards (work, art, blog) use `box-shadow:0 2px 8px rgba(0,0,0,0.3)` base + `10px 14px 0px` directional hover (NOTE: work cards still `0 2px 12px` — inconsistency pending fix)
+- All cards (work, art, blog) use static `box-shadow:10px 14px 0px` (directional, always visible — not animated on hover). Hover only animates `transform:translateY(-4px) translateX(-4px)`. Shadow no longer transitions — GPU-composited only.
 - ASCII breaks: single dot row `· · · ·` only, `font-size:14px`, `color:rgba(0,0,0,0.55)`
 - Modal overlay: `top:30px` to center below marquee bar
 - Sections renamed: "Selected Work" → "Web Projects", "Photography" → "Art"
@@ -70,6 +70,7 @@ copies/             — Backup HTML files
 - Circle menu: `top:42px` (below marquee), right-aligned dropdown with nav + social links
 - Cursor picker: bottom-right, panel opens upward
 - Scroll: native wheel scroll only — NO `scroll-behavior:smooth` on container. Nav clicks use JS `scrollToIndex()` via `requestAnimationFrame`.
+- **Performance fixes applied (2026-03-16):** Removed all `backdrop-filter:blur()` from circle-btn, circle-dropdown, cursor-panel, and modal-overlay (biggest jank source). Photo roll interval cached + cleared on pagehide. Scroll reveal observer unobserves after first trigger. Blog filter now hide/show via CSS — no DOM rebuild on tag click. Letter spin uses single parent `mouseover` instead of per-letter listeners. Google Fonts loaded non-blocking via `media="print"` trick.
 - `.dark-text` and `.light` classes on section intros are now redundant (safe to leave)
 
 ---
