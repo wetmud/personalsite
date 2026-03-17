@@ -3,6 +3,8 @@
 ## Project Overview
 Static personal portfolio site for landing a **developer/programmer/coder job**. Built with vanilla HTML, CSS, and JavaScript — zero dependencies, no build tools. Currently multi-page (index.html, art.html, web.html, web2.html, blog.html, cv.html). Goal is to consolidate into a polished single-page portfolio.
 
+**Custom domain (purchased):** `jasonsteltman.com` — bought on GoDaddy. To connect: add site in Cloudflare (free), point GoDaddy nameservers to Cloudflare NS, then add a CNAME or A record pointing to GitHub Pages (`<username>.github.io`), and add the custom domain in the GitHub Pages settings for this repo.
+
 ## Tech Stack
 - Vanilla HTML5, CSS3, JavaScript (ES5)
 - No frameworks, no package.json, no build process
