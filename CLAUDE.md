@@ -44,9 +44,9 @@ copies/             — Backup HTML files
 
 ---
 
-## Current Status (as of 2026-03-15)
+## Current Status (as of 2026-03-17)
 
-**Chunks 1–11 complete. Site is in polish/refinement phase.**
+**Chunks 1–11 complete. Domain live. Site is in polish/refinement phase.**
 
 ### ✅ Completed
 - **Chunks 1–3:** Full redesign — beige bg, Bebas Neue, grid lines, scroll reveal, horizontal card rows
@@ -59,6 +59,7 @@ copies/             — Backup HTML files
 - **Chunk 10:** Cursor picker — bottom-right fixed, 8 packs from `cursor icons/`, `localStorage` persistence
 - **Chunk 11:** "Want to Collaborate?" — scrolling black marquee banner at top of CV section (28s speed)
 - **Session 2026-03-15:** Card centering fixed (min-height + justify-content:center + 90px top padding on #work/#art); photo roll expanded to 10 images; hero tagline updated; bio paragraph added to CV; French Press blog post added; CV banner slowed to 28s; scroll fixed (removed `scroll-behavior:smooth` from CSS — was causing freeze on native wheel scroll); fonts switched to Cabinet Grotesk + Zodiak
+- **Session 2026-03-17:** Domain live — `jasonsteltman.com` on GitHub Pages via Cloudflare, HTTPS enforced. Mobile audit — circle menu overlap fixed, blog tag row overflow fixed, tap targets increased, 480px breakpoint added, ASCII break overflow fixed, overflow-x protection added. CSP header added. Removed from Netlify.
 
 ### Current Design State
 - Sections: natural height, `75px` `.section-gap` divs between them, `var(--bg-light)` background
