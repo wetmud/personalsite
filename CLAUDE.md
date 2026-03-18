@@ -44,7 +44,7 @@ copies/             — Backup HTML files
 
 ---
 
-## Current Status (as of 2026-03-17)
+## Current Status (as of 2026-03-18)
 
 **Chunks 1–11 complete. Domain live. Site is in polish/refinement phase.**
 
@@ -60,6 +60,7 @@ copies/             — Backup HTML files
 - **Chunk 11:** "Want to Collaborate?" — scrolling black marquee banner at top of CV section (28s speed)
 - **Session 2026-03-15:** Card centering fixed (min-height + justify-content:center + 90px top padding on #work/#art); photo roll expanded to 10 images; hero tagline updated; bio paragraph added to CV; French Press blog post added; CV banner slowed to 28s; scroll fixed (removed `scroll-behavior:smooth` from CSS — was causing freeze on native wheel scroll); fonts switched to Cabinet Grotesk + Zodiak
 - **Session 2026-03-17:** Domain live — `jasonsteltman.com` on GitHub Pages via Cloudflare, HTTPS enforced. Mobile audit — circle menu overlap fixed, blog tag row overflow fixed, tap targets increased, 480px breakpoint added, ASCII break overflow fixed, overflow-x protection added. CSP header added. Removed from Netlify.
+- **Session 2026-03-18:** SEO/favicon added (meta description, OG/Twitter cards, inline SVG favicon). Banner text changed to "Hey! Welcome to my website :) !". Subtitle added under hero name ("I can help with your website..."). Work cards + blog cards flipped from dark (#1a1a1a) to white/black text (now match art cards). Circle menu button restyled as pill (border-radius:40px, padding, border). Dropdown widened from 220px to 280px. Photo roll: clicking active image opens lightbox. Quest page investigated — no file exists in repo (never built; task is pre-work).
 
 ### Current Design State
 - Sections: natural height, `75px` `.section-gap` divs between them, `var(--bg-light)` background
@@ -81,6 +82,7 @@ copies/             — Backup HTML files
 ## Feature Roadmap
 
 ### Pending / Polish
+- **Quest page drag** — no quest.html exists in repo at all; was never built. Needs to be created from scratch if still wanted.
 - **Wire contact form** → `mailto:jason.steltman@gmail.com` with name/email/message fields composed into URL
 - **Self-host fonts** — Cabinet Grotesk + Zodiak `.woff2` from fontshare.com/fonts/cabinet-grotesk and fontshare.com/fonts/zodiak (currently `local()` only — broken for all visitors who haven't installed them)
 - **Unify card shadows** — work cards still `0 2px 12px rgba(0,0,0,0.4)`, should match `0 2px 8px rgba(0,0,0,0.3)`; post card hover should use `10px 14px 0px` directional not vertical lift
