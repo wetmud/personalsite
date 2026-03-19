@@ -11,6 +11,8 @@
   <meta property="og:description" content="Canadian developer, designer, and artist. I build civic tech, AI integrations, and creative web projects.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jasonsteltman.com">
+  <meta property="og:image" content="https://jasonsteltman.com/images/Civicconnect3.png">
+  <meta name="twitter:image" content="https://jasonsteltman.com/images/Civicconnect3.png">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Jason Steltman">
   <meta name="twitter:description" content="Canadian developer, designer, and artist. Civic tech, AI integrations, creative systems.">
@@ -41,7 +43,6 @@
     .cv-section-banner{width:100%;background:#111;overflow:hidden;white-space:nowrap;padding:16px 0;display:block;}
     .cv-banner-track{display:inline-block;animation:marquee 28s linear infinite;}
     .cv-banner-track span{font-family:'Zodiak',sans-serif;font-size:clamp(36px,5vw,72px);letter-spacing:0.06em;text-transform:uppercase;color:#fff;}
-    .cv-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:24px 60px 56px;}
     .section-label{position:absolute;top:24px;left:32px;font-family:'Zodiak',sans-serif;font-size:clamp(32px,5vw,64px);letter-spacing:0.04em;text-transform:uppercase;color:rgba(255,255,255,0.08);z-index:10;pointer-events:none;}
     .section-label.light{color:rgba(0,0,0,0.06);}
     .section-heading{font-family:'Zodiak',sans-serif;font-size:clamp(28px,4vw,56px);letter-spacing:0.02em;text-transform:uppercase;color:var(--ink-light);margin-bottom:8px;}
@@ -261,6 +262,7 @@
   </style>
 </head>
 <body>
+  <a href="#snap-container" class="skip-link" style="position:absolute;top:-100px;left:0;background:#111;color:#fff;padding:8px 16px;z-index:9999;font-family:sans-serif;font-size:14px;border-radius:0 0 4px 0;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Skip to content</a>
 
   <div id="circle-menu">
     <button id="circle-btn" onclick="toggleCircleMenu()">Menu</button>
@@ -273,9 +275,9 @@
         <a onclick="scrollToSection('cv');toggleCircleMenu()">Collaborate</a>
       </nav>
       <div class="circle-social">
-        <a href="https://github.com/wetmud" target="_blank">GitHub</a>
-        <a href="https://behance.net/jasonsteltman" target="_blank">Behance</a>
-        <a href="mailto:jason.steltman@gmail.com">Email</a>
+        <a href="https://github.com/wetmud" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://behance.net/jasonsteltman" target="_blank" rel="noopener noreferrer">Behance</a>
+        <a href="#" onclick="(function(el){var e=['jason','.','steltman','@','gmail','.','com'].join('');el.href='mailto:'+e;el.click();})(this);return false;">Email</a>
       </div>
     </div>
   </div>
@@ -371,11 +373,11 @@
           </div>
           <p class="cv-section-heading">Links</p>
           <div class="cv-links">
-            <a href="https://github.com/wetmud" target="_blank">github.com/wetmud</a>
-            <a href="https://www.behance.net/jasonsteltman" target="_blank">behance.net/jasonsteltman</a>
-            <a href="https://www.instagram.com/jasonsteltman/" target="_blank">instagram.com/jasonsteltman</a>
+            <a href="https://github.com/wetmud" target="_blank" rel="noopener noreferrer">github.com/wetmud</a>
+            <a href="https://www.behance.net/jasonsteltman" target="_blank" rel="noopener noreferrer">behance.net/jasonsteltman</a>
+            <a href="https://www.instagram.com/jasonsteltman/" target="_blank" rel="noopener noreferrer">instagram.com/jasonsteltman</a>
           </div>
-          <a class="cv-download" href="#">Download CV</a>
+          <!-- Download CV — re-enable with real PDF href when ready -->
         </div>
         <div class="cv-right">
           <h3>Get in touch</h3>
@@ -424,7 +426,7 @@
         var card = document.createElement('div'); card.className = 'work-card reveal'; card.style.transitionDelay=(idx*0.06)+'s';
         (function(pid){card.onclick=function(){openModal(pid);};})(p.id);
         var thumb=document.createElement('div'); thumb.className='work-card-thumb';
-        var tImg=document.createElement('img'); tImg.src=p.thumb; tImg.alt=p.title;
+        var tImg=document.createElement('img'); tImg.src=p.thumb; tImg.alt=p.title; tImg.loading='lazy';
         thumb.appendChild(tImg);
         var info=document.createElement('div'); info.className='work-card-info';
         var h3=document.createElement('h3'); h3.textContent=p.title;
@@ -448,7 +450,7 @@
         p.tags.forEach(function(t){var tag=document.createElement('span');tag.className='modal-tag';tag.textContent=t;td.appendChild(tag);});
         var sd=document.createElement('div'); sd.className='modal-screenshots';
         p.screenshots.forEach(function(s){var si=document.createElement('img');si.src=s.src;si.alt=s.alt;(function(img){img.onclick=function(e){e.stopPropagation();openLightbox(img);};})(si);sd.appendChild(si);});
-        var lk=document.createElement('a'); lk.className='modal-link'; lk.href=p.link; lk.target='_blank'; lk.textContent='View live site \u2192'; lk.onclick=function(e){e.stopPropagation();};
+        var lk=document.createElement('a'); lk.className='modal-link'; lk.href=p.link; lk.target='_blank'; lk.rel='noopener noreferrer'; lk.textContent='View live site \u2192'; lk.onclick=function(e){e.stopPropagation();};
         body.appendChild(ne);body.appendChild(te);body.appendChild(de);body.appendChild(td);body.appendChild(sd);body.appendChild(lk);
         modal.appendChild(cb);modal.appendChild(hd);modal.appendChild(body);overlay.appendChild(modal);container.appendChild(overlay);
       });
@@ -480,7 +482,7 @@
         var card=document.createElement('div'); card.className='art-card reveal'; card.style.transitionDelay=(i*0.04)+'s';
         (function(cid){card.onclick=function(){openModal(cid);};})(id);
         var thumb=document.createElement('div'); thumb.className='art-thumb';
-        var tImg=document.createElement('img'); tImg.src=p.cover; tImg.alt=p.title;
+        var tImg=document.createElement('img'); tImg.src=p.cover; tImg.alt=p.title; tImg.loading='lazy'; tImg.onerror=function(){this.onerror=null;this.style.opacity='0.3';};
         thumb.appendChild(tImg);
         var info=document.createElement('div'); info.className='art-card-info';
         var h3=document.createElement('h3'); h3.textContent=p.title;
@@ -498,7 +500,7 @@
         var body=document.createElement('div'); body.className='modal-body';
         var te=document.createElement('h2'); te.className='modal-title'; te.textContent=p.title;
         var de=document.createElement('p'); de.className='modal-desc'; de.textContent=p.description;
-        var be=document.createElement('a'); be.className='modal-behance'; be.href=p.url; be.target='_blank'; be.textContent='View on Behance \u2192'; be.onclick=function(e){e.stopPropagation();};
+        var be=document.createElement('a'); be.className='modal-behance'; be.href=p.url; be.target='_blank'; be.rel='noopener noreferrer'; be.textContent='View on Behance \u2192'; be.onclick=function(e){e.stopPropagation();};
         body.appendChild(te);body.appendChild(de);body.appendChild(be);
         modal.appendChild(cb);modal.appendChild(hd);modal.appendChild(body);overlay.appendChild(modal);container.appendChild(overlay);
       });
@@ -709,12 +711,14 @@
 
     var cursorPickerOpen = false;
     function sendContactEmail(){
-      var name = document.getElementById('contact-name').value;
-      var email = document.getElementById('contact-email').value;
-      var msg = document.getElementById('contact-msg').value;
+      var name = document.getElementById('contact-name').value.trim();
+      var email = document.getElementById('contact-email').value.trim();
+      var msg = document.getElementById('contact-msg').value.trim();
+      if (!name || !msg) { alert('Please fill in your name and message.'); return; }
       var subject = encodeURIComponent('Portfolio Contact from ' + (name || 'Visitor'));
       var body = encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\n' + msg);
-      window.location.href = 'mailto:jason.steltman@gmail.com?subject=' + subject + '&body=' + body;
+      var addr=['jason','.','steltman','@','gmail','.','com'].join('');
+      window.location.href = 'mailto:'+addr+'?subject=' + subject + '&body=' + body;
     }
     function toggleCursorPicker(){
       cursorPickerOpen = !cursorPickerOpen;
