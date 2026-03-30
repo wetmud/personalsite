@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Lotus ASCII — Design Previews</title>
+<!-- GSAP for smooth timeline animation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#000;font-family:'Courier New',Courier,monospace;}
+
+  .block{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 40px;position:relative;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .block.light{background:#f5f0e8;border-bottom-color:rgba(0,0,0,0.08);}
+
+  .design-label{position:absolute;top:28px;left:40px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.18);}
+  .block.light .design-label{color:rgba(0,0,0,0.2);}
+
+  /* Shared pre */
+  .lotus-pre{display:block;line-height:1.35;font-size:13px;white-space:pre;letter-spacing:0.04em;text-align:left;position:relative;z-index:2;}
+  .lotus-pre span{display:inline-block;}
+
+  /* ── D1: white chars on blurred blob ── */
+  .d1-scene{position:relative;display:inline-block;}
+  .d1-blob{
+    position:absolute;inset:-40px -30px;z-index:1;
+    filter:blur(44px);pointer-events:none;
+    background:
+      radial-gradient(ellipse 22% 18% at 50% 36%, rgba(255,120,220,1.0) 0%, transparent 100%),
+      radial-gradient(ellipse 50% 42% at 50% 38%, rgba(140,40,210,0.9) 0%, transparent 100%),
+      radial-gradient(ellipse 80% 70% at 50% 40%, rgba(35,65,230,0.8) 0%, transparent 100%),
+      radial-gradient(ellipse 55% 90% at 28% 28%, rgba(45,105,250,0.65) 0%, transparent 100%),
+      radial-gradient(ellipse 55% 90% at 72% 28%, rgba(80,45,230,0.65) 0%, transparent 100%),
+      radial-gradient(ellipse 45% 85% at 50% 12%, rgba(55,90,255,0.55) 0%, transparent 100%),
+      radial-gradient(ellipse 45% 85% at 12% 58%, rgba(30,70,210,0.45) 0%, transparent 100%),
+      radial-gradient(ellipse 45% 85% at 88% 58%, rgba(65,35,200,0.45) 0%, transparent 100%);
+  }
+  .d1-pre{color:rgba(255,255,255,0.9);}
+
+  /* ── D2: colored chars ── */
+  .d2-pre{color:#fff;}
+
+  /* ── D3: beige / dark ── */
+  .d3-pre{color:rgba(20,16,12,0.85);}
+
+  .scroll-hint{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.15);margin-top:32px;animation:floatHint 3s ease-in-out infinite;}
+  .block.light .scroll-hint{color:rgba(0,0,0,0.18);}
+  @keyframes floatHint{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+</style>
+</head>
+<body>
+
+<div class="block" id="b1">
+  <span class="design-label">01 — Blob bg / White chars / Open &amp; Close</span>
+  <div class="d1-scene">
+    <div class="d1-blob" id="d1-blob"></div>
+    <pre class="lotus-pre d1-pre" id="d1"></pre>
+  </div>
+  <p class="scroll-hint">· · · scroll · · ·</p>
+</div>
+
+<div class="block" id="b2">
+  <span class="design-label">02 — Colored chars / Hue shifts with bloom</span>
+  <pre class="lotus-pre d2-pre" id="d2"></pre>
+  <p class="scroll-hint">· · · scroll · · ·</p>
+</div>
+
+<div class="block light" id="b3">
+  <span class="design-label">03 — Site beige / Dark chars / Slow breathe</span>
+  <pre class="lotus-pre d3-pre" id="d3"></pre>
+  <p class="scroll-hint">· · · scroll · · ·</p>
+</div>
+
+<script>
+(function() {
+
+  // ─────────────────────────────────────────────────
+  // VIRTUAL SPACE
+  // ─────────────────────────────────────────────────
+  var COLS = 66, ROWS = 36;
+  var CPW  = 7.8;
+  var CPH  = 17.55; // 13px * 1.35
+  var VW   = COLS * CPW;
+  var VH   = ROWS * CPH;
+  var FCX  = VW * 0.5;
+  var FCY  = VH * 0.37;
+
+  // ─────────────────────────────────────────────────
+  // ANIMATED BLOOM STATE  (driven by GSAP)
+  // t = 0 → bud closed   t = 1 → full bloom
+  // ─────────────────────────────────────────────────
+  var state = { t: 0 };
+
+  // Bud parameters
+  var BUD = {
+    outerDist: 28,  outerMinor: 14, outerMajor: 72,  outerOff: 6,
+    innerDist: 16,  innerMinor:  8, innerMajor: 36,  innerOff: 3,
+    centerR:   18
+  };
+  // Full bloom parameters
+  var OPEN = {
+    outerDist: 105, outerMinor: 52, outerMajor: 132, outerOff: 18,
+    innerDist:  52, innerMinor: 28, innerMajor:  68, innerOff:  8,
+    centerR:    32
+  };
+
+  var windTime = 0; // incremented each tick
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function sampleAt(col, row) {
+    var t  = state.t;
+    var vx = col * CPW + CPW * 0.5;
+    var vy = row * CPH + CPH * 0.5;
+    var iv = 0;
+
+    // ── Wind distortion ──
+    var distFromC = Math.sqrt((vx - FCX) * (vx - FCX) * 0.4 + (vy - FCY) * (vy - FCY)) / 160;
+    var windAmt   = Math.max(0, distFromC - 0.15);
+    vx += (Math.sin(windTime * 0.9  + vy * 0.018) * 0.65 +
+           Math.sin(windTime * 0.4  + vx * 0.012) * 0.35) * windAmt * 22;
+    vy += (Math.cos(windTime * 0.7  + vx * 0.014) * 0.55 +
+           Math.cos(windTime * 0.35 + vy * 0.010) * 0.45) * windAmt * 9;
+
+    // ── Mouse repel ──
+    // Push chars away from cursor. Outer chars flee further than centre.
+    // Turbulence mixes in so it feels like a breath, not a magnet.
+    var rs = repelStr.v;
+    if (rs > 0.001) {
+      var mdx = vx - smoothMouseVX;
+      var mdy = vy - smoothMouseVY;
+      var md  = Math.sqrt(mdx * mdx + mdy * mdy);
+      var repelRadius = 180;
+      if (md < repelRadius && md > 0.1) {
+        var falloff  = 1 - md / repelRadius;           // 1 at cursor, 0 at edge
+        var strength = falloff * falloff * rs * 55;    // quadratic — gentle far, strong close
+        // Add a tiny swirl so chars don't fly in perfectly straight lines
+        var swirl = Math.sin(windTime * 2 + md * 0.04) * 0.18;
+        vx += (mdx / md + swirl) * strength;
+        vy += (mdy / md) * strength * 0.7;            // slightly less vertical push
+      }
+    }
+
+    var oD   = lerp(BUD.outerDist,  OPEN.outerDist,  t);
+    var oMin = lerp(BUD.outerMinor, OPEN.outerMinor, t);
+    var oMaj = lerp(BUD.outerMajor, OPEN.outerMajor, t);
+    var oOff = lerp(BUD.outerOff,   OPEN.outerOff,   t);
+
+    var iD   = lerp(BUD.innerDist,  OPEN.innerDist,  t);
+    var iMin = lerp(BUD.innerMinor, OPEN.innerMinor, t);
+    var iMaj = lerp(BUD.innerMajor, OPEN.innerMajor, t);
+    var iOff = lerp(BUD.innerOff,   OPEN.innerOff,   t);
+
+    var cR = lerp(BUD.centerR, OPEN.centerR, t);
+
+    // 7 outer petals — each gets a small independent sway offset
+    for (var i = 0; i < 7; i++) {
+      var petalSway = Math.sin(windTime * 0.6 + i * 1.3) * 0.06 * windAmt;
+      var ang = (i / 7) * Math.PI * 2 - Math.PI / 2 + petalSway;
+      var ca = Math.cos(ang), sa = Math.sin(ang);
+      var pcx = FCX + ca * oD, pcy = FCY + sa * oD;
+      var dx = vx - pcx, dy = vy - pcy;
+      var lx = dx * ca + dy * sa;
+      var ly = -dx * sa + dy * ca;
+      var val = (lx / oMin) * (lx / oMin) + ((ly + oOff) / oMaj) * ((ly + oOff) / oMaj);
+      if (val < 1) {
+        var depth = 1 - Math.sqrt(val);
+        var shade = 0.35 + 0.65 * Math.max(0, -ly / oMaj);
+        iv = Math.max(iv, depth * shade);
+      }
+    }
+
+    // 6 inner petals — lighter sway
+    for (var j = 0; j < 6; j++) {
+      var innerSway = Math.sin(windTime * 0.5 + j * 1.7) * 0.04 * windAmt;
+      var ang2 = ((j + 0.5) / 6) * Math.PI * 2 - Math.PI / 2 + innerSway;
+      var cb = Math.cos(ang2), sb = Math.sin(ang2);
+      var px2 = FCX + cb * iD, py2 = FCY + sb * iD;
+      var dx2 = vx - px2, dy2 = vy - py2;
+      var lx2 = dx2 * cb + dy2 * sb;
+      var ly2 = -dx2 * sb + dy2 * cb;
+      var val2 = (lx2 / iMin) * (lx2 / iMin) + ((ly2 + iOff) / iMaj) * ((ly2 + iOff) / iMaj);
+      if (val2 < 1) {
+        iv = Math.max(iv, (1 - Math.sqrt(val2)) * 0.95);
+      }
+    }
+
+    // Centre pod
+    var dc = Math.sqrt((vx - FCX) * (vx - FCX) + (vy - FCY) * (vy - FCY));
+    if (dc < cR) {
+      iv = Math.max(iv, 1 - dc / cR);
+    }
+
+    // Stem (always present)
+    if (vy > FCY + 25 && vy < FCY + 135) {
+      var sf = 1 - (vy - FCY - 25) / 110;
+      var xd = Math.abs(vx - FCX);
+      if (xd < 5)  iv = Math.max(iv, sf * 0.75);
+      else if (xd < 9) iv = Math.max(iv, sf * 0.30);
+    }
+
+    // Water line
+    if (vy >= FCY + 120 && vy <= FCY + 140) {
+      var wd = Math.abs(vx - FCX);
+      if (wd < 88) iv = Math.max(iv, (1 - wd / 88) * 0.28);
+    }
+
+    return Math.min(1, Math.max(0, iv));
+  }
+
+  var CHARSET = ' .,:;!+ioO0S8B#@';
+
+  function toChar(v) {
+    if (v < 0.018) return '\u00a0';
+    var idx = Math.floor(v * (CHARSET.length - 1));
+    return CHARSET[Math.max(0, Math.min(CHARSET.length - 1, idx))];
+  }
+
+  // Build <pre> — one <span> per char
+  function render(preId) {
+    var pre = document.getElementById(preId);
+    var spans = [];
+    for (var r = 0; r < ROWS; r++) {
+      for (var c = 0; c < COLS; c++) {
+        var s = document.createElement('span');
+        s.textContent = '\u00a0';
+        s.dataset.r = r;
+        s.dataset.c = c;
+        pre.appendChild(s);
+        spans.push(s);
+      }
+      if (r < ROWS - 1) pre.appendChild(document.createTextNode('\n'));
+    }
+    return spans;
+  }
+
+  // ─────────────────────────────────────────────────
+  // RENDER LOOP — runs continuously via rAF
+  // Updates all span chars from current state.t
+  // ─────────────────────────────────────────────────
+  var spans1 = render('d1');
+  var spans2 = render('d2');
+  var spans3 = render('d3');
+
+  var hueOffset = 0;     // for design 2 colour drift
+  var shimmer   = false; // activated after bloom completes
+  var noise = new Float32Array(COLS * ROWS);
+
+  // Slow shimmer + occasional centre sparkle
+  setInterval(function() {
+    if (!shimmer) return;
+    // Regular shimmer
+    var count = Math.floor(COLS * ROWS * 0.03);
+    for (var k = 0; k < count; k++) {
+      var idx = Math.floor(Math.random() * noise.length);
+      noise[idx] = (Math.random() - 0.5) * 0.38;
+    }
+    for (var m = 0; m < noise.length; m++) { noise[m] *= 0.78; }
+
+    // Centre sparkle — random bright flash in the pod ~every 4s on average
+    if (Math.random() < 0.035) {
+      var sc = Math.round(COLS / 2) + Math.floor((Math.random() - 0.5) * 8);
+      var sr = Math.round(ROWS * 0.37) + Math.floor((Math.random() - 0.5) * 5);
+      for (var si = -1; si <= 1; si++) {
+        for (var sj = -1; sj <= 1; sj++) {
+          var sidx = (sr + si) * COLS + (sc + sj);
+          if (sidx >= 0 && sidx < noise.length) {
+            noise[sidx] = 0.85 - Math.abs(si + sj) * 0.25;
+          }
+        }
+      }
+    }
+  }, 150);
+
+  // ─────────────────────────────────────────────────
+  // CLICK RIPPLE
+  // A wave of intensity expands outward from click point
+  // ─────────────────────────────────────────────────
+  var ripples = [];
+
+  ['d1','d2','d3'].forEach(function(id) {
+    var el = document.getElementById(id);
+    var block = el.closest ? el.closest('.block') : el.parentNode.parentNode;
+    block.addEventListener('click', function(e) {
+      var v = toVirtual(e, el);
+      ripples.push({ x: v.x, y: v.y, age: 0 });
+    });
+  });
+
+  function getRippleNoise(vx, vy) {
+    var total = 0;
+    for (var ri = ripples.length - 1; ri >= 0; ri--) {
+      var rp = ripples[ri];
+      var dist = Math.sqrt((vx - rp.x) * (vx - rp.x) + (vy - rp.y) * (vy - rp.y));
+      var wavefront = rp.age * 200; // px per second
+      var waveWidth = 70;
+      var diff = dist - wavefront;
+      if (Math.abs(diff) < waveWidth) {
+        var envelope = Math.max(0, 1 - rp.age * 0.38);
+        total += Math.sin((1 - Math.abs(diff) / waveWidth) * Math.PI) * envelope * 0.6;
+      }
+    }
+    return total;
+  }
+
+  // ─────────────────────────────────────────────────
+  // IDLE BOW
+  // If untouched for 25s, the flower quietly closes
+  // then reopens — like it's breathing on its own
+  // ─────────────────────────────────────────────────
+  var lastInteraction = Date.now();
+  var isBowing = false;
+
+  function resetIdle() { lastInteraction = Date.now(); }
+  document.addEventListener('mousemove', resetIdle);
+  document.addEventListener('click',     resetIdle);
+
+  setInterval(function() {
+    if (!shimmer || isBowing) return;
+    if (Date.now() - lastInteraction > 25000) {
+      isBowing = true;
+      gsap.timeline({ onComplete: function() { isBowing = false; lastInteraction = Date.now(); } })
+        .to(state, { t: 0.25, duration: 4.0, ease: 'sine.inOut' })
+        .to(state, { t: 1,    duration: 5.5, ease: 'sine.inOut' });
+    }
+  }, 3000);
+
+  // ─────────────────────────────────────────────────
+  // MOUSE REPEL STATE
+  // targetMouse: raw cursor in virtual space
+  // smoothMouse: lags behind for organic feel
+  // repelStr: GSAP-animated 0→1 on enter, 1→0 on leave
+  // ─────────────────────────────────────────────────
+  var targetMouseVX = FCX, targetMouseVY = FCY;
+  var smoothMouseVX = FCX, smoothMouseVY = FCY;
+  var repelStr = { v: 0 };
+
+  // Map a MouseEvent to virtual flower space for a given pre element
+  function toVirtual(e, preEl) {
+    var r = preEl.getBoundingClientRect();
+    return {
+      x: ((e.clientX - r.left) / r.width)  * VW,
+      y: ((e.clientY - r.top)  / r.height) * VH
+    };
+  }
+
+  // Attach listeners to each block's pre
+  ['d1','d2','d3'].forEach(function(id) {
+    var el = document.getElementById(id);
+    var block = el.closest ? el.closest('.block') : el.parentNode.parentNode;
+    block.addEventListener('mousemove', function(e) {
+      var v = toVirtual(e, el);
+      targetMouseVX = v.x;
+      targetMouseVY = v.y;
+      gsap.to(repelStr, { v: 1, duration: 1.0, ease: 'power2.out', overwrite: true });
+    });
+    block.addEventListener('mouseleave', function() {
+      // Drift back slowly — like the wind carries it home
+      gsap.to(repelStr, { v: 0, duration: 3.5, ease: 'power1.inOut', overwrite: true });
+    });
+  });
+
+  function tick() {
+    var t = state.t;
+    windTime += 0.007;
+    hueOffset += 0.025;
+
+    // Smooth mouse lag — cursor leads, flower reacts a beat later
+    smoothMouseVX += (targetMouseVX - smoothMouseVX) * 0.06;
+    smoothMouseVY += (targetMouseVY - smoothMouseVY) * 0.06;
+
+    // Age ripples, remove expired ones
+    for (var ri = ripples.length - 1; ri >= 0; ri--) {
+      ripples[ri].age += 0.016;
+      if (ripples[ri].age > 2.8) ripples.splice(ri, 1);
+    }
+
+    for (var i = 0; i < spans1.length; i++) {
+      var r = parseInt(spans1[i].dataset.r);
+      var c = parseInt(spans1[i].dataset.c);
+      var v = sampleAt(c, r);
+
+      // Apply shimmer noise + ripple on top of base value
+      var vx0 = c * CPW + CPW * 0.5, vy0 = r * CPH + CPH * 0.5;
+      var rn  = ripples.length ? getRippleNoise(vx0, vy0) : 0;
+      var vn  = Math.min(1, Math.max(0, v + (shimmer ? noise[i] : 0) + rn));
+      if (v < 0.018 && rn <= 0) vn = 0;
+      var ch = toChar(vn);
+
+      // Design 1: white chars
+      if (spans1[i].textContent !== ch) spans1[i].textContent = ch;
+
+      // Design 2: coloured chars + hue drift
+      var distX = (c - COLS / 2) / (COLS / 2);
+      var distY = (r - ROWS * 0.37) / (ROWS * 0.5);
+      var dist  = Math.sqrt(distX * distX * 0.6 + distY * distY);
+      var hue = (320 - Math.min(1, dist) * 100 + hueOffset) % 360;
+      var sat = (50 + vn * 45 + t * 20).toFixed(0);
+      var lig = (30 + vn * 48 + t * 8).toFixed(0);
+      if (spans2[i].textContent !== ch) spans2[i].textContent = ch;
+      if (v >= 0.018) spans2[i].style.color = 'hsl(' + hue.toFixed(1) + ',' + sat + '%,' + lig + '%)';
+      else            spans2[i].style.color = '';
+
+      // Design 3: dark chars on beige
+      if (spans3[i].textContent !== ch) spans3[i].textContent = ch;
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  // ─────────────────────────────────────────────────
+  // GSAP TIMELINE — open once, then shimmer
+  // ─────────────────────────────────────────────────
+  function startAnimation() {
+    gsap.to(state, {
+      t: 1,
+      duration: 7.5,
+      ease: 'power1.inOut',
+      onComplete: function() {
+        shimmer = true;
+      }
+    });
+  }
+
+  // ─────────────────────────────────────────────────
+  // INTERSECTION OBSERVER — start on scroll into view
+  // All three share the same state.t, just different render loops
+  // We start as soon as ANY block is seen
+  // ─────────────────────────────────────────────────
+  var animStarted = false;
+
+  function maybeStart() {
+    if (animStarted) return;
+    animStarted = true;
+    startAnimation(1);
+    requestAnimationFrame(tick);
+  }
+
+  // Fire immediately for b1 (visible on load)
+  maybeStart();
+
+  // Also watch b2/b3 in case user jumps directly
+  ['b2', 'b3'].forEach(function(id) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { maybeStart(); obs.disconnect(); }
+      });
+    }, { threshold: 0.05 });
+    obs.observe(document.getElementById(id));
+  });
+
+})();
+</script>
+</body>
+</html>
