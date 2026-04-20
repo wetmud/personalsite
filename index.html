@@ -41,7 +41,7 @@
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@100,200,300,400,500,600,700,800,900&f[]=zodiak@100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{--bg-dark:#0a0a0a;--bg-light:#f5f0e8;--ink:#111111;--ink-light:#ffffff;--muted:#666666;--rule:rgba(255,255,255,0.1);--grid-line:rgba(255,255,255,0.06);--grid-line-light:rgba(0,0,0,0.06);--col-count:6;--col-gap:calc(100vw / var(--col-count));}
+    :root{--bg-dark:#0a0a0a;--bg-light:#f5f0e8;--ink:#111111;--ink-light:#ffffff;--muted:#666666;--accent:#C84B1A;--rule:rgba(255,255,255,0.1);--grid-line:rgba(255,255,255,0.06);--grid-line-light:rgba(0,0,0,0.06);--col-count:6;--col-gap:calc(100vw / var(--col-count));}
     /* Vertical grid lines overlay — z-index:0 so sections (z-index:1) always win */
     .snap-container::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;background:repeating-linear-gradient(to right,transparent,transparent calc(var(--col-gap) - 1px),var(--grid-line-light) calc(var(--col-gap) - 1px),var(--grid-line-light) var(--col-gap));}
     /* Scroll reveal system */
@@ -84,7 +84,7 @@
     .hero-name .letter:hover,.hero-name .letter.idle-spin{animation:letterIdle var(--spin-dur,6s) linear infinite;}
     .hero-name .letter:hover{--spin-dur:3s;}
     @keyframes letterIdle{from{transform:rotateY(0deg);}to{transform:rotateY(360deg);}}
-    .hero-tagline{margin-top:24px;font-family:Outfit,sans-serif;font-size:clamp(13px,1.5vw,18px);font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:#666;opacity:0;animation:fadeIn 0.6s ease forwards 0.5s;}
+    .hero-tagline{margin-top:24px;font-family:Outfit,sans-serif;font-size:clamp(14px,1.6vw,18px);font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:#444;opacity:0;animation:fadeIn 0.6s ease forwards 0.5s;}
     .hero-subtitle{margin-top:16px;font-family:Outfit,sans-serif;font-size:clamp(13px,1.2vw,16px);font-weight:300;line-height:1.6;color:#555;max-width:360px;opacity:0;animation:fadeIn 0.6s ease forwards 0.7s;}
     .hero-right{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:80px 60px;opacity:0;animation:fadeIn 0.6s ease forwards 0.8s;}
     .photo-roll{width:100%;}
@@ -124,7 +124,7 @@
     .art-scroll-wrapper::after{right:0;background:linear-gradient(to left,var(--bg-light),transparent);}
     .art-scroll-row{display:flex;align-items:flex-start;gap:28px;overflow-x:auto;padding:24px 80px 32px;scrollbar-width:none;}
     .art-scroll-row::-webkit-scrollbar{display:none;}
-    .art-card{flex-shrink:0;width:420px;height:520px;background:#fff;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;box-shadow:10px 14px 0px rgba(0,0,0,0.25);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);}
+    .art-card{flex-shrink:0;width:420px;height:520px;background:#fff;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;box-shadow:10px 14px 0px rgba(0,0,0,0.18);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);}
     .art-card:hover{transform:translateY(-4px) translateX(-4px);}
     .art-thumb{width:100%;height:400px;overflow:hidden;flex-shrink:0;}
     .art-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);}
@@ -278,6 +278,37 @@
       .form-field input,.form-field textarea{padding:10px 0;font-size:16px;}
       .ascii-break{padding:8px 32px;}
     }
+    /* ── ACCENT COLOR THREADING ── */
+    .cv-links a{color:var(--accent);text-decoration:underline;}
+    .cv-links a:hover{color:var(--ink);}
+    .modal-link,.modal-behance{color:var(--accent);}
+    .modal-link:hover,.modal-behance:hover{color:var(--ink);}
+    .cv-download{border-bottom-color:var(--accent);color:var(--accent);}
+    .cv-download:hover{color:var(--ink);border-bottom-color:var(--ink);}
+    .circle-social a:hover{color:var(--accent);}
+    .filter-btn.active{background:var(--accent);border-color:var(--accent);}
+    /* ── HERO CTA ── */
+    .hero-cta{display:inline-block;margin-top:20px;font-family:Outfit,sans-serif;font-size:13px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;cursor:pointer;transition:color 0.2s;}
+    .hero-cta:hover{color:var(--ink);}
+    .hero-cta::before{content:'→ ';margin-right:2px;}
+    /* ── HERO CURSOR HINT ── */
+    .hero-cursor-hint{font-family:Outfit,sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color 0.2s;margin-top:16px;display:inline-block;}
+    .hero-cursor-hint:hover{color:var(--accent);}
+    .hero-cursor-hint::before{content:'✦ ';}
+    /* ── REDUCED MOTION ── */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
+      .marquee-track,.cv-banner-track{animation:none !important;}
+      .reveal{opacity:1;transform:none;}
+    }
+    /* ── FOCUS VISIBLE ── */
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px;}
+    .circle-nav a:focus-visible,.filter-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+    /* ── ACTIVE NAV INDICATOR ── */
+    .circle-nav a.active-section{color:var(--accent);padding-left:8px;border-left:3px solid var(--accent);}
+    /* ── BLOG CARD HOVER ACCENT ── */
+    .post-card{border-left:3px solid transparent;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),border-color 0.2s;}
+    .post-card:hover{border-left-color:var(--accent);}
     @media(max-width:480px){
       .hero-left{padding:48px 20px 24px;}
       .hero-right{padding:0 20px 48px;}
@@ -302,11 +333,11 @@
     <button id="circle-btn" onclick="toggleCircleMenu()">Menu</button>
     <div id="circle-dropdown">
       <nav class="circle-nav">
-        <a onclick="scrollToSection('hero');toggleCircleMenu()">Home</a>
-        <a onclick="scrollToSection('work');toggleCircleMenu()">Work</a>
-        <a onclick="scrollToSection('art');toggleCircleMenu()">Art</a>
-        <a onclick="scrollToSection('blog');toggleCircleMenu()">Blog</a>
-        <a onclick="scrollToSection('cv');toggleCircleMenu()">Collaborate</a>
+        <a tabindex="0" role="button" data-section="hero" onclick="scrollToSection('hero');toggleCircleMenu()" onkeydown="if(event.key==='Enter'){scrollToSection('hero');toggleCircleMenu();}">Home</a>
+        <a tabindex="0" role="button" data-section="work" onclick="scrollToSection('work');toggleCircleMenu()" onkeydown="if(event.key==='Enter'){scrollToSection('work');toggleCircleMenu();}">Work</a>
+        <a tabindex="0" role="button" data-section="art" onclick="scrollToSection('art');toggleCircleMenu()" onkeydown="if(event.key==='Enter'){scrollToSection('art');toggleCircleMenu();}">Art</a>
+        <a tabindex="0" role="button" data-section="blog" onclick="scrollToSection('blog');toggleCircleMenu()" onkeydown="if(event.key==='Enter'){scrollToSection('blog');toggleCircleMenu();}">Blog</a>
+        <a tabindex="0" role="button" data-section="cv" onclick="scrollToSection('cv');toggleCircleMenu()" onkeydown="if(event.key==='Enter'){scrollToSection('cv');toggleCircleMenu();}">Collaborate</a>
       </nav>
       <div class="circle-social">
         <a href="https://github.com/wetmud" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -318,7 +349,7 @@
 
   <div id="top-marquee">
     <div class="marquee-track">
-      <span>Hey! Welcome to my website :) ! &nbsp;—&nbsp; Hey! Welcome to my website :) ! &nbsp;—&nbsp; Hey! Welcome to my website :) ! &nbsp;—&nbsp; Hey! Welcome to my website :) ! &nbsp;—&nbsp; Hey! Welcome to my website :) ! &nbsp;—&nbsp; Hey! Welcome to my website :) ! &nbsp;—&nbsp; </span><span>Hey! Welcome to my website :) ! &nbsp;—&nbsp; Hey! Welcome to my website :) ! &nbsp;—&nbsp; Hey! Welcome to my website :) ! &nbsp;—&nbsp; Hey! Welcome to my website :) ! &nbsp;—&nbsp; Hey! Welcome to my website :) ! &nbsp;—&nbsp; Hey! Welcome to my website :) ! &nbsp;—&nbsp; </span>
+      <span>Sourcepull — AI visibility auditing — live at sourcepull.ca &nbsp;·&nbsp; Updated April 2026 &nbsp;·&nbsp; Have a great day! &nbsp;—&nbsp; Sourcepull — AI visibility auditing — live at sourcepull.ca &nbsp;·&nbsp; Updated April 2026 &nbsp;·&nbsp; Have a great day! &nbsp;—&nbsp; Sourcepull — AI visibility auditing — live at sourcepull.ca &nbsp;·&nbsp; Updated April 2026 &nbsp;·&nbsp; Have a great day! &nbsp;—&nbsp; </span><span>Sourcepull — AI visibility auditing — live at sourcepull.ca &nbsp;·&nbsp; Updated April 2026 &nbsp;·&nbsp; Have a great day! &nbsp;—&nbsp; Sourcepull — AI visibility auditing — live at sourcepull.ca &nbsp;·&nbsp; Updated April 2026 &nbsp;·&nbsp; Have a great day! &nbsp;—&nbsp; Sourcepull — AI visibility auditing — live at sourcepull.ca &nbsp;·&nbsp; Updated April 2026 &nbsp;·&nbsp; Have a great day! &nbsp;—&nbsp; </span>
     </div>
   </div>
 
@@ -335,13 +366,14 @@
       <div class="hero-left">
         <h1 class="hero-name" id="hero-name"></h1>
         <p class="hero-tagline">PROBLEM SOLVING WITH CREATIVE SYSTEMS</p>
-        <!-- <p class="hero-subtitle">I can help with your website, your business, and help integrate AI into your systems.</p> -->
+        <a class="hero-cta" onclick="scrollToSection('work')">See my work</a>
       </div>
 
       <div class="hero-right">
         <div class="photo-roll">
           <div class="photo-roll-inner" id="photo-roll"></div>
         </div>
+        <span class="hero-cursor-hint" onclick="toggleCursorPicker()">Pick a cursor</span>
       </div>
     </section>
 
@@ -370,7 +402,7 @@
     <section class="snap-section" id="art" data-theme="light">
       <div class="section-intro reveal">
         <span class="section-intro-title dark-text">Art</span>
-        <span class="section-intro-count">12 Works &mdash; Behance</span>
+        <span class="section-intro-count">10 Works &mdash; Behance</span>
       </div>
       <hr class="section-rule light">
       <pre class="ascii-break">· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·</pre>
@@ -423,7 +455,7 @@
             <a href="https://github.com/wetmud" target="_blank" rel="noopener noreferrer">github.com/wetmud</a>
             <a href="https://www.behance.net/jasonsteltman" target="_blank" rel="noopener noreferrer">behance.net/jasonsteltman</a>
           </div>
-          <a href="resume.html" class="cv-download">View Full Resume &rarr;</a>
+          <a href="resume.html" class="cv-download" target="_blank" rel="noopener noreferrer">View Full Resume &rarr;</a>
         </div>
         <div class="cv-right">
           <h3>Get in touch</h3>
@@ -507,16 +539,16 @@
   <!-- ART SECTION JS -->
   <script>
     var ART_PROJECTS=[
-      {title:'Mother, 2014',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/69e166244873415.Y3JvcCwxNTc1LDEyMzIsMTMyLDA.jpeg',url:'https://www.behance.net/gallery/244873415/Mother-2014',medium:'Photography',description:'A portrait from 2014 — intimate, still, and centred on the subject of motherhood.'},
+      {title:'Utterly Distracting (Untitled, 2014)',cover:'https://mir-s3-cdn-cf.behance.net/project_modules/disp/0b9a26245277939.69a9dbfa21b2e.jpg',url:'https://www.behance.net/gallery/245277939/Utterly-Distracting-(Untitled-2014)',medium:'Photography',description:'An untitled work from 2014.'},
+      {title:'Mermaid, 2014',cover:'https://mir-s3-cdn-cf.behance.net/project_modules/disp/a565e2245278821.69a9e03f328f2.jpg',url:'https://www.behance.net/gallery/245278821/Mermaid-2014',medium:'Photography',description:'Mermaid, 2014.'},
+      {title:'Andrew and Miles, Nov 19 2014',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/bd218c245285547.Y3JvcCw1MzE3LDQxNTksNjcxLDA.jpg',url:'https://www.behance.net/gallery/245285547/Andrew-and-Miles-Nov-19-2014',medium:'Photography',description:'Andrew and Miles, November 2014.'},
+      {title:'2013',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/f26123245278081.Y3JvcCwzNDM2LDI2ODgsNTE4LDA.jpg',url:'https://www.behance.net/gallery/245278081/2013',medium:'Photography',description:'2013.'},
+      {title:'Nov 2014',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/346cc4245278627.Y3JvcCwzMTI5LDI0NDcsNjksMA.jpg',url:'https://www.behance.net/gallery/245278627/nov-2014',medium:'Photography',description:'November, 2014.'},
+      {title:'Glitch Work, 2015',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/44fc74245268137.Y3JvcCw2MDAwLDQ2OTMsMCwzNjUz.jpg',url:'https://www.behance.net/gallery/245268137/Glitch-Work-2015',medium:'Digital',description:'Glitch work from 2015.'},
+      {title:'Umbrella',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/3b5f7e138096545.Y3JvcCw3MTMsNTU3LDc4NSwxODE.jpg',url:'https://www.behance.net/gallery/138096545/Umbrella',medium:'Photography',description:'Umbrella.'},
       {title:'Study Room',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/9a53ae244873539.Y3JvcCwxMDg1LDg0OSw5Niww.jpg',url:'https://www.behance.net/gallery/244873539/Study-Room',medium:'Photography',description:'A quiet interior — the study room as both physical space and state of mind.'},
-      {title:'Leaf',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/5f87be244873589.Y3JvcCwxMTE2LDg3Myw4Miww.jpg',url:'https://www.behance.net/gallery/244873589/Leaf',medium:'Photography',description:'A close study of a single leaf — texture, light, and the small details that hold attention.'},
       {title:'Ghost of You',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/87ebd5244873667.Y3JvcCwxMDU4LDgyOCwxMTAsMA.jpg',url:'https://www.behance.net/gallery/244873667/Ghost-of-You',medium:'Photography',description:'Presence and absence — a photographic work about the traces people leave behind.'},
-      {title:"Mom's Pond",cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/e981af245213801.Y3JvcCwyMzI4LDE4MjAsMCw4MDY.png',url:'https://www.behance.net/gallery/245213801/Moms-Pond',medium:'Photography',description:'A familiar place — water, reflection, and the landscape of home.'},
-      {title:'Sit',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/137c9f245214043.Y3JvcCwzNjAwLDI4MTUsMCwzOTI.jpg',url:'https://www.behance.net/gallery/245214043/Sit',medium:'Photography',description:'Stillness as subject — a moment of rest, captured.'},
-      {title:'Concert with Friends',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/127741245214167.Y3JvcCwyOTIxLDIyODUsMjMxLDA.jpeg',url:'https://www.behance.net/gallery/245214167/Concert-with-Friends',medium:'Photography',description:'Live music, low light, and the energy of being somewhere together.'},
-      {title:'August 2015',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/683e12245214275.Y3JvcCwxMzA5LDEwMjQsMTE2LDA.jpg',url:'https://www.behance.net/gallery/245214275/August-2015',medium:'Photography',description:'Late summer, 2015 — light, heat, and the feeling of a month.'},
-      {title:'New Friend, 2014',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/f28626245214753.Y3JvcCwyMjIzLDE3MzksMjc1LDA.jpg',url:'https://www.behance.net/gallery/245214753/New-Friend-2014',medium:'Photography',description:'A portrait of connection — meeting someone new, 2014.'},
-      {title:'Costa Rica 2016',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/4644fc245215389.Y3JvcCw4NjEsNjc0LDc4LDA.jpg',url:'https://www.behance.net/gallery/245215389/Costa-Rica-2016',medium:'Photography',description:'Travel photography from Costa Rica — colour, warmth, and a different pace.'}
+      {title:'Concert with Friends',cover:'https://mir-s3-cdn-cf.behance.net/projects/max_808/127741245214167.Y3JvcCwyOTIxLDIyODUsMjMxLDA.jpeg',url:'https://www.behance.net/gallery/245214167/Concert-with-Friends',medium:'Photography',description:'Live music, low light, and the energy of being somewhere together.'}
     ];
     function renderArt() {
       var grid=document.getElementById('art-grid');
@@ -1195,6 +1227,21 @@
       });
     },{threshold:0.3,root:snapContainer});
     sections.forEach(function(s){revealObserver.observe(s);});
+    // ── ACTIVE NAV SECTION INDICATOR ──
+    var navLinks=document.querySelectorAll('.circle-nav a[data-section]');
+    var activeNavObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting)return;
+        var id=entry.target.id;
+        navLinks.forEach(function(link){
+          link.classList.toggle('active-section',link.getAttribute('data-section')===id);
+        });
+      });
+    },{threshold:0.4,root:snapContainer});
+    sections.forEach(function(s){activeNavObserver.observe(s);});
+    // ── EASTER EGG ──
+    console.log('%c✦ jasonsteltman.com','font-size:18px;font-weight:bold;color:#C84B1A;');
+    console.log('%cBuilt with vanilla HTML/CSS/JS. No frameworks. Just vibes.','font-size:12px;color:#666;');
   </script>
 
 </body>

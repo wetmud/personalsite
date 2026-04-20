@@ -1,0 +1,146 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776724418323,
+  "projectRoot": "/Users/macintosh/Documents/GitHub/personalsite",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "copies": {
+      "path": "copies",
+      "purpose": null,
+      "fileCount": 7,
+      "lastAccessed": 1776724418283,
+      "keyFiles": [
+        "art.html",
+        "blog.html",
+        "cv.html",
+        "index-pre-rewrite.html",
+        "index.html"
+      ]
+    },
+    "cursor icons": {
+      "path": "cursor icons",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1776724418284,
+      "keyFiles": [
+        "Ubuntu Link Select.cur"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 0,
+      "lastAccessed": 1776724418285,
+      "keyFiles": []
+    },
+    "images": {
+      "path": "images",
+      "purpose": null,
+      "fileCount": 13,
+      "lastAccessed": 1776724418285,
+      "keyFiles": [
+        "CivicConnect2.png",
+        "Civicconnect1.png",
+        "Civicconnect3.png",
+        "EventSC1.png",
+        "EventSC2.png"
+      ]
+    },
+    "photoroll": {
+      "path": "photoroll",
+      "purpose": null,
+      "fileCount": 10,
+      "lastAccessed": 1776724418286,
+      "keyFiles": [
+        "47580033.jpg",
+        "94560011.jpg",
+        "F1000015.JPG",
+        "F1000037.JPG",
+        "F1020019.JPG"
+      ]
+    },
+    "project images going forward": {
+      "path": "project images going forward",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1776724418286,
+      "keyFiles": [
+        "Screenshot 2026-03-17 at 4.40.30 PM.png",
+        "Screenshot 2026-03-17 at 4.40.39 PM.png",
+        "Screenshot 2026-03-17 at 4.40.46 PM.png",
+        "Screenshot 2026-03-17 at 4.41.08 PM.png"
+      ]
+    },
+    "untitled folder": {
+      "path": "untitled folder",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1776724418287,
+      "keyFiles": []
+    },
+    "writing": {
+      "path": "writing",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1776724418288,
+      "keyFiles": [
+        "Everyone is falling in love with a stranger.docx",
+        "Untitled story.docx",
+        "dominican story.docx",
+        "gigi's coffee story.docx",
+        "girl in the bathroom story.docx"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "index.html",
+      "accessCount": 13,
+      "lastAccessed": 1776725103958,
+      "type": "file"
+    },
+    {
+      "path": "resume.html",
+      "accessCount": 2,
+      "lastAccessed": 1776725109775,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1776724495497,
+      "type": "directory"
+    }
+  ],
+  "userDirectives": []
+}
