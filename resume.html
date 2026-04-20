@@ -75,6 +75,10 @@
       a{text-decoration:none;color:var(--ink);}
     }
 
+    /* Scroll reveal */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1);}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
     /* Mobile */
     @media(max-width:768px){
       .resume-container{padding:48px 20px 80px;}
@@ -87,7 +91,7 @@
 <body>
   <div class="resume-container">
 
-    <header class="resume-header">
+    <header class="resume-header reveal">
       <h1 class="resume-name">Jason<br>Steltman</h1>
       <p class="resume-location">Burlington, Ontario, Canada</p>
       <div class="resume-links">
@@ -96,11 +100,11 @@
         <a href="https://wetmudstudios.ca">wetmudstudios.ca</a>
       </div>
       <p class="resume-summary">
-        AI application developer who builds tools that measure and improve how AI systems represent real-world entities. Three Claude-integrated products shipped to production in under three months. Currently running Sourcepull, an AI-native business with a Claude-powered CEO agent, where the core product detects AI misrepresentation, scores citation accuracy, and generates fix plans. Self-taught through building with Claude, from free-tier experimentation to CLI-driven agentic workflows. OCAD University graduate with a publishing and design background that informs how AI outputs are communicated to non-technical users.
+        Seven shipped projects in under three months — AI tooling, civic tech, grant discovery, quantitative finance, event aggregation. I build things that solve problems people actually have. Currently running Sourcepull, an AI visibility auditing platform with an AI-powered operational layer, where the core product measures how accurately AI platforms represent real businesses and delivers fix plans. Self-taught through building — started on free-tier tools, now running full agentic workflows from the CLI. OCAD University graduate with a publishing and design background. The design instinct shapes everything I ship.
       </p>
     </header>
 
-    <section class="resume-section">
+    <section class="resume-section reveal">
       <p class="section-label">AI & Technical Projects</p>
 
       <div class="project">
@@ -108,13 +112,13 @@
           <span class="project-title">Sourcepull</span>
           <span class="project-meta"><a href="https://sourcepull.ca">sourcepull.ca</a> / 2026</span>
         </div>
-        <p class="project-stack">Python, Claude API, Next.js 16, Supabase, Vercel, Railway</p>
+        <p class="project-stack">Python, Next.js 16, Supabase, Vercel, Railway, multi-LLM integration</p>
         <ul class="project-points">
-          <li>Built an AEO platform that queries ChatGPT, Perplexity, Gemini, and Claude with structured prompts, then classifies each response for accuracy, citation quality, and misrepresentation</li>
-          <li>Designed a six-tier classification methodology with an accuracy-first flow: responses checked for factual correctness before receiving any positive score. Hallucinated citations score negatively.</li>
-          <li>Authored a full measurement methodology (v3.0) addressing stochastic variance, sample size disclosure, data provenance, confidence calibration, and explicit scope limitations</li>
-          <li>Built and operate "Frank," a Claude-powered CEO agent with persistent memory, advisory board dispatch, and multi-agent meeting orchestration across 90+ working sessions</li>
-          <li>Multi-model pipeline: Haiku for classification, Sonnet for analysis, Opus for strategic reasoning</li>
+          <li>AI platforms confidently misrepresent businesses — wrong cities, wrong industries, wrong services. Sourcepull measures it. Runs structured queries across ChatGPT, Perplexity, Gemini, and Claude, classifies each response for accuracy and citation quality, and delivers a fix plan.</li>
+          <li>Designed a six-tier classification methodology with an accuracy-first flow — hallucinated citations score negatively, not positively. This widens the score distribution and catches the false confidence that other tools miss.</li>
+          <li>Full measurement methodology (v3.0) covering stochastic variance, sample size disclosure, data provenance, and confidence calibration. The honesty layer is the product differentiator.</li>
+          <li>Built and operate "Frank," an AI CEO agent with persistent memory, advisory board dispatch, and multi-agent meeting orchestration across 90+ working sessions. Frank chose the niche, argued for it, and won.</li>
+          <li>Multi-model pipeline matching cost to task: lightweight models for high-volume classification, capable models for analysis and strategic reasoning</li>
           <li>Accepted into Innovation Factory's Concept Catalyst startup program (April 2026)</li>
         </ul>
       </div>
@@ -126,11 +130,11 @@
         </div>
         <p class="project-stack">Vanilla HTML/CSS/JS, Cloudflare Workers, Python, Claude API</p>
         <ul class="project-points">
-          <li>Helps Canadians find every elected representative from city councillor to Prime Minister based on a single address input. No cookies, no data collection, no tracking — everything runs in the browser</li>
+          <li>Government websites are terrible. Finding your representative shouldn't require knowing your ward, your riding, and three different websites. Civic Engagement takes one address and returns every elected official from city councillor to Prime Minister. No cookies, no data collection, no tracking.</li>
           <li>Ward boundary mapping, representative profiles with local and federal voting records, nearby public services, and one-click email drafting</li>
-          <li>Built a meeting transcriber to build a meeting scraper — Burlington city council wasn't transcribing their meetings despite compliance obligations, so we built the pipeline from scratch (Playwright + Claude)</li>
-          <li>Civic AI chatbot routing residents to the correct city department across 9 Ontario municipalities</li>
-          <li>Single HTML file, 5,100 lines, no framework, no backend. Built entirely on Claude's free tier. Open source and free to use.</li>
+          <li>Burlington city council wasn't transcribing their meetings despite compliance obligations. Had to build a meeting transcriber before we could build a meeting scraper — the full pipeline from scratch using Playwright and AI summarization</li>
+          <li>AI chatbot routing residents to the correct city department across 9 Ontario municipalities</li>
+          <li>Single HTML file, 5,100 lines, no framework, no backend. Open source and free to use. Two confirmed civic impact stories from real users.</li>
         </ul>
       </div>
 
@@ -163,7 +167,7 @@
       </div>
     </section>
 
-    <section class="resume-section">
+    <section class="resume-section reveal">
       <p class="section-label">Technical Skills</p>
       <div class="skills-grid">
         <span class="skill-tag">Python</span>
@@ -183,7 +187,7 @@
       </div>
     </section>
 
-    <section class="resume-section">
+    <section class="resume-section reveal">
       <p class="section-label">Education</p>
       <div class="edu-item">
         <p class="edu-title">Ontario College of Art and Design University (OCAD U)</p>
@@ -192,7 +196,7 @@
       </div>
     </section>
 
-    <section class="resume-section">
+    <section class="resume-section reveal">
       <p class="section-label">Publishing</p>
       <div class="edu-item">
         <p class="edu-title">Impulse [b:] Publishing House</p>
@@ -201,10 +205,10 @@
       </div>
     </section>
 
-    <div class="why-section">
+    <div class="why-section reveal">
       <h2>How I Build</h2>
-      <p>I learned to code by building with Claude. Started on the free tier, shipped Civic Engagement as my first real project, and progressed to CLI-driven agentic workflows within weeks. Every project here started from a real problem, not a tutorial.</p>
-      <p>I think about AI from the product side: what happens when real people rely on AI outputs that are wrong, incomplete, or confidently misleading? Sourcepull's methodology addresses hallucination detection, confidence calibration, and measurement transparency because those are the problems I kept running into while building.</p>
+      <p>I learned to code by building. Shipped Civic Engagement as my first real project using free-tier AI tools, and progressed to full agentic workflows within weeks. Every project here started from a real problem, not a tutorial.</p>
+      <p>I think about AI from the product side: what happens when real people rely on AI outputs that are wrong, incomplete, or confidently misleading? Sourcepull's methodology addresses hallucination detection, confidence calibration, and measurement transparency because those are the problems I kept running into.</p>
       <p>The art and publishing background informs why I care so much about output quality. In a world of vibe-coded projects, design thinking and creative discipline put you ahead. How something reads, how it feels, whether someone trusts the number on the screen. That's what I bring.</p>
     </div>
 
@@ -214,5 +218,9 @@
     </div>
 
   </div>
+  <script>
+    var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el);});
+  </script>
 </body>
 </html>
