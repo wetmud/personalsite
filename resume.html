@@ -93,7 +93,7 @@
       <div class="resume-links">
         <a href="https://jasonsteltman.com">jasonsteltman.com</a>
         <a href="https://github.com/wetmud">github.com/wetmud</a>
-        <a href="https://wetmudstudios.com">wetmudstudios.com</a>
+        <a href="https://wetmudstudios.ca">wetmudstudios.ca</a>
       </div>
       <p class="resume-summary">
         AI application developer who builds tools that measure and improve how AI systems represent real-world entities. Three Claude-integrated products shipped to production in under three months. Currently running Sourcepull, an AI-native business with a Claude-powered CEO agent, where the core product detects AI misrepresentation, scores citation accuracy, and generates fix plans. Self-taught through building with Claude, from free-tier experimentation to CLI-driven agentic workflows. OCAD University graduate with a publishing and design background that informs how AI outputs are communicated to non-technical users.
@@ -121,15 +121,16 @@
 
       <div class="project">
         <div class="project-header">
-          <span class="project-title">CivicConnect</span>
+          <span class="project-title">Civic Engagement</span>
           <span class="project-meta"><a href="https://civicengagement.ca">civicengagement.ca</a> / 2026</span>
         </div>
         <p class="project-stack">Vanilla HTML/CSS/JS, Cloudflare Workers, Python, Claude API</p>
         <ul class="project-points">
-          <li>Civic lookup tool serving every level of Canadian government from a single address input, with ward boundary mapping, representative profiles, and voting records</li>
-          <li>Automated council meeting scraper (Playwright + Claude) built after discovering Burlington city council wasn't transcribing meetings despite compliance obligations</li>
-          <li>Civic AI chatbot routing residents to correct city departments across 9 Ontario municipalities</li>
-          <li>Single HTML file, 5,100 lines, no framework, no backend. Built entirely on Claude's free tier. Open source.</li>
+          <li>Helps Canadians find every elected representative from city councillor to Prime Minister based on a single address input. No cookies, no data collection, no tracking — everything runs in the browser</li>
+          <li>Ward boundary mapping, representative profiles with local and federal voting records, nearby public services, and one-click email drafting</li>
+          <li>Built a meeting transcriber to build a meeting scraper — Burlington city council wasn't transcribing their meetings despite compliance obligations, so we built the pipeline from scratch (Playwright + Claude)</li>
+          <li>Civic AI chatbot routing residents to the correct city department across 9 Ontario municipalities</li>
+          <li>Single HTML file, 5,100 lines, no framework, no backend. Built entirely on Claude's free tier. Open source and free to use.</li>
         </ul>
       </div>
 
@@ -138,24 +139,26 @@
           <span class="project-title">GrantMatch</span>
           <span class="project-meta">CLI + Browser UI / 2026</span>
         </div>
-        <p class="project-stack">Node.js, Claude API (@anthropic-ai/sdk), pdf-parse</p>
+        <p class="project-stack">Node.js, Claude API (@anthropic-ai/sdk), pdf-parse, Claude Vision</p>
         <ul class="project-points">
-          <li>Grant matching tool accepting text, PDF, or screenshot input (Claude vision), extracting structured profiles, and scoring against 24 curated grants</li>
-          <li>Multi-model architecture: Haiku for high-volume scoring, Sonnet for profile extraction and application drafting</li>
+          <li>Takes a project description (typed, uploaded PDF, or screenshot via Claude Vision), extracts a structured profile, and scores it against a curated grant database. Designed to scale toward discovering every applicable grant for a given project type and region.</li>
+          <li>Multi-model architecture: Haiku for high-volume scoring passes, Sonnet for profile extraction and application draft generation</li>
           <li>Pre-filter eliminates obvious mismatches before spending tokens on AI scoring</li>
+          <li>Grant Tracker companion tool turns GrantMatch results into a managed application pipeline — track status, deadlines, requirements, and next steps for each grant you're pursuing</li>
         </ul>
       </div>
 
       <div class="project">
         <div class="project-header">
-          <span class="project-title">PolyBot</span>
+          <span class="project-title">PolyBot / MarketBot</span>
           <span class="project-meta">66 tests passing / 2026</span>
         </div>
-        <p class="project-stack">Python, numpy, scipy, pytest</p>
+        <p class="project-stack">Python, numpy, scipy, pytest, Alpaca API</p>
         <ul class="project-points">
           <li>Quantitative trading system: LMSR pricing engine (logsumexp-stable), sequential Bayesian inference in log-space, fractional Kelly criterion for position sizing</li>
           <li>66 tests across all modules; math cross-verified against known LMSR values</li>
           <li>Full risk management layer with hard position limits, daily loss caps, and drawdown stops</li>
+          <li>Rebuilt the core math for traditional stock markets (MarketBot) via the Alpaca API when prediction markets proved inaccessible from Ontario</li>
         </ul>
       </div>
     </section>
@@ -194,14 +197,15 @@
       <div class="edu-item">
         <p class="edu-title">Impulse [b:] Publishing House</p>
         <p class="edu-subtitle">Editor & Contributor / 2015 - 2024</p>
-        <p class="edu-desc">Founding member of an independent publishing house, created in collaboration with artist Eldon Garnet. Editorial meetings, book proposal reviews, artist and designer interviews. Full Adobe Suite production workflow from creation through print-ready proofs. Organized release events for up to 200 attendees.</p>
+        <p class="edu-desc">Founding member of an independent publishing house, created in collaboration with artist Eldon Garnet. Editorial meetings, book proposal reviews, artist and designer interviews. Full Adobe Suite production workflow from creation through print-ready proofs to full print runs. Organized release parties for up to 200 people.</p>
       </div>
     </section>
 
     <div class="why-section">
       <h2>How I Build</h2>
-      <p>I learned to code by building with Claude -- starting on the free tier, shipping CivicConnect as my first real project, and progressing to CLI-driven agentic workflows within weeks. Every project in this portfolio started from a real problem, not a tutorial.</p>
-      <p>I think about AI from the product side: what happens when real people rely on AI outputs that are wrong, incomplete, or confidently misleading? Sourcepull's methodology addresses hallucination detection, confidence calibration, and measurement transparency because those are the problems I kept hitting while building. The art and publishing background isn't incidental -- it's why I care about how AI communicates with humans, not just how it computes.</p>
+      <p>I learned to code by building with Claude. Started on the free tier, shipped Civic Engagement as my first real project, and progressed to CLI-driven agentic workflows within weeks. Every project here started from a real problem, not a tutorial.</p>
+      <p>I think about AI from the product side: what happens when real people rely on AI outputs that are wrong, incomplete, or confidently misleading? Sourcepull's methodology addresses hallucination detection, confidence calibration, and measurement transparency because those are the problems I kept running into while building.</p>
+      <p>The art and publishing background informs why I care so much about output quality. In a world of vibe-coded projects, design thinking and creative discipline put you ahead. How something reads, how it feels, whether someone trusts the number on the screen. That's what I bring.</p>
     </div>
 
     <div class="resume-actions">
